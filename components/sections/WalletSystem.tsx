@@ -44,7 +44,7 @@ export function WalletSystem() {
                 {
                   icon: <ArrowDownLeft className="w-6 h-6" />,
                   title: "INSTANT WITHDRAWAL",
-                  desc: "Unused coins sent to bank anytime.",
+                  desc: "Unused coins sent to bank anytime (charges may apply).",
                   value: "24/7",
                 },
               ].map((item, i) => (

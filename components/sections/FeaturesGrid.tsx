@@ -18,7 +18,7 @@ export function FeaturesGrid() {
       title: "Notes & Session Replays",
       headline: "Learning That Stays With You",
       description:
-        "Notes available after every class. Replays are time-limited and protected, helping students revise at their own pace.",
+        "Notes available after every class. Replays are time-limited and non-downloadable, helping students revise at their own pace.",
     },
     {
       icon: <Award className="w-6 h-6" />,

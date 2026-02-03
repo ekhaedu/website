@@ -12,24 +12,23 @@ export function Hero() {
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           <div className="mb-8 animate-pulse">
             <span className="text-neon-purple font-mono text-sm tracking-[0.2em] uppercase border border-neon-purple/30 px-4 py-1">
-              System Online • LKG to Class 12
+              Admissions Open • LKG - Class 12
             </span>
           </div>
 
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-foreground leading-[0.9] mb-8 tracking-tighter uppercase">
-            One-on-One
+            Master Every
             <br />
-            Learning
+            Subject
             <br />
             <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
-              [ Platform ]
+              [ One-on-One ]
             </span>
           </h1>
 
           <p className="text-sm md:text-base text-slate-600 my-12 leading-relaxed max-w-2xl font-mono uppercase tracking-wide">
-            Ekha is a one-on-one learning and guidance app where students choose
-            teachers freely, parents receive clear updates via WhatsApp, and
-            academic performance is genuinely rewarded.
+            The only platform with complete transparency. No algorithms. No
+            forced matches. Just you, your child, and the perfect teacher.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-md">

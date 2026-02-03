@@ -5,23 +5,23 @@ export function HowItWorks() {
   const steps = [
     {
       icon: <User className="w-12 h-12 text-foreground" />,
-      title: "Learn One-on-One",
+      title: "Undivided Attention (1:1)",
       description:
-        "Every class is live and personal. No group batches, just full attention on one child.",
+        "Your child is the sole focus. Starts with a free, compulsory Student Discovery session to map their needs.",
       stat: "01",
     },
     {
       icon: <Users className="w-12 h-12 text-neon-purple" />,
-      title: "Choose Any Teacher",
+      title: "The Perfect Mentor Match",
       description:
-        "Students can try a free first session with every teacher. No forced recommendations.",
+        "We find the teacher your child actually connects with. Free first introductory session with every teacher. When they love their teacher, they love learning.",
       stat: "02",
     },
     {
       icon: <Calendar className="w-12 h-12 text-foreground" />,
-      title: "Flexible Scheduling",
+      title: "Discipline Meets Flexibility",
       description:
-        "Students and teachers choose suitable time slots. Learning adapts to life, not the other way around.",
+        "A structured routine that fits your life. Consistent slots help build the habit of daily learning.",
       stat: "03",
     },
   ];
@@ -32,18 +32,18 @@ export function HowItWorks() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-8">
           <div>
             <span className="text-neon-purple font-mono text-sm tracking-widest uppercase mb-2 block">
-              Process
+              Benefits for the Child
             </span>
             <h2 className="text-5xl md:text-7xl font-bold text-foreground uppercase leading-none">
-              How Ekha
+              The Ekha
               <br />
-              Works
+              Advantage
             </h2>
           </div>
           <p className="text-slate-500 max-w-md text-right font-mono text-sm mt-8 md:mt-0">
-            {"// SIMPLIFIED LEARNING PROTOCOL"}
+            {"// BUILT FOR FOCUS"}
             <br />
-            {"// CONNECTION ESTABLISHED"}
+            {"// CONSISTENT GROWTH"}
           </p>
         </div>
 

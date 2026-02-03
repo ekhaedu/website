@@ -11,6 +11,9 @@ export function CareerGuidance() {
               Humans Guide.
             </span>
           </h2>
+          <div className="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-bold font-mono border border-green-200 uppercase tracking-wide">
+            Included Free for Every Student
+          </div>
           <p className="text-slate-600 max-w-2xl mx-auto">
             We combine AI analysis with human expertise to provide the most
             accurate career guidance for your child.

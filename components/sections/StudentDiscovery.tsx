@@ -66,11 +66,17 @@ export function StudentDiscovery() {
                 Understanding
               </span>
             </h2>
+            <div className="inline-block bg-neon-purple/10 text-neon-purple px-4 py-1 rounded-full text-sm font-bold mb-6 font-mono border border-neon-purple/20">
+              FREE & COMPULSORY FOR EVERY STUDENT
+            </div>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              The first session on Ekha isn&apos;t just a class—it&apos;s a
-              learning psychology and student discovery session. We help
-              understand your child&apos;s unique learning style, attention
-              span, and comfort level.
+              Before the first subject class, every student undergoes a
+              mandatory learning psychology session led by an{" "}
+              <span className="text-foreground font-semibold">
+                Expert Learning Psychologist
+              </span>
+              . We help understand your child&apos;s unique learning style,
+              attention span, and comfort level.
             </p>
 
             <ul className="space-y-4">

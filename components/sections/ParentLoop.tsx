@@ -66,15 +66,15 @@ export function ParentLoop() {
 
           <div className="flex-1 order-1 lg:order-2">
             <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6">
-              Parents Are{" "}
+              Witness Their{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
-                Never Left Guessing
+                Potential Unfold
               </span>
             </h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-              We bridge the gap between classroom and home. After every class,
-              the teacher records a short voice note sent directly to you via
-              WhatsApp.
+              You don&apos;t just get data; you get a front-row seat to their
+              growth. See exactly how they are mastering concepts and building
+              confidence, day by day.
             </p>
 
             <div className="space-y-6">
@@ -91,6 +91,10 @@ export function ParentLoop() {
                   title: "Homework & Focus",
                   desc: "Actionable next steps for the student",
                 },
+                {
+                  title: "Class Rating",
+                  desc: "Performance score from the teacher",
+                },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="w-1.5 h-1.5 rounded-full bg-black mt-2.5 flex-shrink-0" />
@@ -102,11 +106,6 @@ export function ParentLoop() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-8 p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm text-slate-500">
-              Note: No direct parent–teacher contact outside the app ensures
-              privacy and professional boundaries.
             </div>
           </div>
         </div>
