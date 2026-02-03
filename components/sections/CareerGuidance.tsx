@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import { Bot, UserCheck, ArrowRight } from "lucide-react";
-import { Modal } from "../ui/Modal";
+import { Bot, UserCheck, ChevronDown } from "lucide-react";
 
 export function CareerGuidance() {
-  const [activeModal, setActiveModal] = React.useState<"ai" | "human" | null>(
+  const [expandedCard, setExpandedCard] = React.useState<"ai" | "human" | null>(
     null,
   );
+
+  const toggleCard = (card: "ai" | "human") => {
+    setExpandedCard((prev) => (prev === card ? null : card));
+  };
 
   return (
     <section className="py-24 bg-white">
@@ -28,7 +31,8 @@ export function CareerGuidance() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
+          {/* AI Analysis Card */}
           <div className="relative group">
             <div className="absolute inset-0 bg-slate-50 rounded-3xl transform transition-transform group-hover:scale-[1.02]" />
             <div className="relative p-8 h-full border border-slate-200 rounded-3xl bg-white/50 backdrop-blur-sm">
@@ -44,15 +48,54 @@ export function CareerGuidance() {
                 inclinations and strengths.
               </p>
               <button
-                onClick={() => setActiveModal("ai")}
+                onClick={() => toggleCard("ai")}
                 className="flex items-center text-sm text-foreground font-medium hover:text-neon-purple transition-colors cursor-pointer"
               >
                 <span>Data-driven insights</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ChevronDown
+                  className={`w-4 h-4 ml-2 transition-transform duration-300 ${expandedCard === "ai" ? "rotate-180" : ""}`}
+                />
               </button>
+
+              {/* Inline Expansion */}
+              <div
+                className={`grid transition-all duration-500 ease-out ${expandedCard === "ai" ? "grid-rows-[1fr] opacity-100 mt-6" : "grid-rows-[0fr] opacity-0"}`}
+              >
+                <div className="overflow-hidden">
+                  <div className="pt-4 border-t border-slate-200 space-y-3 text-slate-600 text-sm">
+                    <p>
+                      Our advanced AI interacts with your child through natural
+                      conversations, quizzes, and interest-based scenarios.
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong className="text-foreground">
+                          Interest Parsing:
+                        </strong>{" "}
+                        Identifies underlying passions beyond just school
+                        subjects.
+                      </li>
+                      <li>
+                        <strong className="text-foreground">
+                          Strength Mapping:
+                        </strong>{" "}
+                        Highlights cognitive and creative strengths.
+                      </li>
+                      <li>
+                        <strong className="text-foreground">
+                          Report Generation:
+                        </strong>{" "}
+                        Creates a detailed profile for the human expert to
+                        review.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* Human Expert Card */}
           <div className="relative group">
             <div className="absolute inset-0 bg-slate-50 rounded-3xl transform transition-transform group-hover:scale-[1.02]" />
             <div className="relative p-8 h-full border border-slate-200 rounded-3xl bg-white/50 backdrop-blur-sm">
@@ -68,72 +111,55 @@ export function CareerGuidance() {
                 and responsibly.
               </p>
               <button
-                onClick={() => setActiveModal("human")}
+                onClick={() => toggleCard("human")}
                 className="flex items-center text-sm text-foreground font-medium hover:text-neon-purple transition-colors cursor-pointer"
               >
                 <span>Personalized consultation</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ChevronDown
+                  className={`w-4 h-4 ml-2 transition-transform duration-300 ${expandedCard === "human" ? "rotate-180" : ""}`}
+                />
               </button>
+
+              {/* Inline Expansion */}
+              <div
+                className={`grid transition-all duration-500 ease-out ${expandedCard === "human" ? "grid-rows-[1fr] opacity-100 mt-6" : "grid-rows-[0fr] opacity-0"}`}
+              >
+                <div className="overflow-hidden">
+                  <div className="pt-4 border-t border-slate-200 space-y-3 text-slate-600 text-sm">
+                    <p>
+                      Technology provides the data, but humans provide the
+                      wisdom. Our certified career counselors review the AI
+                      findings.
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong className="text-foreground">
+                          Expert Analysis:
+                        </strong>{" "}
+                        We validate the AI&apos;s findings with professional
+                        intuition.
+                      </li>
+                      <li>
+                        <strong className="text-foreground">
+                          Parent Consultation:
+                        </strong>{" "}
+                        We call you directly to explain the roadmap.
+                      </li>
+                      <li>
+                        <strong className="text-foreground">
+                          Actionable Path:
+                        </strong>{" "}
+                        You get clear next steps for your child&apos;s academic
+                        journey.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <Modal
-        isOpen={activeModal === "ai"}
-        onClose={() => setActiveModal(null)}
-        title="AI Analysis"
-      >
-        <div className="space-y-4 text-slate-600">
-          <p>
-            Our advanced AI interacts with your child through natural
-            conversations, quizzes, and interest-based scenarios to understand
-            their true inclinations.
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              <strong className="text-foreground">Interest Parsing:</strong>{" "}
-              Identifies underlying passions beyond just school subjects.
-            </li>
-            <li>
-              <strong className="text-foreground">Strength Mapping:</strong>{" "}
-              Highlights cognitive and creative strengths.
-            </li>
-            <li>
-              <strong className="text-foreground">Report Generation:</strong>{" "}
-              Creates a detailed profile for the human expert to review.
-            </li>
-          </ul>
-        </div>
-      </Modal>
-
-      <Modal
-        isOpen={activeModal === "human"}
-        onClose={() => setActiveModal(null)}
-        title="Human Expert Review"
-      >
-        <div className="space-y-4 text-slate-600">
-          <p>
-            Technology provides the data, but humans provide the wisdom. Our
-            certified career counselors review the AI findings to offer
-            real-world guidance.
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              <strong className="text-foreground">Expert Analysis:</strong> We
-              validate the AI&apos;s findings with professional intuition.
-            </li>
-            <li>
-              <strong className="text-foreground">Parent Consultation:</strong>{" "}
-              We call you directly to explain the roadmap.
-            </li>
-            <li>
-              <strong className="text-foreground">Actionable Path:</strong> You
-              get clear next steps for your child&apos;s academic journey.
-            </li>
-          </ul>
-        </div>
-      </Modal>
     </section>
   );
 }

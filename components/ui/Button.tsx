@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Loader2 } from "lucide-react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,8 +20,27 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
+  const [isVibrating, setIsVibrating] = React.useState(false);
+  const hoverTimer = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    props.onMouseEnter?.(e);
+    hoverTimer.current = setTimeout(() => {
+      setIsVibrating(true);
+    }, 1000);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    props.onMouseLeave?.(e);
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+    setIsVibrating(false);
+  };
+
   const baseStyles =
-    "inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-none cursor-pointer";
+    "inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-500 ease-out focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-none cursor-pointer";
   const variants = {
     primary:
       "bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)]",
@@ -35,8 +56,10 @@ export function Button({
   };
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${isVibrating ? "animate-vibrate" : ""} ${className}`}
       disabled={disabled || isLoading}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       {...props}
     >
       {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}

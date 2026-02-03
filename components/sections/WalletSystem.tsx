@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { Coins, Lock, ArrowDownLeft, ArrowRight } from "lucide-react";
-import { Button } from "../ui/Button";
-import { Modal } from "../ui/Modal";
+import { Coins, Lock, ArrowDownLeft, ChevronDown } from "lucide-react";
+
 export function WalletSystem() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
   return (
     <section className="py-32 bg-background overflow-hidden border-t border-slate-200">
       <div className="container mx-auto px-4">
@@ -25,12 +25,15 @@ export function WalletSystem() {
               Ekha uses a straightforward coin-based wallet system designed for
               trust. You only pay for what you learn.
             </p>
-            <Button
-              rightIcon={<ArrowRight className="w-5 h-5" />}
-              onClick={() => setIsModalOpen(true)}
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none rounded-none cursor-pointer bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] px-8 py-3 text-sm"
             >
-              Know More
-            </Button>
+              <span>{isExpanded ? "Show Less" : "Know More"}</span>
+              <ChevronDown
+                className={`w-5 h-5 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+              />
+            </button>
           </div>
 
           <div className="lg:w-1/2 w-full">
@@ -41,40 +44,59 @@ export function WalletSystem() {
                   title: "COIN BOOKING",
                   desc: "1 Coin = 1 Rupee. Simple conversion.",
                   value: "1:1 RATIO",
+                  detail:
+                    "Use coins to book classes instantly. No complex calculations or hidden multipliers.",
                 },
                 {
                   icon: <Lock className="w-6 h-6" />,
                   title: "SECURE ESCROW",
                   desc: "Coins locked on schedule, deducted on completion.",
                   value: "LOCKED",
+                  detail:
+                    "Coins are locked when you schedule a class and only deducted after it's successfully completed. Full protection from cancellations.",
                 },
                 {
                   icon: <ArrowDownLeft className="w-6 h-6" />,
                   title: "INSTANT WITHDRAWAL",
                   desc: "Unused coins sent to bank anytime (charges may apply).",
                   value: "24/7",
+                  detail:
+                    "Unused coins can be withdrawn to your bank account at any time. No lock-in periods.",
                 },
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="bg-slate-50 border border-slate-200 p-6 flex items-center justify-between group hover:border-neon-purple transition-colors"
+                  className="bg-slate-50 border border-slate-200 p-6 group hover:border-neon-purple transition-colors"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 bg-white border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-neon-purple group-hover:border-neon-purple transition-colors">
-                      {item.icon}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <div className="w-12 h-12 bg-white border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-neon-purple group-hover:border-neon-purple transition-colors">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-medium text-foreground uppercase mb-1">
+                          {item.title}
+                        </h3>
+                        <p className="text-slate-600 text-sm font-mono">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-medium text-foreground uppercase mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm font-mono">
-                        {item.desc}
-                      </p>
+                    <div className="hidden md:block text-right">
+                      <div className="text-neon-purple font-mono font-medium">
+                        {item.value}
+                      </div>
                     </div>
                   </div>
-                  <div className="hidden md:block text-right">
-                    <div className="text-neon-purple font-mono font-medium">
-                      {item.value}
+
+                  {/* Inline Expansion per item */}
+                  <div
+                    className={`grid transition-all duration-500 ease-out ${isExpanded ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-slate-500 text-sm border-t border-slate-200 pt-4 pl-18">
+                        {item.detail}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -99,59 +121,6 @@ export function WalletSystem() {
           ))}
         </div>
       </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Wallet System Details"
-      >
-        <div className="space-y-6">
-          <p className="text-slate-600">
-            The Ekha Wallet is designed for complete transparency and
-            flexibility in your child&apos;s education payments.
-          </p>
-          <div className="space-y-4">
-            <h4 className="font-bold text-foreground">Key Features:</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Coins className="w-5 h-5 text-neon-purple mt-0.5" />
-                <div>
-                  <div className="font-medium text-foreground">
-                    Simple Booking
-                  </div>
-                  <div className="text-sm text-slate-500">
-                    Use coins to book classes instantly. 1 Coin = 1 Rupee.
-                  </div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Lock className="w-5 h-5 text-neon-purple mt-0.5" />
-                <div>
-                  <div className="font-medium text-foreground">
-                    Secure Escrow
-                  </div>
-                  <div className="text-sm text-slate-500">
-                    Coins are locked when you schedule and only deducted after
-                    the class is successfully completed.
-                  </div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <ArrowDownLeft className="w-5 h-5 text-neon-purple mt-0.5" />
-                <div>
-                  <div className="font-medium text-foreground">
-                    Withdraw Anytime
-                  </div>
-                  <div className="text-sm text-slate-500">
-                    Unused coins can be withdrawn to your bank account at any
-                    time (nominal charges may apply).
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </Modal>
     </section>
   );
 }
