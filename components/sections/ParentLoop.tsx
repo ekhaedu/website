@@ -1,0 +1,116 @@
+import React from "react";
+import { Mic, Play } from "lucide-react";
+export function ParentLoop() {
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex-1 w-full max-w-sm mx-auto lg:mx-0 order-2 lg:order-1">
+            <div className="bg-[#0b141a] rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
+              <div className="bg-[#202c33] p-4 flex items-center gap-3 border-b border-slate-800">
+                <div className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center text-white font-bold">
+                  E
+                </div>
+                <div>
+                  <div className="text-white font-medium text-sm">
+                    Ekha Updates
+                  </div>
+                  <div className="text-slate-400 text-xs">Business Account</div>
+                </div>
+              </div>
+
+              <div className="p-4 space-y-4 min-h-[300px] bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-opacity-5">
+                <div className="flex justify-center">
+                  <span className="bg-[#202c33] text-slate-400 text-xs px-3 py-1 rounded-lg shadow-sm">
+                    Today
+                  </span>
+                </div>
+
+                <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow-sm">
+                  <p className="text-slate-200 text-sm mb-2">
+                    Hi! Here&apos;s the update from today&apos;s Mathematics
+                    session with Rohan.
+                  </p>
+
+                  <div className="flex items-center gap-3 bg-[#111b21] p-2 rounded-md mb-2">
+                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white">
+                      <Play className="w-4 h-4 ml-0.5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-1 bg-slate-600 rounded-full w-full mb-1">
+                        <div className="h-full w-1/3 bg-slate-400 rounded-full"></div>
+                      </div>
+                      <div className="flex justify-between text-[10px] text-slate-400">
+                        <span>0:45</span>
+                        <span>1:30</span>
+                      </div>
+                    </div>
+                    <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center">
+                      <Mic className="w-3 h-3 text-slate-400" />
+                    </div>
+                  </div>
+
+                  <p className="text-slate-300 text-xs italic border-l-2 border-slate-600 pl-2 my-2">
+                    Topics: Algebra Basics
+                    <br />
+                    Homework: Ex 4.2, Q1-5
+                  </p>
+
+                  <div className="text-[10px] text-slate-500 text-right">
+                    4:32 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 order-1 lg:order-2">
+            <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6">
+              Parents Are{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
+                Never Left Guessing
+              </span>
+            </h2>
+            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+              We bridge the gap between classroom and home. After every class,
+              the teacher records a short voice note sent directly to you via
+              WhatsApp.
+            </p>
+
+            <div className="space-y-6">
+              {[
+                {
+                  title: "What was taught",
+                  desc: "Clear summary of topics covered",
+                },
+                {
+                  title: "Where they struggled",
+                  desc: "Honest feedback on improvement areas",
+                },
+                {
+                  title: "Homework & Focus",
+                  desc: "Actionable next steps for the student",
+                },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-black mt-2.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-foreground font-medium">
+                      {item.title}
+                    </h4>
+                    <p className="text-slate-600 text-sm">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm text-slate-500">
+              Note: No direct parent–teacher contact outside the app ensures
+              privacy and professional boundaries.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
