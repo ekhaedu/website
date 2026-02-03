@@ -1,6 +1,14 @@
+"use client";
+
 import React from "react";
 import { Bot, UserCheck, ArrowRight } from "lucide-react";
+import { Modal } from "../ui/Modal";
+
 export function CareerGuidance() {
+  const [activeModal, setActiveModal] = React.useState<"ai" | "human" | null>(
+    null,
+  );
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -35,10 +43,13 @@ export function CareerGuidance() {
                 interests. The AI prepares a structured summary of their
                 inclinations and strengths.
               </p>
-              <div className="flex items-center text-sm text-foreground font-medium">
+              <button
+                onClick={() => setActiveModal("ai")}
+                className="flex items-center text-sm text-foreground font-medium hover:text-neon-purple transition-colors cursor-pointer"
+              >
                 <span>Data-driven insights</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
+              </button>
             </div>
           </div>
 
@@ -56,14 +67,73 @@ export function CareerGuidance() {
                 receive a direct phone call where guidance is explained clearly
                 and responsibly.
               </p>
-              <div className="flex items-center text-sm text-foreground font-medium">
+              <button
+                onClick={() => setActiveModal("human")}
+                className="flex items-center text-sm text-foreground font-medium hover:text-neon-purple transition-colors cursor-pointer"
+              >
                 <span>Personalized consultation</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
-              </div>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <Modal
+        isOpen={activeModal === "ai"}
+        onClose={() => setActiveModal(null)}
+        title="AI Analysis"
+      >
+        <div className="space-y-4 text-slate-600">
+          <p>
+            Our advanced AI interacts with your child through natural
+            conversations, quizzes, and interest-based scenarios to understand
+            their true inclinations.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <strong className="text-foreground">Interest Parsing:</strong>{" "}
+              Identifies underlying passions beyond just school subjects.
+            </li>
+            <li>
+              <strong className="text-foreground">Strength Mapping:</strong>{" "}
+              Highlights cognitive and creative strengths.
+            </li>
+            <li>
+              <strong className="text-foreground">Report Generation:</strong>{" "}
+              Creates a detailed profile for the human expert to review.
+            </li>
+          </ul>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={activeModal === "human"}
+        onClose={() => setActiveModal(null)}
+        title="Human Expert Review"
+      >
+        <div className="space-y-4 text-slate-600">
+          <p>
+            Technology provides the data, but humans provide the wisdom. Our
+            certified career counselors review the AI findings to offer
+            real-world guidance.
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <strong className="text-foreground">Expert Analysis:</strong> We
+              validate the AI&apos;s findings with professional intuition.
+            </li>
+            <li>
+              <strong className="text-foreground">Parent Consultation:</strong>{" "}
+              We call you directly to explain the roadmap.
+            </li>
+            <li>
+              <strong className="text-foreground">Actionable Path:</strong> You
+              get clear next steps for your child&apos;s academic journey.
+            </li>
+          </ul>
+        </div>
+      </Modal>
     </section>
   );
 }

@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import { Coins, Lock, ArrowDownLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
+import { Modal } from "../ui/Modal";
 export function WalletSystem() {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
     <section className="py-32 bg-background overflow-hidden border-t border-slate-200">
       <div className="container mx-auto px-4">
@@ -10,7 +14,7 @@ export function WalletSystem() {
             <div className="inline-block border border-neon-purple/50 px-3 py-1 text-neon-purple font-mono text-xs mb-6 uppercase">
               Secure Transaction Protocol
             </div>
-            <h2 className="text-6xl md:text-7xl font-bold text-foreground uppercase leading-none mb-8">
+            <h2 className="text-4xl md:text-7xl font-bold text-foreground uppercase leading-none mb-8">
               Transparent
               <br />
               <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
@@ -21,8 +25,11 @@ export function WalletSystem() {
               Ekha uses a straightforward coin-based wallet system designed for
               trust. You only pay for what you learn.
             </p>
-            <Button rightIcon={<ArrowRight className="w-5 h-5" />}>
-              Start Wallet
+            <Button
+              rightIcon={<ArrowRight className="w-5 h-5" />}
+              onClick={() => setIsModalOpen(true)}
+            >
+              Know More
             </Button>
           </div>
 
@@ -92,6 +99,59 @@ export function WalletSystem() {
           ))}
         </div>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Wallet System Details"
+      >
+        <div className="space-y-6">
+          <p className="text-slate-600">
+            The Ekha Wallet is designed for complete transparency and
+            flexibility in your child&apos;s education payments.
+          </p>
+          <div className="space-y-4">
+            <h4 className="font-bold text-foreground">Key Features:</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <Coins className="w-5 h-5 text-neon-purple mt-0.5" />
+                <div>
+                  <div className="font-medium text-foreground">
+                    Simple Booking
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Use coins to book classes instantly. 1 Coin = 1 Rupee.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Lock className="w-5 h-5 text-neon-purple mt-0.5" />
+                <div>
+                  <div className="font-medium text-foreground">
+                    Secure Escrow
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Coins are locked when you schedule and only deducted after
+                    the class is successfully completed.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <ArrowDownLeft className="w-5 h-5 text-neon-purple mt-0.5" />
+                <div>
+                  <div className="font-medium text-foreground">
+                    Withdraw Anytime
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Unused coins can be withdrawn to your bank account at any
+                    time (nominal charges may apply).
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }

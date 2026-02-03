@@ -32,31 +32,39 @@ export function ParentLoop() {
                     session with Rohan.
                   </p>
 
-                  <div className="flex items-center gap-3 bg-[#111b21] p-2 rounded-md mb-2">
-                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white">
-                      <Play className="w-4 h-4 ml-0.5" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="h-1 bg-slate-600 rounded-full w-full mb-1">
-                        <div className="h-full w-1/3 bg-slate-400 rounded-full"></div>
+                  <div className="space-y-3">
+                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-green-500">
+                      <div className="text-xs text-green-400 font-bold mb-1 uppercase tracking-wider">
+                        Responsiveness
                       </div>
-                      <div className="flex justify-between text-[10px] text-slate-400">
-                        <span>0:45</span>
-                        <span>1:30</span>
+                      <div className="text-slate-300 text-sm">
+                        Very active. Answered 8/10 questions correctly regarding
+                        polynomials.
                       </div>
                     </div>
-                    <div className="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center">
-                      <Mic className="w-3 h-3 text-slate-400" />
+
+                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-blue-500">
+                      <div className="text-xs text-blue-400 font-bold mb-1 uppercase tracking-wider">
+                        Learning Progress
+                      </div>
+                      <div className="text-slate-300 text-sm">
+                        Mastered standard algebra identities. Needs practice
+                        with complex factorization.
+                      </div>
+                    </div>
+
+                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-yellow-500">
+                      <div className="text-xs text-yellow-500 font-bold mb-1 uppercase tracking-wider">
+                        Session Notes
+                      </div>
+                      <div className="text-slate-300 text-sm">
+                        Focused and disciplined. Homework assigned: Ex 4.2
+                        (Q1-5).
+                      </div>
                     </div>
                   </div>
 
-                  <p className="text-slate-300 text-xs italic border-l-2 border-slate-600 pl-2 my-2">
-                    Topics: Algebra Basics
-                    <br />
-                    Homework: Ex 4.2, Q1-5
-                  </p>
-
-                  <div className="text-[10px] text-slate-500 text-right">
+                  <div className="text-[10px] text-slate-500 text-right mt-2">
                     4:32 PM
                   </div>
                 </div>

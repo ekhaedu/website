@@ -19,10 +19,10 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-none";
+    "inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-none cursor-pointer";
   const variants = {
     primary:
-      "bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)]",
+      "bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)]",
     secondary:
       "bg-transparent border border-slate-300  text-slate-700 hover:border-neon-purple hover:text-neon-purple hover:shadow-[0_0_10px_rgba(168,85,247,0.3)]",
     ghost: "bg-transparent text-slate-600 hover:text-black hover:bg-slate-100",

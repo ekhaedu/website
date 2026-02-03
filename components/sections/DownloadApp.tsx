@@ -45,7 +45,7 @@ export default function DownloadApp() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-4xl md:text-5xl text-slate-900 font-medium mb-6">
+        <h2 className="text-3xl md:text-5xl text-slate-900 font-medium mb-6">
           Learn Anytime,{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
             Anywhere
@@ -59,7 +59,7 @@ export default function DownloadApp() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             size="lg"
-            className="h-14 px-8 min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-lg shadow-slate-200/50 flex items-center gap-3 transition-transform hover:scale-105"
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-md shadow-slate-200/50 flex items-center justify-center gap-3 transition-transform hover:scale-105"
           >
             <AppleIcon className="w-6 h-6 fill-current mb-0.5" />
             <div className="flex flex-col items-start leading-none">
@@ -72,7 +72,7 @@ export default function DownloadApp() {
 
           <Button
             size="lg"
-            className="h-14 px-8 min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-lg shadow-slate-200/50 flex items-center gap-3 transition-transform hover:scale-105"
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-md shadow-slate-200/50 flex items-center justify-center gap-3 transition-transform hover:scale-105"
           >
             <GooglePlayIcon className="w-5 h-5 fill-current ml-0.5" />
             <div className="flex flex-col items-start leading-none ml-1">
@@ -85,7 +85,7 @@ export default function DownloadApp() {
 
           <Button
             size="lg"
-            className="h-14 px-8 min-w-[200px] border-slate-200 hover:bg-slate-50 text-slate-900 flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] border-slate-200 hover:bg-slate-50 text-slate-900 flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95"
           >
             <Monitor className="w-6 h-6 text-slate-600" />
             <span className="font-medium text-base">Launch Web App</span>

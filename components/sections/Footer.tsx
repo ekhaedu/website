@@ -73,7 +73,7 @@ export function Footer() {
         </div>
 
         <div className="py-8 flex flex-col md:flex-row justify-between items-center text-slate-500 font-mono text-xs uppercase">
-          <div>© 2024 Ekha Learning Systems. All rights reserved.</div>
+          <div>© 2026 Ekha Learning Platform. All rights reserved.</div>
           <div className="flex gap-8 mt-4 md:mt-0">
             <a href="#" className="hover:text-black transition-colors">
               Privacy Protocol

@@ -9,7 +9,7 @@ export function StudentDiscovery() {
           <div className="flex-1 order-2 lg:order-1">
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl blur-2xl" />
-              <Card className="relative p-8 border-slate-200 bg-white">
+              <Card className="relative p-5 md:p-8 border-slate-200 bg-white">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">
                     <BrainCircuit className="w-6 h-6" />
@@ -60,16 +60,16 @@ export function StudentDiscovery() {
           </div>
 
           <div className="flex-1 order-1 lg:order-2">
-            <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6">
+            <h2 className="text-2xl md:text-4xl font-medium text-foreground mb-4 leading-tight">
               Every Journey Begins with{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
                 Understanding
               </span>
             </h2>
-            <div className="inline-block bg-neon-purple/10 text-neon-purple px-4 py-1 rounded-full text-sm font-bold mb-6 font-mono border border-neon-purple/20">
+            <div className="inline-block bg-neon-purple/10 text-neon-purple px-4 py-1 rounded-full text-xs font-bold mb-4 font-mono border border-neon-purple/20">
               FREE & COMPULSORY FOR EVERY STUDENT
             </div>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+            <p className="text-slate-600 text-base md:text-lg mb-6 leading-relaxed">
               Before the first subject class, every student undergoes a
               mandatory learning psychology session led by an{" "}
               <span className="text-foreground font-semibold">
