@@ -36,10 +36,10 @@ export function FeaturesGrid() {
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
-      title: "Support System",
-      headline: "Support When You Need It",
+      title: "AI Homework Companion",
+      headline: "24/7 Doubts & Curiosity",
       description:
-        "24/7 AI chat support, real human support, and phone support when required. We are always here to help.",
+        "Kids can chat with our AI anytime for homework help or just to explore new topics. It's safe, instant, and always helps clear doubts.",
     },
     {
       icon: <MonitorPlay className="w-6 h-6" />,
@@ -47,6 +47,13 @@ export function FeaturesGrid() {
       headline: "Beyond Daily Classes",
       description:
         "Occasional webinars for exposure and career awareness. Optional participation to explore possibilities beyond textbooks.",
+    },
+    {
+      icon: <Video className="w-6 h-6" />,
+      title: "Full Syllabus Access",
+      headline: "All Chapters, All Units",
+      description:
+        "Access the complete syllabus for SCERT, State, and ICSE boards. Every chapter and unit is at your fingertips, so you never miss a beat.",
     },
   ];
 

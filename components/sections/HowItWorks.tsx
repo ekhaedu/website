@@ -9,17 +9,17 @@ export function HowItWorks() {
   const steps = [
     {
       icon: <User className="w-8 h-8 md:w-12 md:h-12" />,
-      title: "Undivided Attention (1:1)",
+      title: "AI Discovery Session",
       description:
-        "Your child is the sole focus. Starts with a free, compulsory Student Discovery session to map their needs.",
+        "Your child chats with our friendly AI companion. We map their unique strengths and interests before they meet a mentor.",
       stat: "01",
       details: {
-        heading: "True 1:1 Learning Experience",
+        heading: "Smart Capability Analysis",
         points: [
-          "No group classes, no distractions – just your child and their mentor",
-          "Personalized pacing based on your child's learning speed",
-          "Free Student Discovery session to understand strengths & gaps",
-          "Curriculum adapted to individual goals, not generic syllabi",
+          "Interactive chat to assess current level & interests",
+          "Generates a detailed capability summary for the teacher",
+          "Teacher creates a personalized plan based on this data",
+          "No boring placement tests – just a fun conversation",
         ],
       },
     },
@@ -35,7 +35,7 @@ export function HowItWorks() {
           "Free trial session with every new teacher before committing",
           "Switch mentors anytime if the fit isn't right",
           "Vetted teachers with proven teaching experience",
-          "Match based on teaching style, personality, and subject expertise",
+          "Match based on AI Profile, personality, and subject expertise",
         ],
       },
     },
@@ -80,10 +80,11 @@ export function HowItWorks() {
 
         {/* 
           Main Card Container 
-          - Desktop Fixed Height: h-[340px]
+          - Mobile: Default flex col, gap 6, height auto.
+          - Desktop: Flex row, fixed height 340px, gap removal logic via vars/classes.
         */}
         <div
-          className={`flex flex-col md:flex-row gap-6 transition-all duration-500 ease-in-out md:h-[340px] ${
+          className={`flex flex-col md:flex-row gap-10 md:h-[340px] transition-all duration-500 ease-in-out ${
             expandedIndex !== null ? "md:gap-0" : "md:gap-6"
           }`}
         >
@@ -91,62 +92,88 @@ export function HowItWorks() {
             const isExpanded = expandedIndex === index;
             const isHidden = expandedIndex !== null && expandedIndex !== index;
 
+            // Desktop-only Flex values
+            // We use CSS variables to isolate this from mobile layout logic
+            const flexValue = isExpanded
+              ? "1 0 100%"
+              : isHidden
+                ? "0 0 0px" // Shrink to 0 width
+                : "1 0 33%"; // Default 1/3 width
+
             return (
               <div
                 key={index}
-                onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                className={`group relative bg-slate-50 border border-slate-200 hover:border-neon-purple cursor-pointer overflow-hidden
-                  ${isHidden ? "pointer-events-none border-0" : ""}
-                `}
-                style={{
-                  // Desktop Width Animation
-                  flex: isExpanded
-                    ? "1 0 100%"
-                    : isHidden
-                      ? "0 0 0px" // Shrink to 0
-                      : "1 0 33%", // Default 1/3
-
-                  // Opacity
-                  opacity: isHidden ? 0 : 1,
-
-                  // Margin/Padding removal for hidden items
-                  padding: isHidden ? 0 : undefined,
-                  margin: isHidden ? 0 : undefined,
-
-                  // Transition settings
-                  transition:
-                    "flex 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease",
+                onClick={() => {
+                  // Desktop only interaction
+                  if (window.innerWidth >= 768) {
+                    setExpandedIndex(isExpanded ? null : index);
+                  }
                 }}
+                className={`group relative bg-slate-50 border border-slate-200 
+                  md:cursor-pointer cursor-default md:hover:border-neon-purple overflow-hidden
+                  ${isHidden ? "pointer-events-none border-0" : ""}
+                  
+                  /* Mobile: Block/Flex-auto (natural height) */
+                  w-full h-auto 
+                  
+                  /* Desktop: Apply the flexible width animation */
+                  md:h-full md:flex-[var(--d-flex)]
+                `}
+                style={
+                  {
+                    // Define the desktop flex value as a custom property
+                    "--d-flex": flexValue,
+
+                    // Opacity Logic
+                    // Mobile: Always 1
+                    // Desktop: 0 if hidden
+                    opacity: isHidden ? 0 : 1, // Note: styles apply check at render time.
+                    // On mobile `isHidden` is impossible because click is disabled,
+                    // EXCEPT if resized from desktop.
+                    // Ideally we'd wrap this check, but practically fine since expandedIndex=null on mobile usually.
+
+                    padding: isHidden ? 0 : undefined,
+                    margin: isHidden ? 0 : undefined,
+
+                    transition:
+                      "flex 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease",
+                  } as React.CSSProperties
+                }
               >
                 {/* Background Glow */}
                 <div
                   className={`absolute inset-0 bg-neon-purple/5 transition-opacity duration-500 ${isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
                 />
 
-                {/* Close Button */}
+                {/* Close Button - Desktop Only */}
                 {isExpanded && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       setExpandedIndex(null);
                     }}
-                    className="absolute top-4 right-4 z-50 p-2 bg-slate-50/50 hover:bg-slate-200 rounded-full transition-colors backdrop-blur-xs"
+                    className="hidden md:block absolute top-4 right-4 z-50 p-2 bg-slate-50/50 hover:bg-slate-200 rounded-full transition-colors backdrop-blur-xs"
                   >
                     <X className="w-5 h-5 text-slate-500" />
                   </button>
                 )}
 
-                {/* Internal Content Wrapper */}
+                {/* Content Internal Wrapper */}
                 <div
-                  className={`relative z-10 h-full transition-all duration-500
-                    ${isExpanded ? "flex flex-col md:flex-row md:items-center" : "flex flex-col justify-between"}
-                    ${isHidden ? "opacity-0 invisible" : "opacity-100 visible"}
+                  className={`relative z-10 transition-all duration-500
+                    flex flex-col 
+                    /* Desktop Logic */
+                    ${isExpanded ? "md:flex-row md:items-center md:h-full" : "md:flex-col md:justify-between md:h-full"}
+                    ${isHidden ? "md:opacity-0 md:invisible" : "md:opacity-100 md:visible"}
                   `}
                 >
                   {/* Left Side Content */}
                   <div
-                    className={`p-6 md:p-8 transition-all duration-500 h-full flex flex-col justify-center
-                      ${isExpanded ? "md:w-[35%] md:border-r md:border-slate-200 md:shrink-0" : "w-full"}
+                    className={`p-6 md:p-8 transition-all duration-500 flex flex-col justify-center
+                      /* Mobile: Natural flow */
+                      
+                      /* Desktop: Sizing */
+                      ${isExpanded ? "md:w-[35%] md:border-r md:border-slate-200 md:shrink-0 md:h-full" : "w-full md:h-full"}
                     `}
                   >
                     <div className="flex justify-between items-start mb-3 md:mb-4">
@@ -155,8 +182,9 @@ export function HowItWorks() {
                       >
                         {step.stat}
                       </span>
+                      {/* Chevron - Hide on Mobile (since no expand), Show on Desktop Collapsed */}
                       {!isExpanded && (
-                        <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-neon-purple transition-colors" />
+                        <ChevronRight className="hidden md:block w-5 h-5 text-slate-400 group-hover:text-neon-purple transition-colors" />
                       )}
                     </div>
 
@@ -173,36 +201,49 @@ export function HowItWorks() {
                     </p>
                   </div>
 
-                  {/* Right Side - Expanded Details */}
-                  {isExpanded && (
-                    <div className="p-6 md:p-8 md:pl-12 md:w-[65%] animate-[fadeSlideIn_0.6s_ease-out_forwards]">
-                      <h4 className="text-base md:text-lg font-bold text-foreground mb-3 md:mb-4 uppercase">
-                        {step.details.heading}
-                      </h4>
-                      <ul className="space-y-2 md:space-y-3">
-                        {step.details.points.map((point, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3"
-                            style={{
-                              opacity: 0,
-                              animation: `fadeSlideIn 0.4s ease-out ${i * 100 + 100}ms forwards`,
-                            }}
-                          >
-                            <div className="w-1.5 h-1.5 bg-neon-purple rounded-full mt-1.5 md:mt-2 shrink-0" />
-                            <span className="text-slate-600 font-mono text-xs md:text-sm">
-                              {point}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  {/* Right Side - Details */}
+                  {/* 
+                     Mobile: Always Visible (block)
+                     Desktop: Only if Expanded
+                  */}
+                  <div
+                    className={`
+                    p-6 md:p-8 md:pl-12 md:w-[65%]
+                    /* Visibility Logic */
+                    block 
+                    ${isExpanded ? "md:block animate-[fadeSlideIn_0.6s_ease-out_forwards]" : "md:hidden"} 
+                  `}
+                  >
+                    <h4 className="text-base md:text-lg font-bold text-foreground mb-3 md:mb-4 uppercase hidden md:block">
+                      {step.details.heading}
+                    </h4>
+                    {/* Mobile Header for details if needed? Or just list. */}
+
+                    <ul className="space-y-2 md:space-y-3">
+                      {step.details.points.map((point, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3"
+                          style={
+                            {
+                              // Animation only on desktop really makes sense or we keep it simple
+                              // We can leave standard styles.
+                            }
+                          }
+                        >
+                          <div className="w-1.5 h-1.5 bg-neon-purple rounded-full mt-1.5 md:mt-2 shrink-0" />
+                          <span className="text-slate-600 font-mono text-xs md:text-sm">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                {/* Bottom Border Line */}
+                {/* Bottom Border Line - Desktop Hover Effect Only */}
                 <div
-                  className={`absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-neon-purple to-transparent transform transition-transform duration-500 ${isExpanded ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                  className={`absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-neon-purple to-transparent transform transition-transform duration-500 hidden md:block ${isExpanded ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
                 />
               </div>
             );

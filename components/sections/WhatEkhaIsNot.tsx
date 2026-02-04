@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 export function WhatEkhaIsNot() {
   const notList = [
     "Not a mass classroom platform",
-    "Not algorithm-driven matching",
+    "Not pre-recorded video lessons",
     "Not a parent dashboard app",
     "Not a gamified learning toy",
   ];
@@ -11,8 +11,14 @@ export function WhatEkhaIsNot() {
   return (
     <section className="py-20 bg-slate-50 border-y border-slate-200">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-medium text-foreground mb-10">
-          What Ekha Is{" "}
+        <h2 className="text-2xl font-medium text-foreground mb-10 flex items-center justify-center gap-2">
+          What
+          <img
+            src="/ekha_black.png"
+            alt="Ekha"
+            className="h-48 -mb-15 -mt-12 -ml-15 -mr-19 object-contain"
+          />
+          Is{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
             Not
           </span>

@@ -16,8 +16,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-slate-800">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="text-3xl font-bold text-white tracking-tighter uppercase cursor-pointer">
-            Ekha<span className="text-neon-purple">.</span>
+          <div className="cursor-pointer">
+            <img
+              src="./ekha.png"
+              alt="Ekha"
+              className="h-full -ml-5 lg:-ml-15 w-35 lg:w-60 object-contain hover:opacity-80 transition-opacity"
+            />
           </div>
           <button className="border border-white px-6 py-2 text-sm font-bold uppercase hover:bg-white hover:text-black transition-colors rounded-full">
             Get App

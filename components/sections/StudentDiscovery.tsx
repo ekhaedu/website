@@ -70,20 +70,20 @@ export function StudentDiscovery() {
               FREE & COMPULSORY FOR EVERY STUDENT
             </div>
             <p className="text-slate-600 text-base md:text-lg mb-6 leading-relaxed">
-              Before the first subject class, every student undergoes a
-              mandatory learning psychology session led by an{" "}
+              Before the first subject class, every student undergoes a fun and
+              interactive discovery session with our{" "}
               <span className="text-foreground font-semibold">
-                Expert Learning Psychologist
+                Smart AI Companion
               </span>
               . We help understand your child&apos;s unique learning style,
-              attention span, and comfort level.
+              capability, and interests through a natural conversation.
             </p>
 
             <ul className="space-y-4">
               {[
-                "Educational and supportive, not medical",
-                "Helps match the perfect teaching style",
-                "Detailed summary shared with parents via WhatsApp",
+                "Fun and stress-free interaction for the child",
+                " AI builds a capability profile for the teacher",
+                "Teacher customizes lessons based on this data",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 text-slate-900 flex-shrink-0" />
