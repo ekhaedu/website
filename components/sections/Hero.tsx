@@ -9,7 +9,7 @@ export function Hero() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-neon-purple/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto animate-[fadeIn_1s_ease-out_0.5s_both]">
           <div className="mb-8 animate-pulse">
             <span className="text-neon-purple font-mono text-[10px] md:text-sm tracking-widest md:tracking-[0.2em] uppercase border border-neon-purple/30 px-3 py-1 md:px-4">
               Admissions Open • LKG - Class 12

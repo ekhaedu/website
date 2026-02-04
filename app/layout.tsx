@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Preloader } from "../components/ui/Preloader";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${oswald.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <Preloader />
         {children}
       </body>
     </html>
