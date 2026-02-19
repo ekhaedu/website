@@ -59,36 +59,35 @@ export default function DownloadApp() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             size="lg"
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-md shadow-slate-200/50 flex items-center justify-center gap-3 transition-transform hover:scale-105"
+            disabled
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
           >
             <AppleIcon className="w-6 h-6 fill-current mb-0.5" />
             <div className="flex flex-col items-start leading-none">
-              <span className="text-[10px] font-medium text-slate-300">
-                Download on the
-              </span>
+              <span className="text-[10px] font-medium">Coming Soon to</span>
               <span className="text-base font-bold">App Store</span>
             </div>
           </Button>
 
           <Button
             size="lg"
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-black hover:bg-slate-800 text-white shadow-md shadow-slate-200/50 flex items-center justify-center gap-3 transition-transform hover:scale-105"
+            disabled
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
           >
             <GooglePlayIcon className="w-5 h-5 fill-current ml-0.5" />
             <div className="flex flex-col items-start leading-none ml-1">
-              <span className="text-[10px] font-medium text-slate-300">
-                GET IT ON
-              </span>
+              <span className="text-[10px] font-medium">Coming Soon to</span>
               <span className="text-base font-bold">Google Play</span>
             </div>
           </Button>
 
           <Button
             size="lg"
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] border-slate-200 hover:bg-slate-50 text-slate-900 flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95"
+            disabled
+            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 border border-slate-200"
           >
-            <Monitor className="w-6 h-6 text-slate-600" />
-            <span className="font-medium text-base">Launch Web App</span>
+            <Monitor className="w-6 h-6 text-slate-400" />
+            <span className="font-medium text-base">Coming Soon to Web</span>
           </Button>
         </div>
       </div>
