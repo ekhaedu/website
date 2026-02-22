@@ -1,9 +1,7 @@
-import React from "react";
-import { Mic, Play } from "lucide-react";
 export function ParentLoop() {
   return (
     <section className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative w-screen">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1 w-full max-w-sm mx-auto lg:mx-0 order-2 lg:order-1">
             <div className="bg-[#0b141a] rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
@@ -72,14 +70,14 @@ export function ParentLoop() {
             </div>
           </div>
 
-          <div className="flex-1 order-1 lg:order-2">
+          <div className="flex-1 order-1 z-10 lg:order-2">
             <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6">
               Witness Their{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
                 Potential Unfold
               </span>
             </h2>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+            <p className="text-slate-600 xl:w-1/2 text-lg mb-8 leading-relaxed">
               You don&apos;t just get data; you get a front-row seat to their
               growth. See exactly how they are mastering concepts and building
               confidence, day by day.
@@ -116,6 +114,15 @@ export function ParentLoop() {
               ))}
             </div>
           </div>
+          <video
+            src="/mascot/mobile.mp4"
+            height={1200}
+            width={700}
+            className="hidden xl:block -right-32 h-full absolute z-1 object-contain"
+            autoPlay
+            loop
+            muted
+          />
         </div>
       </div>
     </section>

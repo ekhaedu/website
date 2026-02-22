@@ -9,8 +9,8 @@ export function WalletSystem() {
   return (
     <section className="py-32 bg-background overflow-hidden border-t border-slate-200">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="lg:w-1/2">
+        <div className="flex flex-col relative lg:flex-row gap-16 items-center">
+          <div className="lg:w-1/2 z-10">
             <div className="inline-block border border-neon-purple/50 px-3 py-1 text-neon-purple font-mono text-xs mb-6 uppercase">
               Secure Transaction Protocol
             </div>
@@ -35,8 +35,16 @@ export function WalletSystem() {
               />
             </button>
           </div>
-
-          <div className="lg:w-1/2 w-full">
+          <video
+            src="/mascot/coins.mp4"
+            height={1800}
+            width={700}
+            className="hidden xl:block -bottom-14 h-full absolute z-1 left-[15%] object-contain"
+            autoPlay
+            loop
+            muted
+          />
+          <div className="lg:w-1/2 w-full z-10">
             <div className="grid grid-cols-1 gap-4">
               {[
                 {
