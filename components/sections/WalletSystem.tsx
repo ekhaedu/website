@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Coins, Lock, ArrowDownLeft, ChevronDown } from "lucide-react";
+import { LazyVideo } from "../ui/LazyVideo";
 
 export function WalletSystem() {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -35,7 +36,7 @@ export function WalletSystem() {
               />
             </button>
           </div>
-          <video
+          <LazyVideo
             src="/mascot/coins.mp4"
             poster="/mascot/coins.png"
             height={1800}

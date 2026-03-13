@@ -1,3 +1,5 @@
+import { LazyVideo } from "../ui/LazyVideo";
+
 export function ParentLoop() {
   return (
     <section className="py-24 bg-white overflow-hidden">
@@ -114,7 +116,7 @@ export function ParentLoop() {
               ))}
             </div>
           </div>
-          <video
+          <LazyVideo
             src="/mascot/mobile.mp4"
             poster="/mascot/mobile.png"
             height={1200}

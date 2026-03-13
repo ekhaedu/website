@@ -3,6 +3,7 @@
 import React from "react";
 import { User, Users, Calendar, X, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { LazyVideo } from "../ui/LazyVideo";
 
 export function HowItWorks() {
   const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
@@ -72,7 +73,7 @@ export function HowItWorks() {
               Advantage
             </h2>
           </div>
-          <video
+          <LazyVideo
             src="/mascot/advantages.mp4"
             poster="/mascot/advantages.png"
             height={1000}
