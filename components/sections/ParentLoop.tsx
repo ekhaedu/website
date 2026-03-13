@@ -116,12 +116,14 @@ export function ParentLoop() {
           </div>
           <video
             src="/mascot/mobile.mp4"
+            poster="/mascot/mobile.png"
             height={1200}
             width={700}
-            className="hidden xl:block -right-32 h-full absolute z-1 object-contain"
+            className="hidden xl:block -right-32 h-full absolute z-1 object-contain pointer-events-none select-none"
             autoPlay
             loop
             muted
+            preload="none"
           />
         </div>
       </div>

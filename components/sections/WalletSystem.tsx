@@ -37,12 +37,14 @@ export function WalletSystem() {
           </div>
           <video
             src="/mascot/coins.mp4"
+            poster="/mascot/coins.png"
             height={1800}
             width={700}
-            className="hidden xl:block -bottom-14 h-full absolute z-1 left-[15%] object-contain"
+            className="hidden xl:block -bottom-14 h-full absolute z-1 left-[15%] object-contain pointer-events-none select-none"
             autoPlay
             loop
             muted
+            preload="none"
           />
           <div className="lg:w-1/2 w-full z-10">
             <div className="grid grid-cols-1 gap-4">

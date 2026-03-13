@@ -61,7 +61,7 @@ export function HowItWorks() {
   return (
     <section className="py-32 bg-background relative border-t border-slate-200">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col relative md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 pb-8">
+        <div className="flex pointer-events-none select-none flex-col relative md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 pb-8">
           <div>
             <span className="text-neon-purple font-mono text-sm tracking-widest uppercase mb-2 block">
               Benefits for the Child
@@ -74,12 +74,14 @@ export function HowItWorks() {
           </div>
           <video
             src="/mascot/advantages.mp4"
+            poster="/mascot/advantages.png"
             height={1000}
             width={500}
-            className="-bottom-14 relative object-contain "
+            className="-bottom-14 relative pointer-events-none select-none object-contain "
             autoPlay
             loop
             muted
+            preload="none"
           />
           <p className="text-slate-500 max-w-md text-right font-mono text-sm mt-8 md:mt-0">
             {"// BUILT FOR FOCUS"}
