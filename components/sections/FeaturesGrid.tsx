@@ -12,57 +12,77 @@ import {
 } from "lucide-react";
 export function FeaturesGrid() {
   const [activeFeature, setActiveFeature] = useState<number | null>(0);
+  const [mobileExpanded, setMobileExpanded] = useState<number | null>(0);
   const features = [
     {
       icon: <Video className="w-6 h-6" />,
       title: "Notes & Session Replays",
       headline: "Learning That Stays With You",
       description:
-        "Notes available after every class. Replays are time-limited and non-downloadable, helping students revise at their own pace.",
+        "Instant access to detailed class notes and time-limited replays. Revise complex concepts at your own pace.",
     },
     {
       icon: <Award className="w-6 h-6" />,
       title: "Exams & Rewards",
       headline: "Performance That Gets Rewarded",
       description:
-        "Top-performing students receive free coins every month based strictly on exam performance. Real learning, real rewards.",
+        "Top-performing students earn free wallet coins monthly. Real progress deserves real, tangible rewards.",
     },
     {
       icon: <ShieldCheck className="w-6 h-6" />,
-      title: "Quality & Accountability",
+      title: "Quality Control",
       headline: "Accountability on Both Sides",
       description:
-        "Students rate teachers, and teachers rate students. Ratings are private and used for quality control to ensure respectful learning.",
+        "A private two-way rating system ensures every single session is respectful, productive, and high-quality.",
     },
     {
       icon: <MessageSquare className="w-6 h-6" />,
-      title: "AI Homework Companion",
+      title: "24/7 AI Companion",
       headline: "24/7 Doubts & Curiosity",
       description:
-        "Kids can chat with our AI anytime for homework help or just to explore new topics. It's safe, instant, and always helps clear doubts.",
+        "Safe, instant homework help anytime. Our AI clears doubts and sparks curiosity long after the live class ends.",
     },
     {
       icon: <MonitorPlay className="w-6 h-6" />,
-      title: "Webinars",
+      title: "Exclusive Webinars",
       headline: "Beyond Daily Classes",
       description:
-        "Occasional webinars for exposure and career awareness. Optional participation to explore possibilities beyond textbooks.",
+        "Special guest sessions focused on career awareness and modern skills. Learning that goes far beyond the textbook.",
     },
     {
       icon: <Video className="w-6 h-6" />,
       title: "Full Syllabus Access",
       headline: "All Chapters, All Units",
       description:
-        "Access the complete syllabus for SCERT, State, and ICSE boards. Every chapter and unit is at your fingertips, so you never miss a beat.",
+        "Unlimited access to SCERT, State, and ICSE curriculums. Every chapter and unit organized for a seamless journey.",
     },
   ];
 
   return (
-    <section className="py-32 bg-background border-t border-slate-200">
+    <section className="py-32 bg-[#050505] md:bg-background md:border-t md:border-slate-200">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-20">
+          {/* Title Area */}
           <div className="lg:w-1/3">
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground uppercase leading-none sticky top-32">
+            {/* Mobile Title */}
+            <div className="md:hidden mb-8 relative z-10">
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+                Included Features
+              </span>
+              <h2 className="text-5xl font-bold text-white uppercase leading-[0.85]">
+                What You&nbsp;
+                <span
+                  style={{
+                    WebkitTextStroke: "1.5px white",
+                    color: "transparent",
+                  }}
+                >
+                  Get
+                </span>
+              </h2>
+            </div>
+            {/* Desktop Title */}
+            <h2 className="hidden md:block text-4xl md:text-6xl font-bold text-foreground uppercase leading-none sticky top-32">
               What
               <br />
               <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
@@ -72,7 +92,41 @@ export function FeaturesGrid() {
           </div>
 
           <div className="lg:w-2/3">
-            <div className="border-t border-slate-200">
+            {/* Mobile Accordion (dark editorial) */}
+            <div className="md:hidden space-y-0 border-t border-white/10 relative z-10">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="border-b border-white/10 py-6 cursor-pointer"
+                  onClick={() =>
+                    setMobileExpanded(mobileExpanded === index ? null : index)
+                  }
+                >
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-mono uppercase tracking-wider text-white">
+                      {feature.title}
+                    </h3>
+                    <span className="text-xl font-light text-white/60">
+                      {mobileExpanded === index ? "−" : "+"}
+                    </span>
+                  </div>
+                  <div
+                    className={`overflow-hidden transition-all duration-400 ${
+                      mobileExpanded === index
+                        ? "max-h-40 opacity-100 mt-3"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="text-sm text-white/60 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Accordion (unchanged) */}
+            <div className="hidden md:block border-t border-slate-200">
               {features.map((feature, index) => (
                 <div
                   key={index}

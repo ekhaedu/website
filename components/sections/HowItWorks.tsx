@@ -13,15 +13,15 @@ export function HowItWorks() {
       icon: <User className="w-8 h-8 md:w-12 md:h-12" />,
       title: "AI Discovery Session",
       description:
-        "Your child chats with our friendly AI companion. We map their unique strengths and interests before they meet a mentor.",
+        "A fun AI chat maps your child's strengths and interests before they ever meet a teacher.",
       stat: "01",
       details: {
         heading: "Smart Capability Analysis",
         points: [
-          "Interactive chat to assess current level & interests",
-          "Generates a detailed capability summary for the teacher",
-          "Teacher creates a personalized plan based on this data",
-          "No boring placement tests – just a fun conversation",
+          "Fun chat — no boring placement tests",
+          "Builds a capability profile for the teacher",
+          "Teacher creates a personalized learning plan",
+          "Identifies strengths, interests & learning style",
         ],
       },
     },
@@ -29,15 +29,15 @@ export function HowItWorks() {
       icon: <Users className="w-8 h-8 md:w-12 md:h-12" />,
       title: "The Perfect Mentor Match",
       description:
-        "We find the teacher your child actually connects with. Free first introductory session with every teacher.",
+        "Free trial with every teacher. Switch anytime if the fit isn't right.",
       stat: "02",
       details: {
         heading: "Finding the Right Mentor",
         points: [
-          "Free trial session with every new teacher before committing",
-          "Switch mentors anytime if the fit isn't right",
-          "Vetted teachers with proven teaching experience",
-          "Match based on AI Profile, personality, and subject expertise",
+          "Free trial session before committing",
+          "Switch teachers anytime",
+          "Vetted teachers with proven experience",
+          "Matched on personality & subject expertise",
         ],
       },
     },
@@ -45,24 +45,37 @@ export function HowItWorks() {
       icon: <Calendar className="w-8 h-8 md:w-12 md:h-12" />,
       title: "Discipline Meets Flexibility",
       description:
-        "A structured routine that fits your life. Consistent slots help build the habit of daily learning.",
+        "Pick your own schedule. Reschedule when needed. Build a daily learning habit.",
       stat: "03",
       details: {
         heading: "Flexible Yet Consistent",
         points: [
-          "Choose your own class schedule that works for your family",
-          "Reschedule with advance notice – no rigid lock-ins",
-          "Build learning habits with consistent daily/weekly slots",
-          "Progress tracking to keep momentum strong",
+          "Choose a schedule that works for your family",
+          "Reschedule with notice — no rigid lock-ins",
+          "Build habits with consistent daily slots",
+          "Track progress to keep momentum",
         ],
       },
     },
   ];
 
   return (
-    <section className="py-32 bg-background relative border-t border-slate-200">
+    <section className="py-32 bg-[#050505] md:bg-background relative md:border-t md:border-slate-200">
       <div className="container mx-auto px-4">
-        <div className="flex pointer-events-none select-none flex-col relative md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 pb-8">
+        {/* Mobile Header */}
+        <div className="md:hidden mb-12 relative z-10">
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+            Benefits for the Child
+          </span>
+          <h2 className="text-5xl font-bold text-white uppercase leading-[0.9]">
+            The Ekha
+            <br />
+            <span style={{ WebkitTextStroke: '1.5px white', color: 'transparent' }}>Advantage</span>
+          </h2>
+        </div>
+
+        {/* Desktop Header (unchanged) */}
+        <div className="hidden md:flex pointer-events-none select-none flex-col relative md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 pb-8">
           <div>
             <span className="text-neon-purple font-mono text-sm tracking-widest uppercase mb-2 block">
               Benefits for the Child
@@ -92,8 +105,55 @@ export function HowItWorks() {
           <div className="h-px bg-slate-200 w-full absolute bottom-0" />
         </div>
 
+        {/* Mobile Layout - Editorial stacked list */}
+        <div className="md:hidden space-y-0 relative z-10">
+          {/* Mobile dark grid overlay */}
+          <div className="absolute inset-0 pointer-events-none -z-10" style={{
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }} />
+          
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="border-t border-white/10 py-6"
+            >
+              <div className="flex items-start gap-5">
+                <span className="font-mono text-xs text-white/40 mt-1">
+                  {step.stat}
+                </span>
+                <div className="flex-1">
+                  <div className="text-white/60 mb-2">
+                    {step.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-white uppercase leading-tight mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-white/60 leading-relaxed mb-4">
+                    {step.description}
+                  </p>
+                  
+                  {/* Mobile details always shown */}
+                  <ul className="space-y-2 mt-3">
+                    {step.details.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                        <span className="text-white/50 text-sm">
+                          {point}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="border-t border-white/10" />
+        </div>
+
+        {/* Desktop Layout (unchanged) */}
         <div
-          className={`flex flex-col md:flex-row gap-10 md:h-[340px] transition-all duration-500 ease-in-out ${
+          className={`hidden md:flex flex-col md:flex-row gap-10 md:h-[340px] transition-all duration-500 ease-in-out ${
             expandedIndex !== null ? "md:gap-0" : "md:gap-6"
           }`}
         >
@@ -188,7 +248,7 @@ export function HowItWorks() {
                   <div
                     className={`
                     p-6 md:p-8 md:pl-12 md:w-[65%]
-                    block 
+                    hidden 
                     ${isExpanded ? "md:block animate-[fadeSlideIn_0.6s_ease-out_forwards]" : "md:hidden"} 
                   `}
                   >

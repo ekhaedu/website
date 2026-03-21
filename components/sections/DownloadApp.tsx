@@ -25,70 +25,110 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function DownloadApp() {
   return (
-    <section className="relative py-32 bg-slate-50 overflow-hidden border-y border-slate-200">
-      {/* Floating Background Icons */}
-      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-        {/* Top Left */}
+    <section className="relative py-32 bg-[#050505] md:bg-slate-50 overflow-hidden md:border-y md:border-slate-200">
+      {/* Floating Background Icons (desktop only) */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none select-none overflow-hidden">
         <Smartphone className="absolute top-10 left-10 w-16 h-16 text-slate-200 -rotate-12 opacity-50 blur-[1px]" />
         <BookOpen className="absolute top-20 left-[15%] w-12 h-12 text-slate-200 rotate-45 opacity-40" />
-
-        {/* Top Right */}
         <Tablet className="absolute top-12 right-12 w-20 h-20 text-slate-200 rotate-12 opacity-50 blur-[1px]" />
         <GraduationCap className="absolute top-32 right-[20%] w-10 h-10 text-slate-200 -rotate-12 opacity-40" />
-
-        {/* Bottom Left */}
         <Monitor className="absolute bottom-20 left-20 w-14 h-14 text-slate-200 rotate-6 opacity-40" />
         <Layout className="absolute bottom-10 left-[25%] w-10 h-10 text-slate-200 -rotate-12 opacity-30" />
-
-        {/* Bottom Right */}
         <Globe className="absolute bottom-16 right-16 w-16 h-16 text-slate-200 -rotate-45 opacity-50 blur-[1px]" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-3xl md:text-5xl text-slate-900 font-medium mb-6">
-          Learn Anytime,{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
-            Anywhere
+      {/* Mobile dark grid bg */}
+      <div
+        className="md:hidden absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Mobile Layout (dark editorial) */}
+        <div className="md:hidden text-left">
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+            Coming Soon
           </span>
-        </h2>
-        <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mb-10 font-mono uppercase tracking-wide leading-relaxed">
-          Access your personalized learning plan, attend live classes, and track
-          progress seamlessly across all your devices.
-        </p>
+          <h2 className="text-5xl font-bold text-white mb-4 uppercase leading-12">
+            Learn Anytime,{" "}
+            <span
+              style={{ WebkitTextStroke: "1.5px white", color: "transparent" }}
+            >
+              Anywhere
+            </span>
+          </h2>
+          <p className="text-white/50 text-sm mb-10 leading-relaxed font-light max-w-sm">
+            Your personalized learning plan, live classes, and progress tracking
+            — all in one place.
+          </p>
 
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <Button
-            size="lg"
-            disabled
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
-          >
-            <AppleIcon className="w-6 h-6 fill-current mb-0.5" />
-            <div className="flex flex-col items-start leading-none">
-              <span className="text-[10px] font-medium">Coming Soon to</span>
-              <span className="text-base font-bold">App Store</span>
-            </div>
-          </Button>
+          <div className="flex flex-col gap-3">
+            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white font-mono text-xs uppercase tracking-widest transition-colors hover:bg-white/5">
+              <AppleIcon className="absolute left-6 w-5 h-5 fill-current" />
+              <span>App Store — Coming Soon</span>
+            </button>
+            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white font-mono text-xs uppercase tracking-widest transition-colors hover:bg-white/5">
+              <GooglePlayIcon className="absolute left-6 w-4 h-4 fill-current" />
+              <span>Google Play — Coming Soon</span>
+            </button>
+            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white font-mono text-xs uppercase tracking-widest transition-colors hover:bg-white/5">
+              <Monitor className="absolute left-6 w-5 h-5 text-current" />
+              <span>Web — Coming Soon</span>
+            </button>
+          </div>
+        </div>
 
-          <Button
-            size="lg"
-            disabled
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
-          >
-            <GooglePlayIcon className="w-5 h-5 fill-current ml-0.5" />
-            <div className="flex flex-col items-start leading-none ml-1">
-              <span className="text-[10px] font-medium">Coming Soon to</span>
-              <span className="text-base font-bold">Google Play</span>
-            </div>
-          </Button>
+        {/* Desktop Layout (unchanged) */}
+        <div className="hidden md:block text-center">
+          <h2 className="text-3xl md:text-5xl text-slate-900 font-medium mb-6">
+            Learn Anytime,{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
+              Anywhere
+            </span>
+          </h2>
+          <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mb-10 font-mono uppercase tracking-wide leading-relaxed">
+            Access your personalized learning plan, attend live classes, and
+            track progress seamlessly across all your devices.
+          </p>
 
-          <Button
-            size="lg"
-            disabled
-            className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 border border-slate-200"
-          >
-            <Monitor className="w-6 h-6 text-slate-400" />
-            <span className="font-medium text-base">Coming Soon to Web</span>
-          </Button>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Button
+              size="lg"
+              disabled
+              className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
+            >
+              <AppleIcon className="w-6 h-6 fill-current mb-0.5" />
+              <div className="flex flex-col items-start leading-none">
+                <span className="text-[10px] font-medium">Coming Soon to</span>
+                <span className="text-base font-bold">App Store</span>
+              </div>
+            </Button>
+
+            <Button
+              size="lg"
+              disabled
+              className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3"
+            >
+              <GooglePlayIcon className="w-5 h-5 fill-current ml-0.5" />
+              <div className="flex flex-col items-start leading-none ml-1">
+                <span className="text-[10px] font-medium">Coming Soon to</span>
+                <span className="text-base font-bold">Google Play</span>
+              </div>
+            </Button>
+
+            <Button
+              size="lg"
+              disabled
+              className="h-12 px-6 w-full sm:w-auto min-w-[200px] bg-slate-100 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 border border-slate-200"
+            >
+              <Monitor className="w-6 h-6 text-slate-400" />
+              <span className="font-medium text-base">Coming Soon to Web</span>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

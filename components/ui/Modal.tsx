@@ -15,6 +15,7 @@ interface ModalProps {
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
   const [mounted, setMounted] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -24,7 +25,13 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
     if (isOpen) {
       setShouldRender(true);
       document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(true);
+        });
+      });
     } else {
+      setIsAnimating(false);
       const timer = setTimeout(() => {
         setShouldRender(false);
         document.body.style.overflow = "unset";
@@ -39,13 +46,13 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
   return createPortal(
     <div
-      className={`fixed inset-0 z-50 flex items-end sm:items-stretch sm:justify-end bg-slate-900/40 backdrop-blur-[2px] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none delay-300"}`}
+      className={`fixed inset-0 z-50 flex items-end sm:items-stretch sm:justify-end bg-slate-900/40 backdrop-blur-[2px] transition-opacity duration-300 ${isAnimating ? "opacity-100" : "opacity-0 pointer-events-none delay-300"}`}
       aria-hidden={!isOpen}
       onClick={onClose}
     >
       <div
-        className={`bg-white/95 backdrop-blur-3xl border-t sm:border-l border-white/20 shadow-2xl w-full sm:max-w-[480px] h-[85vh] sm:h-full relative overflow-hidden flex flex-col rounded-t-[32px] sm:rounded-none ring-1 ring-black/5 transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1) ${
-          isOpen
+        className={`bg-white/95 backdrop-blur-3xl border-t sm:border-l border-white/20 shadow-2xl w-full sm:max-w-[480px] h-[85vh] sm:h-full relative overflow-hidden flex flex-col rounded-t-[32px] sm:rounded-none ring-1 ring-black/5 transition-transform duration-500 ease-out ${
+          isAnimating
             ? "translate-y-0 sm:translate-x-0"
             : "translate-y-full sm:translate-x-full"
         }`}

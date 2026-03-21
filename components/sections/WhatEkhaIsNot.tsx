@@ -9,9 +9,16 @@ export function WhatEkhaIsNot() {
   ];
 
   return (
-    <section className="py-20 bg-slate-50 border-y border-slate-200">
+    <section className="py-20 bg-[#050505] md:bg-slate-50 md:border-y md:border-slate-200">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-medium text-foreground mb-10 flex items-center justify-center gap-2">
+        {/* Mobile Title */}
+        <h2 className="md:hidden text-2xl font-medium text-white mb-10 uppercase">
+          What Ekha Is{" "}
+          <span style={{ WebkitTextStroke: '1.5px white', color: 'transparent' }}>Not</span>
+        </h2>
+
+        {/* Desktop Title (unchanged) */}
+        <h2 className="hidden md:flex text-2xl font-medium text-foreground mb-10 items-center justify-center gap-2">
           What
           <img
             src="/ekha_black.png"
@@ -24,7 +31,23 @@ export function WhatEkhaIsNot() {
           </span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+        {/* Mobile Items (dark editorial) */}
+        <div className="md:hidden flex flex-wrap justify-center gap-3">
+          {notList.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 border border-white/10 px-5 py-3"
+            >
+              <div className="w-5 h-5 border border-white/20 flex items-center justify-center">
+                <X className="w-3 h-3 text-white/40" />
+              </div>
+              <span className="text-white/60 font-mono text-xs uppercase tracking-wider">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Items (unchanged) */}
+        <div className="hidden md:flex flex-wrap justify-center gap-4 md:gap-8">
           {notList.map((item, index) => (
             <div
               key={index}

@@ -13,9 +13,29 @@ export function CareerGuidance() {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#050505] md:bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        {/* Mobile Header */}
+        <div className="md:hidden text-left mb-12 relative z-10">
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+            Career Guidance
+          </span>
+          <h2 className="text-5xl font-bold text-white mb-4 uppercase leading-12">
+            Tech Assists. Humans {""}
+            <span
+              style={{ WebkitTextStroke: "1.5px white", color: "transparent" }}
+            >
+              Guide.
+            </span>
+          </h2>
+          <p className="text-sm text-white/60 leading-relaxed max-w-sm">
+            AI identifies your child&apos;s strengths. A real expert calls you
+            to explain the roadmap. Included free.
+          </p>
+        </div>
+
+        {/* Desktop Header (unchanged) */}
+        <div className="hidden md:block text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-4">
             Technology Assists.{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
@@ -31,7 +51,95 @@ export function CareerGuidance() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
+        {/* Mobile Cards (dark editorial) */}
+        <div className="md:hidden space-y-0 relative z-10">
+          {/* AI Analysis */}
+          <div className="border-t border-white/10 py-6">
+            <div className="flex items-start gap-5">
+              <div className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 shrink-0">
+                <Bot className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-white uppercase mb-2">
+                  Step 1: AI Chat
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed mb-3">
+                  Your child chats with our AI to explore their interests. It
+                  creates a summary of their passions and strengths.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Finds what they&apos;re truly passionate about
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Highlights their natural strengths
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Creates a detailed profile for expert review
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Human Expert */}
+          <div className="border-t border-white/10 py-6">
+            <div className="flex items-start gap-5">
+              <div className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 flex-shrink-0">
+                <UserCheck className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-white uppercase mb-2">
+                  Step 2: Expert Call
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed mb-3">
+                  A career specialist reviews the AI report, then calls you
+                  directly to explain the guidance clearly.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Professional validation of AI findings
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Direct call with you to explain the roadmap
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                    <span className="text-white/50 text-sm">
+                      Clear next steps for your child&apos;s journey
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8">
+            <button 
+              onClick={() => document.getElementById('parent-loop')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-black px-8 py-4 font-mono text-[11px] uppercase tracking-widest hover:bg-white/80 transition-colors"
+            >
+              Next Chapter
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Cards (unchanged) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
           {/* AI Analysis Card */}
           <div className="relative group">
             <div className="absolute inset-0 bg-slate-50 rounded-3xl transform transition-transform group-hover:scale-[1.02]" />

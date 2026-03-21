@@ -7,34 +7,87 @@ import { LazyVideo } from "../ui/LazyVideo";
 export function WalletSystem() {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
+  const items = [
+    {
+      icon: <Coins className="w-6 h-6" />,
+      title: "COIN BOOKING",
+      desc: "1 Coin = 1 Rupee. Simple conversion.",
+      value: "1:1 RATIO",
+      detail:
+        "Use coins to book classes instantly. No complex calculations or hidden multipliers.",
+    },
+    {
+      icon: <Lock className="w-6 h-6" />,
+      title: "SECURE ESCROW",
+      desc: "Coins locked on schedule, deducted on completion.",
+      value: "LOCKED",
+      detail:
+        "Coins are locked when you schedule a class and only deducted after it's successfully completed. Full protection from cancellations.",
+    },
+    {
+      icon: <ArrowDownLeft className="w-6 h-6" />,
+      title: "INSTANT WITHDRAWAL",
+      desc: "Unused coins sent to bank anytime (charges may apply).",
+      value: "24/7",
+      detail:
+        "Unused coins can be withdrawn to your bank account at any time. No lock-in periods.",
+    },
+  ];
+
   return (
-    <section className="py-32 bg-background overflow-hidden border-t border-slate-200">
+    <section className="py-32 bg-[#050505] md:bg-background overflow-hidden md:border-t md:border-slate-200">
       <div className="container mx-auto px-4">
         <div className="flex flex-col relative lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2 z-10">
-            <div className="inline-block border border-neon-purple/50 px-3 py-1 text-neon-purple font-mono text-xs mb-6 uppercase">
-              Secure Transaction Protocol
-            </div>
-            <h2 className="text-4xl md:text-7xl font-bold text-foreground uppercase leading-none mb-8">
-              Transparent
-              <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
-                [ Credits ]
+            {/* Mobile Title */}
+            <div className="md:hidden mb-8">
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+                Simple Pricing
               </span>
-            </h2>
-            <p className="text-slate-600 text-lg mb-10 max-w-md font-mono">
-              Ekha uses a straightforward coin-based wallet system designed for
-              trust. You only pay for what you learn.
-            </p>
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none rounded-none cursor-pointer bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] px-8 py-3 text-sm"
-            >
-              <span>{isExpanded ? "Show Less" : "Know More"}</span>
-              <ChevronDown
-                className={`w-5 h-5 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
-              />
-            </button>
+              <h2 className="text-5xl font-bold leading-11 text-white uppercase mb-6">
+                Transparent
+                <br />
+                <span
+                  style={{
+                    WebkitTextStroke: "1.5px  white",
+                    color: "transparent",
+                  }}
+                >
+                  Credits
+                </span>
+              </h2>
+              <p className="text-sm text-white/60 leading-relaxed max-w-sm">
+                1 coin = 1 rupee. Pay only for completed classes. No hidden
+                fees, no lock-ins.
+              </p>
+            </div>
+
+            {/* Desktop Title (unchanged) */}
+            <div className="hidden md:block">
+              <div className="inline-block border border-neon-purple/50 px-3 py-1 text-neon-purple font-mono text-xs mb-6 uppercase">
+                Secure Transaction Protocol
+              </div>
+              <h2 className="text-4xl md:text-7xl font-bold text-foreground uppercase leading-none mb-8">
+                Transparent
+                <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
+                  [ Credits ]
+                </span>
+              </h2>
+              <p className="text-slate-600 text-lg mb-10 max-w-md font-mono">
+                Ekha uses a straightforward coin-based wallet system designed
+                for trust. You only pay for what you learn.
+              </p>
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none rounded-none cursor-pointer bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] px-8 py-3 text-sm"
+              >
+                <span>{isExpanded ? "Show Less" : "Know More"}</span>
+                <ChevronDown
+                  className={`w-5 h-5 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                />
+              </button>
+            </div>
           </div>
           <LazyVideo
             src="/mascot/coins.mp4"
@@ -48,33 +101,37 @@ export function WalletSystem() {
             preload="none"
           />
           <div className="lg:w-1/2 w-full z-10">
-            <div className="grid grid-cols-1 gap-4">
-              {[
-                {
-                  icon: <Coins className="w-6 h-6" />,
-                  title: "COIN BOOKING",
-                  desc: "1 Coin = 1 Rupee. Simple conversion.",
-                  value: "1:1 RATIO",
-                  detail:
-                    "Use coins to book classes instantly. No complex calculations or hidden multipliers.",
-                },
-                {
-                  icon: <Lock className="w-6 h-6" />,
-                  title: "SECURE ESCROW",
-                  desc: "Coins locked on schedule, deducted on completion.",
-                  value: "LOCKED",
-                  detail:
-                    "Coins are locked when you schedule a class and only deducted after it's successfully completed. Full protection from cancellations.",
-                },
-                {
-                  icon: <ArrowDownLeft className="w-6 h-6" />,
-                  title: "INSTANT WITHDRAWAL",
-                  desc: "Unused coins sent to bank anytime (charges may apply).",
-                  value: "24/7",
-                  detail:
-                    "Unused coins can be withdrawn to your bank account at any time. No lock-in periods.",
-                },
-              ].map((item, i) => (
+            {/* Mobile Credits List (dark editorial) */}
+            <div className="md:hidden space-y-0">
+              {items.map((item, i) => (
+                <div key={i} className="border-t border-white/10 pt-5 pb-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-xs text-white/40">
+                      0{i + 1}
+                    </span>
+                    <div className="text-white/30">{item.icon}</div>
+                  </div>
+                  <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+              <div className="border-t border-white/10 pt-8">
+                <button 
+                  onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-white text-black px-8 py-4 font-mono text-[11px] uppercase tracking-widest hover:bg-white/80 transition-colors"
+                >
+                  Inquire Now
+                </button>
+              </div>
+            </div>
+
+            {/* Desktop Cards (unchanged) */}
+            <div className="hidden md:grid grid-cols-1 gap-4">
+              {items.map((item, i) => (
                 <div
                   key={i}
                   className="bg-slate-50 border border-slate-200 p-6 group hover:border-neon-purple transition-colors"
@@ -117,17 +174,17 @@ export function WalletSystem() {
         </div>
       </div>
 
-      <div className="mt-20 border-y border-slate-200 py-4 bg-slate-50 overflow-hidden">
+      <div className="mt-20 border-y border-white/10 md:border-slate-200 py-4 bg-white/5 md:bg-slate-50 overflow-hidden">
         <div className="flex gap-12 whitespace-nowrap animate-[marquee_20s_linear_infinite]">
           {[...Array(10)].map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 text-slate-500 font-mono text-sm uppercase"
+              className="flex items-center gap-4 text-white/40 md:text-slate-500 font-mono text-sm uppercase"
             >
               <span>{"/// TRUSTED TRANSACTIONS"}</span>
-              <span className="text-neon-purple">★</span>
+              <span className="text-blue-400 md:text-neon-purple">★</span>
               <span>NO HIDDEN FEES</span>
-              <span className="text-neon-purple">★</span>
+              <span className="text-blue-400 md:text-neon-purple">★</span>
             </div>
           ))}
         </div>

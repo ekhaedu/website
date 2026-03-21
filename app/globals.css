@@ -1,11 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-}
-
-@theme inline {
+  --background: #000000;
+  --foreground: #ffffff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-oswald), sans-serif;
@@ -31,6 +28,59 @@
     @apply uppercase tracking-tight;
   }
 }
+
+/* ============ Mobile Dark Editorial Style ============ */
+
+/* Architectural grid background overlay */
+.grid-bg-dark {
+  position: relative;
+}
+.grid-bg-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Outline text effect for premium headings */
+.text-outline {
+  -webkit-text-stroke: 1.5px white;
+  color: transparent;
+}
+
+/* Hairline separator */
+.hairline-white {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile dark section wrapper */
+.mobile-dark-section {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+/* Accordion animation for mobile features */
+.mobile-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease-out,
+    opacity 0.3s ease-out,
+    margin 0.3s ease-out;
+}
+.mobile-accordion-content.expanded {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.75rem;
+}
+
+/* ============ End Mobile Dark Editorial Style ============ */
 
 .neon-glow {
   box-shadow: 0 0 10px rgba(116, 119, 255, 0.3);

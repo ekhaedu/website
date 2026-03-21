@@ -14,8 +14,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ekha - Learning Platform",
-  description: "Dark marketing landing hero for travel app",
+  title: "Ekha Learning Platform: AI & Expert Guided Education",
+  description: "Ekha offers a revolutionary learning experience combining advanced AI analysis with human expert career guidance. Get full syllabus access, secure coin-based pricing, and personalized study plans for your child.",
+  keywords: ["Ekha", "Learning Platform", "Online Education", "AI Tutor", "Career Guidance", "SCERT", "ICSE", "Digital Learning"],
+  openGraph: {
+    title: "Ekha Learning Platform",
+    description: "Technology Assists. Humans Guide. Secure, transparent learning with 24/7 AI homework companion and complete syllabus coverage.",
+    type: "website",
+    siteName: "Ekha",
+  },
 };
 
 export default function RootLayout({

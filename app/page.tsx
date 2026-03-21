@@ -9,6 +9,7 @@ import { FeaturesGrid } from "../components/sections/FeaturesGrid";
 import { WhatEkhaIsNot } from "../components/sections/WhatEkhaIsNot";
 import DownloadApp from "../components/sections/DownloadApp";
 import { Footer } from "../components/sections/Footer";
+import { GetAppButton } from "../components/ui/GetAppButton";
 
 export default function Home() {
   return (
@@ -23,9 +24,7 @@ export default function Home() {
               className="h-full -ml-5 lg:-ml-15 w-35 lg:w-60 object-contain hover:opacity-80 transition-opacity"
             />
           </div>
-          <button className="border border-white px-6 py-2 text-sm font-bold uppercase hover:bg-white hover:text-black transition-colors rounded-full">
-            Get App
-          </button>
+          <GetAppButton />
         </div>
       </nav>
 

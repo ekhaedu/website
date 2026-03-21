@@ -1,15 +1,53 @@
 import React from "react";
 import { Button } from "../ui/Button";
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { GetAppButton } from "../ui/GetAppButton";
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pb-16 overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center pb-16 overflow-hidden bg-[#050505] md:bg-background">
+      {/* Desktop grid pattern */}
+      <div className="hidden md:block absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none" />
+      {/* Mobile grid pattern (dark) */}
+      <div
+        className="md:hidden absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-neon-purple/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-neon-purple/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto animate-[fadeIn_1s_ease-out_0.5s_both]">
+        {/* Mobile Layout */}
+        <div className="flex flex-col md:hidden items-center text-center w-full animate-[fadeIn_1s_ease-out_0.5s_both]">
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-6 block">
+            Education Reimagined
+          </span>
+
+          <h1 className="text-6xl font-bold text-white leading-14 mb-8 tracking-tighter uppercase">
+            Master <br />
+            Every Subject <br />
+            <span
+              style={{ WebkitTextStroke: "1.5px white", color: "transparent" }}
+            >
+              One-on-One
+            </span>
+          </h1>
+
+          <p className="text-sm font-light leading-relaxed max-w-[280px] text-white/60 mb-12">
+            The only platform with complete transparency. No algorithms. No
+            forced matches. Just your child and the perfect teacher.
+          </p>
+
+          <GetAppButton className="bg-white text-black px-6 py-3 font-mono text-xs uppercase tracking-tighter hover:bg-white/80 transition-colors">
+            Get the App
+          </GetAppButton>
+        </div>
+
+        {/* Desktop Layout (unchanged) */}
+        <div className="hidden md:flex flex-col items-center text-center max-w-5xl mx-auto animate-[fadeIn_1s_ease-out_0.5s_both]">
           <div className="mb-8 animate-pulse">
             <span className="text-neon-purple font-mono text-[10px] md:text-sm tracking-widest md:tracking-[0.2em] uppercase border border-neon-purple/30 px-3 py-1 md:px-4">
               Admissions Open • LKG - Class 12
@@ -32,13 +70,13 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-md">
-            <Button
-              size="lg"
+            <GetAppButton
+              useCustomButton
               className="w-full sm:w-auto"
               rightIcon={<ArrowRight className="w-5 h-5" />}
             >
               Get the App
-            </Button>
+            </GetAppButton>
             <Button
               variant="secondary"
               size="lg"
@@ -48,20 +86,6 @@ export function Hero() {
               How Ekha Works
             </Button>
           </div>
-
-          {/* <div className="mt-20 relative w-full max-w-4xl aspect-[2/1] border-x border-slate-200 bg-gradient-to-b from-slate-100/0 via-slate-100/50 to-slate-100/0">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-64 h-64 border border-neon-purple/30 rounded-full animate-[spin_10s_linear_infinite]" />
-              <div className="absolute w-48 h-48 border border-black/20 rotate-45" />
-              <div className="absolute w-32 h-32 bg-neon-purple/10 blur-xl" />
-            </div>
-
-            <div className="absolute bottom-0 left-0 w-full flex justify-between px-8 pb-8 font-mono text-xs text-slate-500 uppercase">
-              <div>System Status: Active</div>
-              <div>Latency: 12ms</div>
-              <div>Encryption: Enabled</div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>

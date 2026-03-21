@@ -8,6 +8,8 @@ import { ParentLoop } from "../components/sections/ParentLoop";
 import { FeaturesGrid } from "../components/sections/FeaturesGrid";
 import { WhatEkhaIsNot } from "../components/sections/WhatEkhaIsNot";
 import { Footer } from "../components/sections/Footer";
+import { GetAppButton } from "../components/ui/GetAppButton";
+
 export function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-neon-purple selection:text-white">
@@ -17,9 +19,7 @@ export function LandingPage() {
           <div className="text-3xl font-bold text-foreground tracking-tighter uppercase">
             Ekha<span className="text-neon-purple">.</span>
           </div>
-          <button className="border border-black px-6 py-2 text-sm font-bold uppercase hover:bg-black hover:text-white transition-colors">
-            Get App
-          </button>
+          <GetAppButton />
         </div>
       </nav>
 
