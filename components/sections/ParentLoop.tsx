@@ -1,15 +1,21 @@
+"use client";
+
+import React from "react";
 import { LazyVideo } from "../ui/LazyVideo";
+import { ChevronDown, MessageCircle, Sparkles } from "lucide-react";
 
 export function ParentLoop() {
+  const [showDetails, setShowDetails] = React.useState(false);
+
   return (
-    <section id="parent-loop" className="py-24 bg-[#050505] md:bg-white overflow-hidden">
+    <section id="parent-loop" className="py-24 bg-[var(--color-navy)] md:bg-white overflow-hidden">
       <div className="container mx-auto px-4 relative w-screen">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* WhatsApp Mockup */}
           <div className="flex-1 w-full max-w-sm mx-auto lg:mx-0 order-2 lg:order-1">
             <div className="bg-[#0b141a] rounded-3xl md:border md:border-slate-200 border border-white/10 overflow-hidden shadow-2xl">
               <div className="bg-[#202c33] p-4 flex items-center gap-3 border-b border-slate-800">
-                <div className="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 rounded-full gradient-trust flex items-center justify-center text-white font-bold">
                   E
                 </div>
                 <div>
@@ -21,7 +27,7 @@ export function ParentLoop() {
               </div>
 
               <div className="relative p-4 space-y-4 min-h-[300px] z-0 overflow-hidden bg-[#0b141a]">
-                {/* Dark Mode WhatsApp Wallpaper Overlay */}
+                {/* WhatsApp Wallpaper Overlay */}
                 <div
                   className="absolute inset-0 -z-10 opacity-[0.07] invert"
                   style={{
@@ -36,40 +42,45 @@ export function ParentLoop() {
                   </span>
                 </div>
 
-                <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow-sm relative z-10">
-                  <p className="text-slate-200 text-sm mb-2">
-                    Hi! Here&apos;s the update from today&apos;s Mathematics
-                    session with Rohan.
+                {/* AI Narrative Summary */}
+                <div className="bg-[#202c33] rounded-lg rounded-tl-none p-4 max-w-[85%] shadow-sm relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4 text-[var(--color-peach)]" />
+                    <span className="text-xs font-semibold text-[var(--color-peach)]">AI Session Summary</span>
+                  </div>
+
+                  <p className="text-slate-200 text-sm leading-relaxed mb-3">
+                    Rohan had a great math session today! 🎉 He mastered polynomial basics and scored <strong className="text-white">8/10</strong> on practice questions. He&apos;s ready to move to factorization next.
                   </p>
 
-                  <div className="space-y-3">
-                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-green-500">
-                      <div className="text-xs text-green-400 font-bold mb-1 uppercase tracking-wider">
-                        Responsiveness
-                      </div>
-                      <div className="text-slate-300 text-sm">
-                        Very active. Answered 8/10 questions correctly regarding
-                        polynomials.
-                      </div>
-                    </div>
+                  <p className="text-slate-300 text-sm leading-relaxed mb-3">
+                    📝 <strong className="text-white">Homework:</strong> Exercise 4.2 (Q1-5)
+                    <br />
+                    ⏰ <strong className="text-white">Next class:</strong> Tomorrow, 4:30 PM
+                  </p>
 
-                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-blue-500">
-                      <div className="text-xs text-blue-400 font-bold mb-1 uppercase tracking-wider">
-                        Learning Progress
-                      </div>
-                      <div className="text-slate-300 text-sm">
-                        Mastered standard algebra identities. Needs practice
-                        with complex factorization.
-                      </div>
-                    </div>
+                  {/* Expandable raw data */}
+                  <button
+                    onClick={() => setShowDetails(!showDetails)}
+                    className="flex items-center gap-1.5 text-[var(--color-violet-light)] text-xs font-medium hover:text-white transition-colors cursor-pointer"
+                  >
+                    <span>Show me the details</span>
+                    <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${showDetails ? "rotate-180" : ""}`} />
+                  </button>
 
-                    <div className="bg-[#111b21] p-3 rounded-md border-l-4 border-yellow-500">
-                      <div className="text-xs text-yellow-500 font-bold mb-1 uppercase tracking-wider">
-                        Session Notes
+                  <div className={`overflow-hidden transition-all duration-400 ${showDetails ? "max-h-60 opacity-100 mt-3" : "max-h-0 opacity-0"}`}>
+                    <div className="space-y-2 border-t border-white/10 pt-3">
+                      <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-green-500">
+                        <div className="text-[10px] text-green-400 font-bold mb-0.5">Engagement</div>
+                        <div className="text-slate-300 text-xs">Very active, answered most questions correctly</div>
                       </div>
-                      <div className="text-slate-300 text-sm">
-                        Focused and disciplined. Homework assigned: Ex 4.2
-                        (Q1-5).
+                      <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-blue-500">
+                        <div className="text-[10px] text-blue-400 font-bold mb-0.5">Progress</div>
+                        <div className="text-slate-300 text-xs">Mastered standard identities, needs factorization practice</div>
+                      </div>
+                      <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-yellow-500">
+                        <div className="text-[10px] text-yellow-400 font-bold mb-0.5">Teacher Note</div>
+                        <div className="text-slate-300 text-xs">Focused and disciplined throughout the session</div>
                       </div>
                     </div>
                   </div>
@@ -84,55 +95,49 @@ export function ParentLoop() {
 
           {/* Text Content */}
           <div className="flex-1 order-1 z-10 lg:order-2">
-            {/* Mobile Text (dark editorial) */}
+            {/* Mobile Text */}
             <div className="md:hidden relative z-10">
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+              <span className="text-sm tracking-wide text-[var(--color-trust-blue-light)] mb-4 block font-medium">
                 For Parents
               </span>
-              <h2 className="text-5xl font-bold text-white mb-6 uppercase leading-12">
+              <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
                 Witness Their{" "}
-                <span
-                  style={{
-                    WebkitTextStroke: "1.5px white",
-                    color: "transparent",
-                  }}
-                >
+                <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
                   Potential Unfold
                 </span>
               </h2>
               <p className="text-white/60 text-sm mb-8 leading-relaxed">
-                See exactly how your child is progressing. Real updates, not
-                just data — day by day.
+                No more guessing. Get friendly, AI-powered session summaries that tell you exactly how your child is doing — not just raw data.
               </p>
 
               <div className="space-y-0">
                 {[
                   {
-                    title: "What was taught",
-                    desc: "Clear summary of topics covered",
+                    title: "AI-powered summaries",
+                    desc: "Easy-to-read session recaps, not confusing metrics",
                   },
                   {
-                    title: "Where they struggled",
-                    desc: "Honest feedback on improvement areas",
+                    title: "Honest progress tracking",
+                    desc: "Know strengths and areas that need work",
                   },
                   {
-                    title: "Homework & Focus",
-                    desc: "Actionable next steps for the student",
+                    title: "Homework & next steps",
+                    desc: "Clear action items after every class",
                   },
                   {
-                    title: "Class Rating",
-                    desc: "Performance score from the teacher",
+                    title: "\"Show me why\" transparency",
+                    desc: "Tap to see the raw data behind every summary",
                   },
                 ].map((item, i) => (
                   <div
                     key={i}
                     className="border-t border-white/10 py-4 flex items-start gap-4"
                   >
-                    <span className="font-mono text-xs text-white/30 mt-0.5">
+                    <span className="text-xs text-white/30 mt-0.5">
                       0{i + 1}
                     </span>
                     <div>
-                      <h4 className="text-white font-medium uppercase text-sm">
+                      <h4 className="text-white font-medium text-sm">
                         {item.title}
                       </h4>
                       <p className="text-white/50 text-sm">{item.desc}</p>
@@ -143,46 +148,48 @@ export function ParentLoop() {
               </div>
             </div>
 
-            {/* Desktop Text (unchanged) */}
+            {/* Desktop Text */}
             <div className="hidden md:block">
-              <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6">
+              <div className="inline-flex items-center gap-2 bg-[var(--color-trust-blue-light)] text-[var(--color-trust-blue)] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+                <MessageCircle className="w-4 h-4" />
+                AI-Powered Updates
+              </div>
+              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-6">
                 Witness Their{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
+                <span className="gradient-text-trust">
                   Potential Unfold
                 </span>
               </h2>
-              <p className="text-slate-600 xl:w-1/2 text-lg mb-8 leading-relaxed">
-                You don&apos;t just get data; you get a front-row seat to their
-                growth. See exactly how they are mastering concepts and building
-                confidence, day by day.
+              <p className="text-slate-500 xl:w-1/2 text-lg mb-8 leading-relaxed">
+                No more raw metrics to decipher. Our AI translates every session into a clear, friendly summary — so you always know how your child is doing.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {[
                   {
-                    title: "What was taught",
-                    desc: "Clear summary of topics covered",
+                    title: "AI-powered summaries",
+                    desc: "Easy-to-read session recaps, not confusing metrics",
                   },
                   {
-                    title: "Where they struggled",
-                    desc: "Honest feedback on improvement areas",
+                    title: "Honest progress tracking",
+                    desc: "Know strengths and areas that need work",
                   },
                   {
-                    title: "Homework & Focus",
-                    desc: "Actionable next steps for the student",
+                    title: "Homework & next steps",
+                    desc: "Clear action items after every class",
                   },
                   {
-                    title: "Class Rating",
-                    desc: "Performance score from the teacher",
+                    title: "\"Show me why\" transparency",
+                    desc: "Tap to see the raw data behind every summary",
                   },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black mt-2.5 flex-shrink-0" />
+                    <div className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: "var(--color-trust-blue)" }} />
                     <div>
-                      <h4 className="text-foreground font-medium">
+                      <h4 className="text-[var(--color-foreground)] font-medium">
                         {item.title}
                       </h4>
-                      <p className="text-slate-600 text-sm">{item.desc}</p>
+                      <p className="text-slate-500 text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}

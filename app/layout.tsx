@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Oswald, JetBrains_Mono } from "next/font/google";
+import { Lexend, Inter } from "next/font/google";
 import "./globals.css";
 import { Preloader } from "../components/ui/Preloader";
 
-const oswald = Oswald({
-  variable: "--font-oswald",
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${oswald.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${lexend.variable} ${inter.variable} antialiased`}
       >
         <Preloader />
         {children}

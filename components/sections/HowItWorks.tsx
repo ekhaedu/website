@@ -2,7 +2,6 @@
 
 import React from "react";
 import { User, Users, Calendar, X, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { LazyVideo } from "../ui/LazyVideo";
 
 export function HowItWorks() {
@@ -60,30 +59,45 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-32 bg-[#050505] md:bg-background relative md:border-t md:border-slate-200">
+    <section className="py-32 bg-[var(--color-navy)] md:bg-white relative md:border-t md:border-slate-100">
       <div className="container mx-auto px-4">
         {/* Mobile Header */}
-        <div className="md:hidden mb-12 relative z-10">
-          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
+        <div className="md:hidden mb-8 relative z-10">
+          <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
             Benefits for the Child
           </span>
-          <h2 className="text-5xl font-bold text-white uppercase leading-[0.9]">
+          <h2 className="text-5xl font-bold text-white leading-tight">
             The Ekha
             <br />
-            <span style={{ WebkitTextStroke: '1.5px white', color: 'transparent' }}>Advantage</span>
+            <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>Advantage</span>
           </h2>
+
+          {/* Mobile Mascot */}
+          <div className="flex justify-center mt-6">
+            <LazyVideo
+              src="/mascot/advantages.mp4"
+              poster="/mascot/advantages.png"
+              height={400}
+              width={250}
+              className="w-48 h-auto object-contain pointer-events-none select-none"
+              autoPlay
+              loop
+              muted
+              preload="none"
+            />
+          </div>
         </div>
 
-        {/* Desktop Header (unchanged) */}
+        {/* Desktop Header */}
         <div className="hidden md:flex pointer-events-none select-none flex-col relative md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 pb-8">
           <div>
-            <span className="text-neon-purple font-mono text-sm tracking-widest uppercase mb-2 block">
+            <span className="text-[var(--color-violet)] text-sm tracking-wide font-medium mb-2 block">
               Benefits for the Child
             </span>
-            <h2 className="text-3xl md:text-7xl font-bold text-foreground uppercase leading-none">
+            <h2 className="text-3xl md:text-7xl font-bold text-[var(--color-foreground)] leading-none">
               The Ekha
               <br />
-              Advantage
+              <span className="gradient-text-trust">Advantage</span>
             </h2>
           </div>
           <LazyVideo
@@ -91,53 +105,52 @@ export function HowItWorks() {
             poster="/mascot/advantages.png"
             height={1000}
             width={500}
-            className="-bottom-14 relative pointer-events-none select-none object-contain "
+            className="-bottom-14 relative pointer-events-none select-none object-contain"
             autoPlay
             loop
             muted
             preload="none"
           />
-          <p className="text-slate-500 max-w-md text-right font-mono text-sm mt-8 md:mt-0">
-            {"// BUILT FOR FOCUS"}
+          {/* CSS-only decorative text — not in DOM text stream */}
+          <p className="text-slate-400 max-w-md text-right text-sm mt-8 md:mt-0 decorative-slashes" aria-hidden="true">
+            Built for Focus
             <br />
-            {"// CONSISTENT GROWTH"}
+            <span className="decorative-slashes" aria-hidden="true">Consistent Growth</span>
           </p>
-          <div className="h-px bg-slate-200 w-full absolute bottom-0" />
+          <div className="h-px bg-slate-100 w-full absolute bottom-0" />
         </div>
 
-        {/* Mobile Layout - Editorial stacked list */}
+        {/* Mobile Layout */}
         <div className="md:hidden space-y-0 relative z-10">
-          {/* Mobile dark grid overlay */}
           <div className="absolute inset-0 pointer-events-none -z-10" style={{
-            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(to right, rgba(112,111,211,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(112,111,211,0.05) 1px, transparent 1px)',
             backgroundSize: '40px 40px'
           }} />
-          
+
           {steps.map((step, index) => (
             <div
               key={index}
               className="border-t border-white/10 py-6"
             >
               <div className="flex items-start gap-5">
-                <span className="font-mono text-xs text-white/40 mt-1">
+                <span className="text-xs text-white/40 mt-1">
                   {step.stat}
                 </span>
                 <div className="flex-1">
-                  <div className="text-white/60 mb-2">
+                  <div className="text-[var(--color-peach)] mb-2">
                     {step.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white uppercase leading-tight mb-3">
+                  <h3 className="text-lg font-bold text-white leading-tight mb-3">
                     {step.title}
                   </h3>
                   <p className="text-sm text-white/60 leading-relaxed mb-4">
                     {step.description}
                   </p>
-                  
-                  {/* Mobile details always shown */}
+
                   <ul className="space-y-2 mt-3">
                     {step.details.points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-1.5 shrink-0" />
+                        <div className="w-1.5 h-1.5 bg-[var(--color-peach)] rounded-full mt-1.5 shrink-0" />
                         <span className="text-white/50 text-sm">
                           {point}
                         </span>
@@ -151,7 +164,7 @@ export function HowItWorks() {
           <div className="border-t border-white/10" />
         </div>
 
-        {/* Desktop Layout (unchanged) */}
+        {/* Desktop Layout */}
         <div
           className={`hidden md:flex flex-col md:flex-row gap-10 md:h-[340px] transition-all duration-500 ease-in-out ${
             expandedIndex !== null ? "md:gap-0" : "md:gap-6"
@@ -175,10 +188,10 @@ export function HowItWorks() {
                     setExpandedIndex(isExpanded ? null : index);
                   }
                 }}
-                className={`group relative bg-slate-50 border border-slate-200 
-                  md:cursor-pointer cursor-default md:hover:border-neon-purple overflow-hidden
+                className={`group relative bg-white border border-slate-200 rounded-2xl
+                  md:cursor-pointer cursor-default hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 overflow-hidden
                   ${isHidden ? "pointer-events-none border-0" : ""}
-                  w-full h-auto 
+                  w-full h-auto
                   md:h-full md:flex-[var(--d-flex)]
                 `}
                 style={
@@ -187,14 +200,13 @@ export function HowItWorks() {
                     opacity: isHidden ? 0 : 1,
                     padding: isHidden ? 0 : undefined,
                     margin: isHidden ? 0 : undefined,
-
                     transition:
                       "flex 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease",
                   } as React.CSSProperties
                 }
               >
                 <div
-                  className={`absolute inset-0 bg-neon-purple/5 transition-opacity duration-500 ${isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+                  className={`absolute inset-0 bg-[var(--color-violet-light)] transition-opacity duration-500 ${isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-50"}`}
                 />
 
                 {isExpanded && (
@@ -203,7 +215,7 @@ export function HowItWorks() {
                       e.stopPropagation();
                       setExpandedIndex(null);
                     }}
-                    className="hidden md:block absolute top-4 right-4 z-50 p-2 bg-slate-50/50 hover:bg-slate-200 rounded-full transition-colors backdrop-blur-xs"
+                    className="hidden md:block absolute top-4 right-4 z-50 p-2 bg-white/80 hover:bg-slate-100 rounded-full transition-colors backdrop-blur-xs"
                   >
                     <X className="w-5 h-5 text-slate-500" />
                   </button>
@@ -211,7 +223,7 @@ export function HowItWorks() {
 
                 <div
                   className={`relative z-10 transition-all duration-500
-                    flex flex-col 
+                    flex flex-col
                     ${isExpanded ? "md:flex-row md:items-center md:h-full" : "md:flex-col md:justify-between md:h-full"}
                     ${isHidden ? "md:opacity-0 md:invisible" : "md:opacity-100 md:visible"}
                   `}
@@ -223,24 +235,24 @@ export function HowItWorks() {
                   >
                     <div className="flex justify-between items-start mb-3 md:mb-4">
                       <span
-                        className={`font-mono text-2xl md:text-4xl transition-colors duration-300 ${isExpanded ? "text-neon-purple" : "text-slate-400 group-hover:text-foreground"}`}
+                        className={`text-2xl md:text-4xl font-bold transition-colors duration-300 ${isExpanded ? "text-[var(--color-violet)]" : "text-slate-300 group-hover:text-[var(--color-foreground)]"}`}
                       >
                         {step.stat}
                       </span>
                       {!isExpanded && (
-                        <ChevronRight className="hidden md:block w-5 h-5 text-slate-400 group-hover:text-neon-purple transition-colors" />
+                        <ChevronRight className="hidden md:block w-5 h-5 text-slate-400 group-hover:text-[var(--color-violet)] transition-colors" />
                       )}
                     </div>
 
                     <div
-                      className={`mb-3 md:mb-4 transition-all duration-300 ${isExpanded ? "text-neon-purple" : "text-foreground opacity-50 group-hover:opacity-100"}`}
+                      className={`mb-3 md:mb-4 transition-all duration-300 ${isExpanded ? "text-[var(--color-violet)]" : "text-[var(--color-foreground)] opacity-50 group-hover:opacity-100"}`}
                     >
                       {step.icon}
                     </div>
-                    <h3 className="text-lg md:text-2xl font-medium text-foreground mb-2 md:mb-3 uppercase leading-tight">
+                    <h3 className="text-lg md:text-2xl font-semibold text-[var(--color-foreground)] mb-2 md:mb-3 leading-tight">
                       {step.title}
                     </h3>
-                    <p className="text-slate-600 font-mono text-xs md:text-sm leading-relaxed">
+                    <p className="text-slate-500 text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -248,19 +260,19 @@ export function HowItWorks() {
                   <div
                     className={`
                     p-6 md:p-8 md:pl-12 md:w-[65%]
-                    hidden 
-                    ${isExpanded ? "md:block animate-[fadeSlideIn_0.6s_ease-out_forwards]" : "md:hidden"} 
+                    hidden
+                    ${isExpanded ? "md:block animate-[fadeSlideIn_0.6s_ease-out_forwards]" : "md:hidden"}
                   `}
                   >
-                    <h4 className="text-base md:text-lg font-bold text-foreground mb-3 md:mb-4 uppercase hidden md:block">
+                    <h4 className="text-base md:text-lg font-bold text-[var(--color-foreground)] mb-3 md:mb-4 hidden md:block">
                       {step.details.heading}
                     </h4>
 
                     <ul className="space-y-2 md:space-y-3">
                       {step.details.points.map((point, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 bg-neon-purple rounded-full mt-1.5 md:mt-2 shrink-0" />
-                          <span className="text-slate-600 font-mono text-xs md:text-sm">
+                          <div className="w-1.5 h-1.5 bg-[var(--color-violet)] rounded-full mt-1.5 md:mt-2 shrink-0" />
+                          <span className="text-slate-500 text-sm">
                             {point}
                           </span>
                         </li>
@@ -270,7 +282,7 @@ export function HowItWorks() {
                 </div>
 
                 <div
-                  className={`absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-neon-purple to-transparent transform transition-transform duration-500 hidden md:block ${isExpanded ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                  className={`absolute bottom-0 left-0 w-full h-1 gradient-engage transform transition-transform duration-500 hidden md:block rounded-full ${isExpanded ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
                 />
               </div>
             );

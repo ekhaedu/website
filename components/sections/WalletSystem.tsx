@@ -1,88 +1,111 @@
 "use client";
 
 import React from "react";
-import { Coins, Lock, ArrowDownLeft, ChevronDown } from "lucide-react";
+import { Coins, Shield, ArrowDownLeft, ChevronDown, Flame, Trophy, Star, Sparkles } from "lucide-react";
 import { LazyVideo } from "../ui/LazyVideo";
 
 export function WalletSystem() {
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [celebratingIndex, setCelebratingIndex] = React.useState<number | null>(null);
 
   const items = [
     {
       icon: <Coins className="w-6 h-6" />,
-      title: "COIN BOOKING",
-      desc: "1 Coin = 1 Rupee. Simple conversion.",
-      value: "1:1 RATIO",
+      title: "Earn Coins",
+      desc: "1 Coin = 1 Rupee. Simple and transparent.",
+      value: "1:1",
       detail:
-        "Use coins to book classes instantly. No complex calculations or hidden multipliers.",
+        "Use coins to book classes instantly. No complex calculations or hidden multipliers. What you see is what you pay.",
+      color: "var(--color-violet)",
+      emoji: "🪙",
     },
     {
-      icon: <Lock className="w-6 h-6" />,
-      title: "SECURE ESCROW",
-      desc: "Coins locked on schedule, deducted on completion.",
-      value: "LOCKED",
+      icon: <Shield className="w-6 h-6" />,
+      title: "Safe & Sound",
+      desc: "Coins held safely until the class is completed.",
+      value: "Protected",
       detail:
-        "Coins are locked when you schedule a class and only deducted after it's successfully completed. Full protection from cancellations.",
+        "Coins are held securely when you schedule a class and only used after it's successfully completed. Full protection from cancellations.",
+      color: "var(--color-trust-blue)",
+      emoji: "🛡️",
     },
     {
       icon: <ArrowDownLeft className="w-6 h-6" />,
-      title: "INSTANT WITHDRAWAL",
-      desc: "Unused coins sent to bank anytime (charges may apply).",
+      title: "Cash Out Anytime",
+      desc: "Unused coins sent to your bank whenever you want.",
       value: "24/7",
       detail:
-        "Unused coins can be withdrawn to your bank account at any time. No lock-in periods.",
+        "Unused coins can be withdrawn to your bank account at any time. No lock-in periods, no questions asked.",
+      color: "var(--color-peach)",
+      emoji: "💸",
     },
   ];
 
+  const handleItemHover = (index: number) => {
+    setCelebratingIndex(index);
+    setTimeout(() => setCelebratingIndex(null), 1000);
+  };
+
   return (
-    <section className="py-32 bg-[#050505] md:bg-background overflow-hidden md:border-t md:border-slate-200">
+    <section className="py-32 bg-[var(--color-navy)] md:bg-white overflow-hidden md:border-t md:border-slate-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-col relative lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2 z-10">
             {/* Mobile Title */}
             <div className="md:hidden mb-8">
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-4 block">
-                Simple Pricing
+              <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
+                Your Learning Wallet
               </span>
-              <h2 className="text-5xl font-bold leading-11 text-white uppercase mb-6">
+              <h2 className="text-5xl font-bold leading-tight text-white mb-6">
                 Transparent
                 <br />
-                <span
-                  style={{
-                    WebkitTextStroke: "1.5px  white",
-                    color: "transparent",
-                  }}
-                >
+                <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
                   Credits
                 </span>
               </h2>
-              <p className="text-sm text-white/60 leading-relaxed max-w-sm">
+              <p className="text-sm text-white/60 leading-relaxed max-w-sm mb-6">
                 1 coin = 1 rupee. Pay only for completed classes. No hidden
                 fees, no lock-ins.
               </p>
+
+              {/* Mobile Mascot */}
+              <div className="flex justify-center">
+                <LazyVideo
+                  src="/mascot/coins.mp4"
+                  poster="/mascot/coins.png"
+                  height={400}
+                  width={250}
+                  className="w-52 h-auto object-contain pointer-events-none select-none"
+                  autoPlay
+                  loop
+                  muted
+                  preload="none"
+                />
+              </div>
             </div>
 
-            {/* Desktop Title (unchanged) */}
+            {/* Desktop Title */}
             <div className="hidden md:block">
-              <div className="inline-block border border-neon-purple/50 px-3 py-1 text-neon-purple font-mono text-xs mb-6 uppercase">
-                Secure Transaction Protocol
+              <div className="inline-flex items-center gap-2 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                <Sparkles className="w-4 h-4" />
+                Your Learning Wallet
               </div>
-              <h2 className="text-4xl md:text-7xl font-bold text-foreground uppercase leading-none mb-8">
+              <h2 className="text-4xl md:text-7xl font-bold text-[var(--color-foreground)] leading-none mb-8">
                 Transparent
                 <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-b from-black to-slate-500">
-                  [ Credits ]
+                <span className="gradient-text-trust">
+                  Credits
                 </span>
               </h2>
-              <p className="text-slate-600 text-lg mb-10 max-w-md font-mono">
-                Ekha uses a straightforward coin-based wallet system designed
+              <p className="text-slate-500 text-lg mb-10 max-w-md leading-relaxed">
+                Ekha uses a straightforward coin-based wallet designed
                 for trust. You only pay for what you learn.
               </p>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none rounded-none cursor-pointer bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] px-8 py-3 text-sm"
+                className="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 focus:outline-none rounded-xl cursor-pointer gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 px-8 py-3 text-sm"
               >
-                <span>{isExpanded ? "Show Less" : "Know More"}</span>
+                <span>{isExpanded ? "Show Less" : "Learn More"}</span>
                 <ChevronDown
                   className={`w-5 h-5 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
                 />
@@ -101,17 +124,50 @@ export function WalletSystem() {
             preload="none"
           />
           <div className="lg:w-1/2 w-full z-10">
-            {/* Mobile Credits List (dark editorial) */}
+            {/* Streak & Badge Bar (Desktop) */}
+            <div className="hidden md:flex items-center justify-between bg-gradient-to-r from-[var(--color-violet-light)] to-[var(--color-peach-light)] rounded-2xl p-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-peach)] flex items-center justify-center animate-streak-glow">
+                  <Flame className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-[var(--color-foreground)]">7-Day Streak!</div>
+                  <div className="text-xs text-slate-500">Keep learning to earn bonus coins</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-[var(--color-violet)] flex items-center justify-center">
+                  <Trophy className="w-4 h-4 text-white" />
+                </div>
+                <div className="w-8 h-8 rounded-full bg-[var(--color-trust-blue)] flex items-center justify-center">
+                  <Star className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-xs text-slate-500 font-medium ml-1">+3 badges</span>
+              </div>
+            </div>
+
+            {/* Mobile Credits List */}
             <div className="md:hidden space-y-0">
+              {/* Mobile Streak Bar */}
+              <div className="flex items-center gap-3 border-t border-white/10 py-5">
+                <div className="w-8 h-8 rounded-full bg-[var(--color-peach)] flex items-center justify-center animate-streak-glow">
+                  <Flame className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-white">7-Day Streak!</div>
+                  <div className="text-xs text-white/50">Keep going to earn bonus coins</div>
+                </div>
+              </div>
+
               {items.map((item, i) => (
                 <div key={i} className="border-t border-white/10 pt-5 pb-5">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-xs text-white/40">
+                    <span className="text-xs text-white/40">
                       0{i + 1}
                     </span>
-                    <div className="text-white/30">{item.icon}</div>
+                    <span className="text-lg">{item.emoji}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-1">
+                  <h3 className="text-xl font-bold text-white tracking-tight mb-1">
                     {item.title}
                   </h3>
                   <p className="text-sm text-white/60 leading-relaxed">
@@ -120,49 +176,70 @@ export function WalletSystem() {
                 </div>
               ))}
               <div className="border-t border-white/10 pt-8">
-                <button 
+                <button
                   onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-white text-black px-8 py-4 font-mono text-[11px] uppercase tracking-widest hover:bg-white/80 transition-colors"
+                  className="gradient-trust text-white px-8 py-4 text-sm font-semibold rounded-xl hover:shadow-lg transition-all"
                 >
                   Inquire Now
                 </button>
               </div>
             </div>
 
-            {/* Desktop Cards (unchanged) */}
+            {/* Desktop Cards */}
             <div className="hidden md:grid grid-cols-1 gap-4">
               {items.map((item, i) => (
                 <div
                   key={i}
-                  className="bg-slate-50 border border-slate-200 p-6 group hover:border-neon-purple transition-colors"
+                  className="bg-white border border-slate-200 p-6 rounded-2xl group hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 transition-all duration-300 relative overflow-hidden"
+                  onMouseEnter={() => handleItemHover(i)}
                 >
+                  {/* Confetti particles on hover */}
+                  {celebratingIndex === i && (
+                    <div className="absolute inset-0 pointer-events-none z-20">
+                      {[...Array(6)].map((_, j) => (
+                        <div
+                          key={j}
+                          className="absolute w-2 h-2 rounded-full"
+                          style={{
+                            backgroundColor: ['var(--color-violet)', 'var(--color-peach)', 'var(--color-trust-blue)', '#FFD700', '#FF69B4', '#00CED1'][j],
+                            left: `${20 + j * 12}%`,
+                            top: '30%',
+                            animation: `confetti-fall 0.8s ease-out ${j * 0.05}s forwards`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 bg-white border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-neon-purple group-hover:border-neon-purple transition-colors">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: item.color }}
+                      >
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-foreground uppercase mb-1">
+                        <h3 className="text-xl font-semibold text-[var(--color-foreground)] mb-1">
                           {item.title}
                         </h3>
-                        <p className="text-slate-600 text-sm font-mono">
+                        <p className="text-slate-500 text-sm">
                           {item.desc}
                         </p>
                       </div>
                     </div>
                     <div className="hidden md:block text-right">
-                      <div className="text-neon-purple font-mono font-medium">
+                      <div className="font-bold text-lg" style={{ color: item.color }}>
                         {item.value}
                       </div>
                     </div>
                   </div>
 
-                  {/* Inline Expansion per item */}
                   <div
                     className={`grid transition-all duration-500 ease-out ${isExpanded ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="text-slate-500 text-sm border-t border-slate-200 pt-4 pl-18">
+                      <p className="text-slate-500 text-sm border-t border-slate-100 pt-4 pl-18 leading-relaxed">
                         {item.detail}
                       </p>
                     </div>
@@ -174,17 +251,20 @@ export function WalletSystem() {
         </div>
       </div>
 
-      <div className="mt-20 border-y border-white/10 md:border-slate-200 py-4 bg-white/5 md:bg-slate-50 overflow-hidden">
+      {/* Marquee */}
+      <div className="mt-20 border-y border-white/10 md:border-slate-100 py-4 bg-white/5 md:bg-slate-50 overflow-hidden">
         <div className="flex gap-12 whitespace-nowrap animate-[marquee_20s_linear_infinite]">
           {[...Array(10)].map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 text-white/40 md:text-slate-500 font-mono text-sm uppercase"
+              className="flex items-center gap-4 text-white/40 md:text-slate-400 text-sm"
             >
-              <span>{"/// TRUSTED TRANSACTIONS"}</span>
-              <span className="text-blue-400 md:text-neon-purple">★</span>
-              <span>NO HIDDEN FEES</span>
-              <span className="text-blue-400 md:text-neon-purple">★</span>
+              <span>✨ Simple</span>
+              <span className="text-[var(--color-peach)]">·</span>
+              <span>Fair</span>
+              <span className="text-[var(--color-violet)]">·</span>
+              <span>Transparent</span>
+              <span className="text-[var(--color-trust-blue)]">·</span>
             </div>
           ))}
         </div>

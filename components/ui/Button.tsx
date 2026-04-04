@@ -20,46 +20,25 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const [isVibrating, setIsVibrating] = React.useState(false);
-  const hoverTimer = React.useRef<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    props.onMouseEnter?.(e);
-    hoverTimer.current = setTimeout(() => {
-      setIsVibrating(true);
-    }, 1000);
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    props.onMouseLeave?.(e);
-    if (hoverTimer.current) {
-      clearTimeout(hoverTimer.current);
-      hoverTimer.current = null;
-    }
-    setIsVibrating(false);
-  };
-
   const baseStyles =
-    "inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-500 ease-out focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-none cursor-pointer";
+    "inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-violet/30 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl cursor-pointer";
   const variants = {
     primary:
-      "bg-transparent from-black to-slate-500 bg-linear-to-b border-black text-white hover:bg-none hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(0,0,0,0.2)]",
+      "gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 active:translate-y-0",
     secondary:
-      "bg-transparent border border-slate-300  text-slate-700 hover:border-neon-purple hover:text-neon-purple hover:shadow-[0_0_10px_rgba(168,85,247,0.3)]",
-    ghost: "bg-transparent text-slate-600 hover:text-black hover:bg-slate-100",
-    white: "bg-white text-black hover:bg-slate-200",
+      "bg-transparent border-2 border-[var(--color-violet)] text-[var(--color-violet)] hover:bg-[var(--color-violet-light)] hover:shadow-md",
+    ghost: "bg-transparent text-[var(--color-foreground)] hover:bg-[var(--color-cream-dark)] rounded-lg",
+    white: "bg-white text-[var(--color-foreground)] hover:bg-[var(--color-cream-dark)] shadow-sm hover:shadow-md",
   };
   const sizes = {
     sm: "px-4 py-2 text-sm",
-    md: "px-8 py-3 text-sm",
-    lg: "px-10 py-4 text-sm",
+    md: "px-6 py-3 text-sm",
+    lg: "px-8 py-4 text-base",
   };
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${isVibrating ? "animate-vibrate" : ""} ${className}`}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={disabled || isLoading}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       {...props}
     >
       {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}

@@ -1,7 +1,7 @@
 import React from 'react';
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  variant?: 'default' | 'hover' | 'glass' | 'neon';
+  variant?: 'default' | 'hover' | 'glass' | 'accent';
 }
 export function Card({
   children,
@@ -10,26 +10,19 @@ export function Card({
   ...props
 }: CardProps) {
   const baseStyles =
-  'rounded-none transition-all duration-300 relative overflow-hidden';
+    'rounded-2xl transition-all duration-300 relative overflow-hidden';
   const variants = {
-    default: 'bg-black border border-slate-800',
+    default: 'bg-white border border-slate-200 shadow-sm',
     hover:
-    'bg-black border border-slate-800 hover:border-neon-purple hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] group',
-    glass: 'bg-black/50 backdrop-blur-md border border-slate-800',
-    neon: 'bg-black border border-neon-purple shadow-[0_0_10px_rgba(168,85,247,0.2)]'
+      'bg-white border border-slate-200 shadow-sm hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 group',
+    glass: 'bg-white/60 backdrop-blur-md border border-white/50 shadow-sm',
+    accent: 'bg-white border-2 border-[var(--color-violet)] shadow-md shadow-violet/10'
   };
   return (
     <div
       className={`${baseStyles} ${variants[variant]} ${className}`}
       {...props}>
-
-      {/* Corner accents for tech feel */}
-      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-current opacity-50 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-current opacity-50 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-current opacity-50 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-current opacity-50 pointer-events-none" />
-
       {children}
-    </div>);
-
+    </div>
+  );
 }
