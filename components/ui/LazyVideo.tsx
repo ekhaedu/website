@@ -44,12 +44,17 @@ export function LazyVideo({ src, poster, className, ...props }: LazyVideoProps) 
       ref={videoRef}
       src={hasIntersected ? src : undefined}
       poster={poster}
-      className={className}
       preload="none"
+      {...props}
+      className={`${className || ""} select-none`}
+      controls={false}
       muted
       loop
       playsInline
-      {...props}
+      tabIndex={-1}
+      disablePictureInPicture
+      disableRemotePlayback
+      style={{ ...((props.style as React.CSSProperties) || {}), WebkitUserSelect: "none", userSelect: "none" }}
     />
   );
 }
