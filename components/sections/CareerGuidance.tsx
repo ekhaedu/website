@@ -11,27 +11,10 @@ export function CareerGuidance() {
   };
 
   return (
-    <section className="py-24 bg-[var(--color-navy)] md:bg-white">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        {/* Mobile Header */}
-        <div className="md:hidden text-left mb-12 relative z-10">
-          <span className="text-sm tracking-wide text-[var(--color-trust-blue-light)] mb-4 block font-medium">
-            Career Guidance
-          </span>
-          <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
-            Tech Assists. Humans{" "}
-            <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
-              Guide.
-            </span>
-          </h2>
-          <p className="text-sm text-white/60 leading-relaxed max-w-sm">
-            AI identifies your child&apos;s strengths. A real expert calls you
-            to explain the roadmap. Included free.
-          </p>
-        </div>
-
-        {/* Desktop Header */}
-        <div className="hidden md:block text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-4">
             Technology Assists.{" "}
             <span className="gradient-text-trust">
@@ -48,79 +31,8 @@ export function CareerGuidance() {
           </p>
         </div>
 
-        {/* Mobile Cards */}
-        <div className="md:hidden space-y-0 relative z-10">
-          {/* AI Analysis */}
-          <div className="border-t border-white/10 py-6">
-            <div className="flex items-start gap-5">
-              <div className="w-10 h-10 rounded-xl gradient-engage flex items-center justify-center text-white shrink-0">
-                <Bot className="w-5 h-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Step 1: AI Chat
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-3">
-                  Your child chats with our AI to explore their interests. It
-                  creates a summary of their passions and strengths.
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Finds what they're truly passionate about",
-                    "Highlights their natural strengths",
-                    "Creates a detailed profile for expert review",
-                  ].map((point, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 bg-[var(--color-peach)] rounded-full mt-1.5 shrink-0" />
-                      <span className="text-white/50 text-sm">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Human Expert */}
-          <div className="border-t border-white/10 py-6">
-            <div className="flex items-start gap-5">
-              <div className="w-10 h-10 rounded-xl bg-[var(--color-trust-blue)] flex items-center justify-center text-white flex-shrink-0">
-                <UserCheck className="w-5 h-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Step 2: Expert Call
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-3">
-                  A career specialist reviews the AI report, then calls you
-                  directly to explain the guidance clearly.
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Professional validation of AI findings",
-                    "Direct call with you to explain the roadmap",
-                    "Clear next steps for your child's journey",
-                  ].map((point, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 bg-[var(--color-trust-blue-light)] rounded-full mt-1.5 shrink-0" />
-                      <span className="text-white/50 text-sm">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8">
-            <button
-              onClick={() => document.getElementById('parent-loop')?.scrollIntoView({ behavior: 'smooth' })}
-              className="gradient-trust text-white px-8 py-4 text-sm font-semibold rounded-xl hover:shadow-lg transition-all"
-            >
-              See Parent Updates →
-            </button>
-          </div>
-        </div>
-
-        {/* Desktop Cards */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
           {/* AI Analysis Card */}
           <div className="relative group">
             <div className="relative p-8 h-full border border-slate-200 rounded-2xl bg-white hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 transition-all duration-300">

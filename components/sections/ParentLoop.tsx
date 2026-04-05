@@ -8,12 +8,12 @@ export function ParentLoop() {
   const [showDetails, setShowDetails] = React.useState(false);
 
   return (
-    <section id="parent-loop" className="py-24 bg-[var(--color-navy)] md:bg-white overflow-hidden">
+    <section id="parent-loop" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 relative w-screen">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* WhatsApp Mockup */}
           <div className="flex-1 w-full max-w-sm mx-auto lg:mx-0 order-2 lg:order-1">
-            <div className="bg-[#0b141a] rounded-3xl md:border md:border-slate-200 border border-white/10 overflow-hidden shadow-2xl">
+            <div className="bg-[#0b141a] rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
               <div className="bg-[#202c33] p-4 flex items-center gap-3 border-b border-slate-800">
                 <div className="w-10 h-10 rounded-full gradient-trust flex items-center justify-center text-white font-bold">
                   E
@@ -27,7 +27,6 @@ export function ParentLoop() {
               </div>
 
               <div className="relative p-4 space-y-4 min-h-[300px] z-0 overflow-hidden bg-[#0b141a]">
-                {/* WhatsApp Wallpaper Overlay */}
                 <div
                   className="absolute inset-0 -z-10 opacity-[0.07] invert"
                   style={{
@@ -59,7 +58,6 @@ export function ParentLoop() {
                     ⏰ <strong className="text-white">Next class:</strong> Tomorrow, 4:30 PM
                   </p>
 
-                  {/* Expandable raw data */}
                   <button
                     onClick={() => setShowDetails(!showDetails)}
                     className="flex items-center gap-1.5 text-[var(--color-violet-light)] text-xs font-medium hover:text-white transition-colors cursor-pointer"
@@ -95,105 +93,64 @@ export function ParentLoop() {
 
           {/* Text Content */}
           <div className="flex-1 order-1 z-10 lg:order-2">
-            {/* Mobile Text */}
-            <div className="md:hidden relative z-10">
-              <span className="text-sm tracking-wide text-[var(--color-trust-blue-light)] mb-4 block font-medium">
-                For Parents
-              </span>
-              <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                Witness Their{" "}
-                <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
-                  Potential Unfold
-                </span>
-              </h2>
-              <p className="text-white/60 text-sm mb-8 leading-relaxed">
-                No more guessing. Get friendly, AI-powered session summaries that tell you exactly how your child is doing — not just raw data.
-              </p>
-
-              <div className="space-y-0">
-                {[
-                  {
-                    title: "AI-powered summaries",
-                    desc: "Easy-to-read session recaps, not confusing metrics",
-                  },
-                  {
-                    title: "Honest progress tracking",
-                    desc: "Know strengths and areas that need work",
-                  },
-                  {
-                    title: "Homework & next steps",
-                    desc: "Clear action items after every class",
-                  },
-                  {
-                    title: "\"Show me why\" transparency",
-                    desc: "Tap to see the raw data behind every summary",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="border-t border-white/10 py-4 flex items-start gap-4"
-                  >
-                    <span className="text-xs text-white/30 mt-0.5">
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <h4 className="text-white font-medium text-sm">
-                        {item.title}
-                      </h4>
-                      <p className="text-white/50 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-                <div className="border-t border-white/10" />
-              </div>
+            <div className="inline-flex items-center gap-2 bg-[var(--color-trust-blue-light)] text-[var(--color-trust-blue)] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              <MessageCircle className="w-4 h-4" />
+              AI-Powered Updates
             </div>
-
-            {/* Desktop Text */}
-            <div className="hidden md:block">
-              <div className="inline-flex items-center gap-2 bg-[var(--color-trust-blue-light)] text-[var(--color-trust-blue)] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-                <MessageCircle className="w-4 h-4" />
-                AI-Powered Updates
-              </div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-6">
+            <div className="relative">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-4 md:mb-6 pr-24 lg:pr-0">
                 Witness Their{" "}
                 <span className="gradient-text-trust">
                   Potential Unfold
                 </span>
               </h2>
-              <p className="text-slate-500 xl:w-1/2 text-lg mb-8 leading-relaxed">
-                No more raw metrics to decipher. Our AI translates every session into a clear, friendly summary — so you always know how your child is doing.
-              </p>
-
-              <div className="space-y-5">
-                {[
-                  {
-                    title: "AI-powered summaries",
-                    desc: "Easy-to-read session recaps, not confusing metrics",
-                  },
-                  {
-                    title: "Honest progress tracking",
-                    desc: "Know strengths and areas that need work",
-                  },
-                  {
-                    title: "Homework & next steps",
-                    desc: "Clear action items after every class",
-                  },
-                  {
-                    title: "\"Show me why\" transparency",
-                    desc: "Tap to see the raw data behind every summary",
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: "var(--color-trust-blue)" }} />
-                    <div>
-                      <h4 className="text-[var(--color-foreground)] font-medium">
-                        {item.title}
-                      </h4>
-                      <p className="text-slate-500 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="absolute -right-2 -bottom-4 w-28 h-28 lg:hidden">
+                <LazyVideo
+                  src="/mascot/mobile.mp4"
+                  poster="/mascot/mobile.png"
+                  height={250}
+                  width={150}
+                  className="w-full h-full object-contain pointer-events-none select-none"
+                  autoPlay
+                  loop
+                  muted
+                  preload="none"
+                />
               </div>
+            </div>
+            <p className="text-slate-500 xl:w-1/2 text-base md:text-lg mb-6 leading-relaxed">
+              No more raw metrics to decipher. Our AI translates every session into a clear, friendly summary — so you always know how your child is doing.
+            </p>
+
+            <div className="space-y-5">
+              {[
+                {
+                  title: "AI-powered summaries",
+                  desc: "Easy-to-read session recaps, not confusing metrics",
+                },
+                {
+                  title: "Honest progress tracking",
+                  desc: "Know strengths and areas that need work",
+                },
+                {
+                  title: "Homework & next steps",
+                  desc: "Clear action items after every class",
+                },
+                {
+                  title: "\"Show me why\" transparency",
+                  desc: "Tap to see the raw data behind every summary",
+                },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: "var(--color-trust-blue)" }} />
+                  <div>
+                    <h4 className="text-[var(--color-foreground)] font-medium">
+                      {item.title}
+                    </h4>
+                    <p className="text-slate-500 text-sm">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           <LazyVideo
@@ -201,7 +158,7 @@ export function ParentLoop() {
             poster="/mascot/mobile.png"
             height={1200}
             width={700}
-            className="hidden xl:block -right-32 h-full absolute z-1 object-contain pointer-events-none select-none"
+            className="hidden lg:block -right-32 h-full absolute z-1 object-contain pointer-events-none select-none"
             autoPlay
             loop
             muted

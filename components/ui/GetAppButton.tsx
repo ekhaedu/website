@@ -36,7 +36,7 @@ export function GetAppButton({
           onClick={() => setIsOpen(true)}
           className={
             className ||
-            "gradient-trust text-white px-6 py-2.5 text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 transition-all duration-300"
+            "bg-white text-black px-6 py-2.5 text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 transition-all duration-300"
           }
         >
           {children || "Get the App"}
@@ -64,8 +64,8 @@ export function GetAppButton({
               <Sparkles className="w-5 h-5 text-[var(--color-peach)]" />
             </div>
             <p className="text-[var(--color-slate-warm)] max-w-sm mx-auto leading-relaxed text-base">
-              The Ekha app is in its final stages. Available soon on
-              iOS & Android.
+              The Ekha app is in its final stages. Available soon on iOS &
+              Android.
             </p>
           </div>
           <button

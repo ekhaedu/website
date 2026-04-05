@@ -60,49 +60,42 @@ export function FeaturesGrid() {
   ];
 
   return (
-    <section className="py-32 bg-[var(--color-navy)] md:bg-white md:border-t md:border-slate-100">
+    <section className="py-32 bg-white border-t border-slate-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-20">
           {/* Title Area */}
           <div className="lg:w-1/3">
-            {/* Mobile Title */}
-            <div className="md:hidden mb-8 relative z-10">
-              <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
+            <div className="mb-8 md:mb-0">
+              <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
                 Included Features
               </span>
-              <h2 className="text-5xl font-bold text-white leading-tight">
-                What You{"\u00A0"}
-                <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
-                  Get
+              <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none md:sticky md:top-32">
+                What
+                <br className="hidden md:block" />
+                {" "}
+                <span className="gradient-text-trust">
+                  You Get
                 </span>
               </h2>
             </div>
-            {/* Desktop Title */}
-            <h2 className="hidden md:block text-4xl md:text-6xl font-bold text-[var(--color-foreground)] leading-none sticky top-32">
-              What
-              <br />
-              <span className="gradient-text-trust">
-                You Get
-              </span>
-            </h2>
           </div>
 
           <div className="lg:w-2/3">
             {/* Mobile Accordion */}
-            <div className="md:hidden space-y-0 border-t border-white/10 relative z-10">
+            <div className="md:hidden space-y-0 border-t border-slate-200 relative z-10">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="border-b border-white/10 py-6 cursor-pointer"
+                  className="border-b border-slate-200 py-6 cursor-pointer"
                   onClick={() =>
                     setMobileExpanded(mobileExpanded === index ? null : index)
                   }
                 >
                   <div className="flex justify-between items-center">
-                    <h3 className="text-sm font-medium tracking-wide text-white">
+                    <h3 className="text-sm font-medium tracking-wide text-[var(--color-foreground)]">
                       {feature.title}
                     </h3>
-                    <span className="text-xl font-light text-white/60">
+                    <span className="text-xl font-light text-slate-400">
                       {mobileExpanded === index ? "−" : "+"}
                     </span>
                   </div>
@@ -113,7 +106,7 @@ export function FeaturesGrid() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-sm text-white/60 leading-relaxed">
+                    <p className="text-sm text-slate-500 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

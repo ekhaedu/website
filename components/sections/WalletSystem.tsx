@@ -1,12 +1,23 @@
 "use client";
 
 import React from "react";
-import { Coins, Shield, ArrowDownLeft, ChevronDown, Flame, Trophy, Star, Sparkles } from "lucide-react";
+import {
+  Coins,
+  Shield,
+  ArrowDownLeft,
+  ChevronDown,
+  Flame,
+  Trophy,
+  Star,
+  Sparkles,
+} from "lucide-react";
 import { LazyVideo } from "../ui/LazyVideo";
 
 export function WalletSystem() {
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const [celebratingIndex, setCelebratingIndex] = React.useState<number | null>(null);
+  const [celebratingIndex, setCelebratingIndex] = React.useState<number | null>(
+    null,
+  );
 
   const items = [
     {
@@ -47,63 +58,42 @@ export function WalletSystem() {
   };
 
   return (
-    <section className="py-32 bg-[var(--color-navy)] md:bg-white overflow-hidden md:border-t md:border-slate-100">
+    <section className="py-32 bg-white overflow-hidden border-t border-slate-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-col relative lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2 z-10">
-            {/* Mobile Title */}
-            <div className="md:hidden mb-8">
-              <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
-                Your Learning Wallet
-              </span>
-              <h2 className="text-5xl font-bold leading-tight text-white mb-6">
-                Transparent
-                <br />
-                <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
-                  Credits
-                </span>
-              </h2>
-              <p className="text-sm text-white/60 leading-relaxed max-w-sm mb-6">
-                1 coin = 1 rupee. Pay only for completed classes. No hidden
-                fees, no lock-ins.
-              </p>
-
-              {/* Mobile Mascot */}
-              <div className="flex justify-center">
-                <LazyVideo
-                  src="/mascot/coins.mp4"
-                  poster="/mascot/coins.png"
-                  height={400}
-                  width={250}
-                  className="w-52 h-auto object-contain pointer-events-none select-none"
-                  autoPlay
-                  loop
-                  muted
-                  preload="none"
-                />
-              </div>
-            </div>
-
-            {/* Desktop Title */}
-            <div className="hidden md:block">
+            <div className="mb-8">
               <div className="inline-flex items-center gap-2 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-4 py-1.5 rounded-full text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
                 Your Learning Wallet
               </div>
-              <h2 className="text-4xl md:text-7xl font-bold text-[var(--color-foreground)] leading-none mb-8">
-                Transparent
-                <br />
-                <span className="gradient-text-trust">
-                  Credits
-                </span>
-              </h2>
-              <p className="text-slate-500 text-lg mb-10 max-w-md leading-relaxed">
-                Ekha uses a straightforward coin-based wallet designed
-                for trust. You only pay for what you learn.
+              <div className="relative">
+                <h2 className="text-4xl md:text-7xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none mb-4 md:mb-8 pr-28 md:pr-0">
+                  Transparent <br />
+                  <span className="gradient-text-trust">Credits</span>
+                </h2>
+                <div className="absolute -right-4 -bottom-4 w-32 h-32 md:hidden">
+                  <LazyVideo
+                    src="/mascot/coins.mp4"
+                    poster="/mascot/coins.png"
+                    height={300}
+                    width={200}
+                    className="w-full h-full object-contain pointer-events-none select-none"
+                    autoPlay
+                    loop
+                    muted
+                    preload="none"
+                  />
+                </div>
+              </div>
+              <p className="text-slate-500 text-sm md:text-lg mb-6 md:mb-10 max-w-md leading-relaxed">
+                1 coin = 1 rupee. Pay only for completed classes. No hidden
+                fees, no lock-ins.
               </p>
+
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 focus:outline-none rounded-xl cursor-pointer gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 px-8 py-3 text-sm"
+                className="hidden md:inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 focus:outline-none rounded-xl cursor-pointer gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 px-8 py-3 text-sm"
               >
                 <span>{isExpanded ? "Show Less" : "Learn More"}</span>
                 <ChevronDown
@@ -117,22 +107,26 @@ export function WalletSystem() {
             poster="/mascot/coins.png"
             height={1800}
             width={700}
-            className="hidden xl:block -bottom-14 h-full absolute z-1 left-[15%] object-contain pointer-events-none select-none"
+            className="hidden lg:block -bottom-14 h-full absolute z-5 left-[18%] object-contain pointer-events-none select-none"
             autoPlay
             loop
             muted
             preload="none"
           />
           <div className="lg:w-1/2 w-full z-10">
-            {/* Streak & Badge Bar (Desktop) */}
-            <div className="hidden md:flex items-center justify-between bg-gradient-to-r from-[var(--color-violet-light)] to-[var(--color-peach-light)] rounded-2xl p-4 mb-6">
+            {/* Streak & Badge Bar */}
+            <div className="flex items-center justify-between bg-gradient-to-r from-[var(--color-violet-light)] to-[var(--color-peach-light)] rounded-2xl p-4 mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[var(--color-peach)] flex items-center justify-center animate-streak-glow">
                   <Flame className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[var(--color-foreground)]">7-Day Streak!</div>
-                  <div className="text-xs text-slate-500">Keep learning to earn bonus coins</div>
+                  <div className="text-sm font-semibold text-[var(--color-foreground)]">
+                    7-Day Streak!
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Keep learning to earn bonus coins
+                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -142,51 +136,14 @@ export function WalletSystem() {
                 <div className="w-8 h-8 rounded-full bg-[var(--color-trust-blue)] flex items-center justify-center">
                   <Star className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-xs text-slate-500 font-medium ml-1">+3 badges</span>
+                <span className="text-xs text-slate-500 font-medium ml-1 hidden sm:inline">
+                  +3 badges
+                </span>
               </div>
             </div>
 
-            {/* Mobile Credits List */}
-            <div className="md:hidden space-y-0">
-              {/* Mobile Streak Bar */}
-              <div className="flex items-center gap-3 border-t border-white/10 py-5">
-                <div className="w-8 h-8 rounded-full bg-[var(--color-peach)] flex items-center justify-center animate-streak-glow">
-                  <Flame className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">7-Day Streak!</div>
-                  <div className="text-xs text-white/50">Keep going to earn bonus coins</div>
-                </div>
-              </div>
-
-              {items.map((item, i) => (
-                <div key={i} className="border-t border-white/10 pt-5 pb-5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-white/40">
-                      0{i + 1}
-                    </span>
-                    <span className="text-lg">{item.emoji}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white tracking-tight mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-white/60 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-              <div className="border-t border-white/10 pt-8">
-                <button
-                  onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="gradient-trust text-white px-8 py-4 text-sm font-semibold rounded-xl hover:shadow-lg transition-all"
-                >
-                  Inquire Now
-                </button>
-              </div>
-            </div>
-
-            {/* Desktop Cards */}
-            <div className="hidden md:grid grid-cols-1 gap-4">
+            {/* Credits Cards */}
+            <div className="grid grid-cols-1 gap-4">
               {items.map((item, i) => (
                 <div
                   key={i}
@@ -201,9 +158,16 @@ export function WalletSystem() {
                           key={j}
                           className="absolute w-2 h-2 rounded-full"
                           style={{
-                            backgroundColor: ['var(--color-violet)', 'var(--color-peach)', 'var(--color-trust-blue)', '#FFD700', '#FF69B4', '#00CED1'][j],
+                            backgroundColor: [
+                              "var(--color-violet)",
+                              "var(--color-peach)",
+                              "var(--color-trust-blue)",
+                              "#FFD700",
+                              "#FF69B4",
+                              "#00CED1",
+                            ][j],
                             left: `${20 + j * 12}%`,
-                            top: '30%',
+                            top: "30%",
                             animation: `confetti-fall 0.8s ease-out ${j * 0.05}s forwards`,
                           }}
                         />
@@ -223,13 +187,14 @@ export function WalletSystem() {
                         <h3 className="text-xl font-semibold text-[var(--color-foreground)] mb-1">
                           {item.title}
                         </h3>
-                        <p className="text-slate-500 text-sm">
-                          {item.desc}
-                        </p>
+                        <p className="text-slate-500 text-sm">{item.desc}</p>
                       </div>
                     </div>
-                    <div className="hidden md:block text-right">
-                      <div className="font-bold text-lg" style={{ color: item.color }}>
+                    <div className="hidden sm:block text-right">
+                      <div
+                        className="font-bold text-lg"
+                        style={{ color: item.color }}
+                      >
                         {item.value}
                       </div>
                     </div>
@@ -252,12 +217,12 @@ export function WalletSystem() {
       </div>
 
       {/* Marquee */}
-      <div className="mt-20 border-y border-white/10 md:border-slate-100 py-4 bg-white/5 md:bg-slate-50 overflow-hidden">
+      <div className="mt-20 border-y border-slate-100 py-4 bg-slate-50 overflow-hidden">
         <div className="flex gap-12 whitespace-nowrap animate-[marquee_20s_linear_infinite]">
           {[...Array(10)].map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 text-white/40 md:text-slate-400 text-sm"
+              className="flex items-center gap-4 text-slate-400 text-sm"
             >
               <span>✨ Simple</span>
               <span className="text-[var(--color-peach)]">·</span>

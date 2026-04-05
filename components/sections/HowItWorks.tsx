@@ -59,32 +59,30 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-32 bg-[var(--color-navy)] md:bg-white relative md:border-t md:border-slate-100">
+    <section className="py-32 bg-white relative border-t border-slate-100">
       <div className="container mx-auto px-4">
         {/* Mobile Header */}
-        <div className="md:hidden mb-8 relative z-10">
-          <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
+        <div className="md:hidden mb-8 relative z-10 overflow-visible">
+          <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
             Benefits for the Child
           </span>
-          <h2 className="text-5xl font-bold text-white leading-tight">
-            The Ekha
-            <br />
-            <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>Advantage</span>
-          </h2>
-
-          {/* Mobile Mascot */}
-          <div className="flex justify-center mt-6">
-            <LazyVideo
-              src="/mascot/advantages.mp4"
-              poster="/mascot/advantages.png"
-              height={400}
-              width={250}
-              className="w-48 h-auto object-contain pointer-events-none select-none"
-              autoPlay
-              loop
-              muted
-              preload="none"
-            />
+          <div className="relative">
+            <h2 className="text-4xl font-bold text-[var(--color-foreground)] leading-tight pr-28">
+              The Ekha <span className="gradient-text-trust">Advantage</span>
+            </h2>
+            <div className="absolute -right-4 -bottom-6 w-36 h-36">
+              <LazyVideo
+                src="/mascot/advantages.mp4"
+                poster="/mascot/advantages.png"
+                height={300}
+                width={200}
+                className="w-full h-full object-contain pointer-events-none select-none"
+                autoPlay
+                loop
+                muted
+                preload="none"
+              />
+            </div>
           </div>
         </div>
 
@@ -111,7 +109,6 @@ export function HowItWorks() {
             muted
             preload="none"
           />
-          {/* CSS-only decorative text — not in DOM text stream */}
           <p className="text-slate-400 max-w-md text-right text-sm mt-8 md:mt-0 decorative-slashes" aria-hidden="true">
             Built for Focus
             <br />
@@ -122,36 +119,31 @@ export function HowItWorks() {
 
         {/* Mobile Layout */}
         <div className="md:hidden space-y-0 relative z-10">
-          <div className="absolute inset-0 pointer-events-none -z-10" style={{
-            backgroundImage: 'linear-gradient(to right, rgba(112,111,211,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(112,111,211,0.05) 1px, transparent 1px)',
-            backgroundSize: '40px 40px'
-          }} />
-
           {steps.map((step, index) => (
             <div
               key={index}
-              className="border-t border-white/10 py-6"
+              className="border-t border-slate-200 py-6"
             >
               <div className="flex items-start gap-5">
-                <span className="text-xs text-white/40 mt-1">
+                <span className="text-xs text-slate-400 mt-1">
                   {step.stat}
                 </span>
                 <div className="flex-1">
-                  <div className="text-[var(--color-peach)] mb-2">
+                  <div className="text-[var(--color-violet)] mb-2">
                     {step.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white leading-tight mb-3">
+                  <h3 className="text-lg font-bold text-[var(--color-foreground)] leading-tight mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-white/60 leading-relaxed mb-4">
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
                     {step.description}
                   </p>
 
                   <ul className="space-y-2 mt-3">
                     {step.details.points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 bg-[var(--color-peach)] rounded-full mt-1.5 shrink-0" />
-                        <span className="text-white/50 text-sm">
+                        <div className="w-1.5 h-1.5 bg-[var(--color-violet)] rounded-full mt-1.5 shrink-0" />
+                        <span className="text-slate-500 text-sm">
                           {point}
                         </span>
                       </li>
@@ -161,7 +153,7 @@ export function HowItWorks() {
               </div>
             </div>
           ))}
-          <div className="border-t border-white/10" />
+          <div className="border-t border-slate-200" />
         </div>
 
         {/* Desktop Layout */}

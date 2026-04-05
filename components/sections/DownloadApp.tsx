@@ -26,9 +26,9 @@ const GooglePlayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function DownloadApp() {
   return (
-    <section className="relative py-32 bg-[var(--color-navy)] md:bg-white overflow-hidden md:border-y md:border-slate-100">
-      {/* Floating Background Icons (desktop) */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none select-none overflow-hidden">
+    <section className="relative py-32 bg-white overflow-hidden border-y border-slate-100">
+      {/* Floating Background Icons */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <Smartphone className="absolute top-10 left-10 w-16 h-16 text-[var(--color-violet-light)] -rotate-12 opacity-60" />
         <BookOpen className="absolute top-20 left-[15%] w-12 h-12 text-[var(--color-peach-light)] rotate-45 opacity-50" />
         <Tablet className="absolute top-12 right-12 w-20 h-20 text-[var(--color-trust-blue-light)] rotate-12 opacity-60" />
@@ -38,52 +38,12 @@ export default function DownloadApp() {
         <Globe className="absolute bottom-16 right-16 w-16 h-16 text-[var(--color-violet-light)] -rotate-45 opacity-60" />
       </div>
 
-      {/* Mobile grid bg */}
-      <div
-        className="md:hidden absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(112,111,211,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(112,111,211,0.06) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-
       <div className="container mx-auto px-4 relative z-10">
-        {/* Mobile Layout */}
-        <div className="md:hidden text-left">
-          <span className="text-sm tracking-wide text-[var(--color-peach)] mb-4 block font-medium">
+        <div className="text-center">
+          <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
             Coming Soon
           </span>
-          <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
-            Learn Anytime,{" "}
-            <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
-              Anywhere
-            </span>
-          </h2>
-          <p className="text-white/50 text-sm mb-10 leading-relaxed font-light max-w-sm">
-            Your personalized learning plan, live classes, and progress tracking
-            — all in one place.
-          </p>
-
-          <div className="flex flex-col gap-3">
-            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white text-xs font-medium tracking-wide transition-colors hover:bg-white/5 rounded-xl">
-              <AppleIcon className="absolute left-6 w-5 h-5 fill-current" />
-              <span>App Store — Coming Soon</span>
-            </button>
-            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white text-xs font-medium tracking-wide transition-colors hover:bg-white/5 rounded-xl">
-              <GooglePlayIcon className="absolute left-6 w-4 h-4 fill-current" />
-              <span>Google Play — Coming Soon</span>
-            </button>
-            <button className="relative border border-white/20 w-full py-4 flex items-center justify-center text-white text-xs font-medium tracking-wide transition-colors hover:bg-white/5 rounded-xl">
-              <Monitor className="absolute left-6 w-5 h-5 text-current" />
-              <span>Web — Coming Soon</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden md:block text-center">
-          <h2 className="text-3xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-6">
             Learn Anytime,{" "}
             <span className="gradient-text-trust">
               Anywhere

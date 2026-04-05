@@ -5,15 +5,15 @@ import { GetAppButton } from "../ui/GetAppButton";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pb-16 overflow-hidden bg-[var(--color-navy)] md:bg-white">
-      {/* Desktop - soft radial gradient */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none"
+    <section className="relative min-h-screen flex items-center pb-16 overflow-hidden bg-white">
+      {/* Soft radial gradient */}
+      <div className="absolute inset-0 pointer-events-none"
         style={{
           background: "radial-gradient(ellipse at 50% 30%, rgba(112,111,211,0.08) 0%, rgba(255,126,95,0.04) 40%, transparent 70%)"
         }}
       />
-      {/* Desktop grid pattern */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none"
+      {/* Grid pattern */}
+      <div className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: "linear-gradient(rgba(112,111,211,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(112,111,211,0.04) 1px, transparent 1px)",
           backgroundSize: "50px 50px",
@@ -21,33 +21,24 @@ export function Hero() {
           WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 100%)",
         }}
       />
-      {/* Mobile - warm navy grid */}
-      <div
-        className="md:hidden absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(112,111,211,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(112,111,211,0.06) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Mobile Layout */}
         <div className="flex flex-col md:hidden items-center text-center w-full animate-[fadeIn_1s_ease-out_0.5s_both]">
-          <span className="inline-flex items-center gap-2 text-sm tracking-wide text-[var(--color-violet-light)] mb-6 bg-white/10 px-4 py-1.5 rounded-full">
+          <span className="inline-flex items-center gap-2 text-sm tracking-wide text-[var(--color-violet)] mb-6 bg-[var(--color-violet-light)] px-4 py-1.5 rounded-full font-medium">
             <Sparkles className="w-3.5 h-3.5" />
             Education Reimagined
           </span>
 
-          <h1 className="text-5xl font-bold text-white leading-tight mb-6 tracking-tight">
+          <h1 className="text-5xl font-bold text-[var(--color-foreground)] leading-tight mb-6 tracking-tight">
             Master <br />
             Every Subject <br />
-            <span className="gradient-text-violet" style={{ WebkitTextFillColor: "transparent" }}>
+            <span className="gradient-text-trust">
               One-on-One
             </span>
           </h1>
 
-          <p className="text-base font-light leading-relaxed max-w-[320px] text-white/70 mb-10">
+          <p className="text-base font-light leading-relaxed max-w-[320px] text-slate-500 mb-10">
             The only platform with complete transparency. No algorithms. No
             forced matches. Just your child and the perfect teacher.
           </p>
