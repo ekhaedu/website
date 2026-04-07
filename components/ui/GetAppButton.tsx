@@ -36,7 +36,7 @@ export function GetAppButton({
           onClick={() => setIsOpen(true)}
           className={
             className ||
-            "bg-white text-black px-6 py-2.5 text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 transition-all duration-300"
+            "bg-black text-white px-6 py-2.5 text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 transition-all duration-300"
           }
         >
           {children || "Get the App"}
