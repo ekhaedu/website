@@ -67,10 +67,10 @@ export function HowItWorks() {
             Benefits for the Child
           </span>
           <div className="relative">
-            <h2 className="text-4xl font-bold text-[var(--color-foreground)] leading-tight pr-28">
+            <h2 className="text-5xl font-bold text-[var(--color-foreground)] leading-tight pr-28">
               The Ekha <span className="gradient-text-trust">Advantage</span>
             </h2>
-            <div className="absolute -right-4 -bottom-6 w-36 h-36">
+            <div className="absolute -right-4 -bottom-6 w-42 h-42">
               <LazyVideo
                 src="/mascot/advantages.mp4"
                 poster="/mascot/advantages.png"
@@ -109,10 +109,15 @@ export function HowItWorks() {
             muted
             preload="none"
           />
-          <p className="text-slate-400 max-w-md text-right text-sm mt-8 md:mt-0 decorative-slashes" aria-hidden="true">
+          <p
+            className="text-slate-400 max-w-md text-right text-base mt-8 md:mt-0 decorative-slashes"
+            aria-hidden="true"
+          >
             Built for Focus
             <br />
-            <span className="decorative-slashes" aria-hidden="true">Consistent Growth</span>
+            <span className="decorative-slashes" aria-hidden="true">
+              Consistent Growth
+            </span>
           </p>
           <div className="h-px bg-slate-100 w-full absolute bottom-0" />
         </div>
@@ -120,14 +125,9 @@ export function HowItWorks() {
         {/* Mobile Layout */}
         <div className="md:hidden space-y-0 relative z-10">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="border-t border-slate-200 py-6"
-            >
+            <div key={index} className="border-t border-slate-200 py-6">
               <div className="flex items-start gap-5">
-                <span className="text-xs text-slate-400 mt-1">
-                  {step.stat}
-                </span>
+                <span className="text-sm text-black mt-1">{step.stat}</span>
                 <div className="flex-1">
                   <div className="text-[var(--color-violet)] mb-2">
                     {step.icon}
@@ -135,7 +135,7 @@ export function HowItWorks() {
                   <h3 className="text-lg font-bold text-[var(--color-foreground)] leading-tight mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  <p className="text-sm text-black leading-relaxed mb-4">
                     {step.description}
                   </p>
 
@@ -143,9 +143,7 @@ export function HowItWorks() {
                     {step.details.points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 bg-[var(--color-violet)] rounded-full mt-1.5 shrink-0" />
-                        <span className="text-slate-500 text-sm">
-                          {point}
-                        </span>
+                        <span className="text-black text-sm">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -244,7 +242,7 @@ export function HowItWorks() {
                     <h3 className="text-lg md:text-2xl font-semibold text-[var(--color-foreground)] mb-2 md:mb-3 leading-tight">
                       {step.title}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
+                    <p className="text-black text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -264,7 +262,7 @@ export function HowItWorks() {
                       {step.details.points.map((point, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <div className="w-1.5 h-1.5 bg-[var(--color-violet)] rounded-full mt-1.5 md:mt-2 shrink-0" />
-                          <span className="text-slate-500 text-sm">
+                          <span className="text-black text-sm">
                             {point}
                           </span>
                         </li>

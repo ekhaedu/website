@@ -45,17 +45,25 @@ export function ParentLoop() {
                 <div className="bg-[#202c33] rounded-lg rounded-tl-none p-4 max-w-[85%] shadow-sm relative z-10">
                   <div className="flex items-center gap-2 mb-3">
                     <Sparkles className="w-4 h-4 text-[var(--color-peach)]" />
-                    <span className="text-xs font-semibold text-[var(--color-peach)]">AI Session Summary</span>
+                    <span className="text-xs font-semibold text-[var(--color-peach)]">
+                      AI Session Summary
+                    </span>
                   </div>
 
                   <p className="text-slate-200 text-sm leading-relaxed mb-3">
-                    Rohan had a great math session today! 🎉 He mastered polynomial basics and scored <strong className="text-white">8/10</strong> on practice questions. He&apos;s ready to move to factorization next.
+                    Rohan had a great math session today! 🎉 He mastered
+                    polynomial basics and scored{" "}
+                    <strong className="text-white">8/10</strong> on practice
+                    questions. He&apos;s ready to move to factorization next.
                   </p>
 
                   <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                    📝 <strong className="text-white">Homework:</strong> Exercise 4.2 (Q1-5)
-                    <br />
-                    ⏰ <strong className="text-white">Next class:</strong> Tomorrow, 4:30 PM
+                    📝 <strong className="text-white">Homework:</strong>{" "}
+                    Exercise 4.2 (Q1-5)
+                    <br />⏰ <strong className="text-white">
+                      Next class:
+                    </strong>{" "}
+                    Tomorrow, 4:30 PM
                   </p>
 
                   <button
@@ -63,22 +71,39 @@ export function ParentLoop() {
                     className="flex items-center gap-1.5 text-[var(--color-violet-light)] text-xs font-medium hover:text-white transition-colors cursor-pointer"
                   >
                     <span>Show me the details</span>
-                    <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${showDetails ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`w-3 h-3 transition-transform duration-300 ${showDetails ? "rotate-180" : ""}`}
+                    />
                   </button>
 
-                  <div className={`overflow-hidden transition-all duration-400 ${showDetails ? "max-h-60 opacity-100 mt-3" : "max-h-0 opacity-0"}`}>
+                  <div
+                    className={`overflow-hidden transition-all duration-400 ${showDetails ? "max-h-60 opacity-100 mt-3" : "max-h-0 opacity-0"}`}
+                  >
                     <div className="space-y-2 border-t border-white/10 pt-3">
                       <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-green-500">
-                        <div className="text-[10px] text-green-400 font-bold mb-0.5">Engagement</div>
-                        <div className="text-slate-300 text-xs">Very active, answered most questions correctly</div>
+                        <div className="text-[10px] text-green-400 font-bold mb-0.5">
+                          Engagement
+                        </div>
+                        <div className="text-slate-300 text-xs">
+                          Very active, answered most questions correctly
+                        </div>
                       </div>
                       <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-blue-500">
-                        <div className="text-[10px] text-blue-400 font-bold mb-0.5">Progress</div>
-                        <div className="text-slate-300 text-xs">Mastered standard identities, needs factorization practice</div>
+                        <div className="text-[10px] text-blue-400 font-bold mb-0.5">
+                          Progress
+                        </div>
+                        <div className="text-slate-300 text-xs">
+                          Mastered standard identities, needs factorization
+                          practice
+                        </div>
                       </div>
                       <div className="bg-[#111b21] p-2.5 rounded-md border-l-3 border-yellow-500">
-                        <div className="text-[10px] text-yellow-400 font-bold mb-0.5">Teacher Note</div>
-                        <div className="text-slate-300 text-xs">Focused and disciplined throughout the session</div>
+                        <div className="text-[10px] text-yellow-400 font-bold mb-0.5">
+                          Teacher Note
+                        </div>
+                        <div className="text-slate-300 text-xs">
+                          Focused and disciplined throughout the session
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -98,13 +123,11 @@ export function ParentLoop() {
               AI-Powered Updates
             </div>
             <div className="relative">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-4 md:mb-6 pr-24 lg:pr-0">
+              <h2 className="text-5xl relative z-10 md:text-6xl font-semibold text-[var(--color-foreground)] mb-4 md:mb-6 pr-24 lg:pr-0">
                 Witness Their{" "}
-                <span className="gradient-text-trust">
-                  Potential Unfold
-                </span>
+                <span className="gradient-text-trust">Potential Unfold</span>
               </h2>
-              <div className="absolute -right-2 -bottom-4 w-28 h-28 lg:hidden">
+              <div className="absolute -right-2 -bottom-4 w-42 h-42 lg:hidden">
                 <LazyVideo
                   src="/mascot/mobile.mp4"
                   poster="/mascot/mobile.png"
@@ -118,8 +141,10 @@ export function ParentLoop() {
                 />
               </div>
             </div>
-            <p className="text-slate-500 xl:w-1/2 text-base md:text-lg mb-6 leading-relaxed">
-              No more raw metrics to decipher. Our AI translates every session into a clear, friendly summary — so you always know how your child is doing.
+            <p className="text-black xl:w-1/2 text-lg md:text-xl mb-6 leading-relaxed">
+              No more raw metrics to decipher. Our AI translates every session
+              into a clear, friendly summary — so you always know how your child
+              is doing.
             </p>
 
             <div className="space-y-5">
@@ -137,17 +162,22 @@ export function ParentLoop() {
                   desc: "Clear action items after every class",
                 },
                 {
-                  title: "\"Show me why\" transparency",
+                  title: '"Show me why" transparency',
                   desc: "Tap to see the raw data behind every summary",
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
-                  <div className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0" style={{ backgroundColor: "var(--color-trust-blue)" }} />
+                  <div
+                    className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0"
+                    style={{ backgroundColor: "var(--color-trust-blue)" }}
+                  />
                   <div>
-                    <h4 className="text-[var(--color-foreground)] font-medium">
+                    <h4 className="text-[var(--color-foreground)] font-medium text-base md:text-lg">
                       {item.title}
                     </h4>
-                    <p className="text-slate-500 text-sm">{item.desc}</p>
+                    <p className="text-black text-sm md:text-base">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}

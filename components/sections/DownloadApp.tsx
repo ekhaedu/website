@@ -43,13 +43,13 @@ export default function DownloadApp() {
           <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
             Coming Soon
           </span>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-6">
+          <h2 className="text-5xl md:text-6xl font-semibold text-[var(--color-foreground)] mb-6">
             Learn Anytime,{" "}
             <span className="gradient-text-trust">
               Anywhere
             </span>
           </h2>
-          <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-black text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Access your personalized learning plan, attend live classes, and
             track progress seamlessly across all your devices.
           </p>

@@ -9,10 +9,10 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 border border-slate-200 rounded-2xl overflow-hidden">
           <div className="p-8 md:p-16 border-b lg:border-b-0 lg:border-r border-slate-200">
-            <h2 className="text-4xl font-bold text-[var(--color-foreground)] mb-2">
+            <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] mb-2">
               Have Questions?
             </h2>
-            <p className="text-slate-500 mb-8">
+            <p className="text-slate-500 text-lg mb-8">
               We&apos;d love to hear from you
             </p>
 

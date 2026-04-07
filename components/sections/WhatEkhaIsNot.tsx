@@ -12,7 +12,7 @@ export function WhatEkhaIsNot() {
   return (
     <section className="py-20 bg-slate-50 border-y border-slate-100">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-semibold text-[var(--color-foreground)] mb-10 flex items-center justify-center gap-2">
+        <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-10 flex items-center justify-center gap-2">
           What
           <img
             src="/ekha_black.png"
@@ -35,7 +35,7 @@ export function WhatEkhaIsNot() {
               <div className="w-6 h-6 rounded-full bg-[var(--color-peach-light)] flex items-center justify-center">
                 <X className="w-3.5 h-3.5 text-[var(--color-peach)]" />
               </div>
-              <span className="text-slate-600 font-medium text-sm">{item}</span>
+              <span className="text-slate-600 font-medium text-base">{item}</span>
             </div>
           ))}
         </div>

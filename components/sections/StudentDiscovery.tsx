@@ -26,16 +26,30 @@ export function StudentDiscovery() {
 
               <div className="space-y-3">
                 {[
-                  { label: "Learning Style", value: "Visual & Interactive", color: "var(--color-violet)" },
-                  { label: "Attention Span", value: "High in short bursts", color: "var(--color-trust-blue)" },
-                  { label: "Comfort Level", value: "Very confident", color: "var(--color-peach)" },
+                  {
+                    label: "Learning Style",
+                    value: "Visual & Interactive",
+                    color: "var(--color-violet)",
+                  },
+                  {
+                    label: "Attention Span",
+                    value: "High in short bursts",
+                    color: "var(--color-trust-blue)",
+                  },
+                  {
+                    label: "Comfort Level",
+                    value: "Very confident",
+                    color: "var(--color-peach)",
+                  },
                 ].map((item, i) => (
                   <div
                     key={i}
                     className="flex justify-between items-center p-3 rounded-xl bg-slate-50"
                   >
-                    <span className="text-slate-500 text-sm">{item.label}</span>
-                    <span className="font-medium text-[var(--color-foreground)]">{item.value}</span>
+                    <span className="text-black text-base">{item.label}</span>
+                    <span className="font-medium text-base text-[var(--color-foreground)]">
+                      {item.value}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -44,19 +58,17 @@ export function StudentDiscovery() {
 
           {/* Text Area */}
           <div className="flex-1 order-1 lg:order-2">
-            <h2 className="text-4xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-4 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] mb-4 leading-tight">
               Every Journey Begins with{" "}
-              <span className="gradient-text-trust">
-                Understanding
-              </span>
+              <span className="gradient-text-trust">Understanding</span>
             </h2>
             <div className="inline-flex items-center gap-2 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-4 py-1.5 rounded-full text-xs font-semibold mb-4 border border-[var(--color-violet)]/20">
               <Sparkles className="w-3.5 h-3.5" />
               Free & Compulsory for Every Student
             </div>
-            <p className="text-slate-500 text-base md:text-lg mb-6 leading-relaxed">
-              Before the first subject class, every student undergoes a fun
-              and interactive discovery session with our{" "}
+            <p className="text-black text-lg md:text-xl mb-6 leading-relaxed">
+              Before the first subject class, every student undergoes a fun and
+              interactive discovery session with our{" "}
               <span className="text-[var(--color-foreground)] font-semibold">
                 Smart AI Companion
               </span>
@@ -72,7 +84,7 @@ export function StudentDiscovery() {
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-[var(--color-violet)]" />
-                  <span className="text-slate-500">{item}</span>
+                  <span className="text-black text-base">{item}</span>
                 </li>
               ))}
             </ul>

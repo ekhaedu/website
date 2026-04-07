@@ -68,17 +68,17 @@ export function WalletSystem() {
                 Your Learning Wallet
               </div>
               <div className="relative">
-                <h2 className="text-4xl md:text-7xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none mb-4 md:mb-8 pr-28 md:pr-0">
+                <h2 className="text-5xl relative z-10 md:text-7xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none mb-4 md:mb-8 pr-28 md:pr-0">
                   Transparent <br />
                   <span className="gradient-text-trust">Credits</span>
                 </h2>
-                <div className="absolute -right-4 -bottom-4 w-32 h-32 md:hidden">
+                <div className="absolute -right-4 -bottom-4 w-42 h-42 md:hidden">
                   <LazyVideo
                     src="/mascot/coins.mp4"
                     poster="/mascot/coins.png"
                     height={300}
                     width={200}
-                    className="w-full h-full object-contain pointer-events-none select-none"
+                    className="w-full z-0 h-full object-contain pointer-events-none select-none"
                     autoPlay
                     loop
                     muted
@@ -86,7 +86,7 @@ export function WalletSystem() {
                   />
                 </div>
               </div>
-              <p className="text-slate-500 text-sm md:text-lg mb-6 md:mb-10 max-w-md leading-relaxed">
+              <p className="text-black text-base md:text-lg mb-6 md:mb-10 max-w-md leading-relaxed">
                 1 coin = 1 rupee. Pay only for completed classes. No hidden
                 fees, no lock-ins.
               </p>
@@ -184,10 +184,12 @@ export function WalletSystem() {
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-[var(--color-foreground)] mb-1">
+                        <h3 className="text-xl md:text-2xl font-semibold text-[var(--color-foreground)] mb-1">
                           {item.title}
                         </h3>
-                        <p className="text-slate-500 text-sm">{item.desc}</p>
+                        <p className="text-black text-sm md:text-base">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                     <div className="hidden sm:block text-right">

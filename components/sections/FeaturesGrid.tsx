@@ -65,17 +65,14 @@ export function FeaturesGrid() {
         <div className="flex flex-col lg:flex-row gap-20">
           {/* Title Area */}
           <div className="lg:w-1/3">
-            <div className="mb-8 md:mb-0">
+            <div className="">
               <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
                 Included Features
               </span>
-              <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none md:sticky md:top-32">
+              <h2 className="text-5xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none md:sticky md:top-32">
                 What
-                <br className="hidden md:block" />
-                {" "}
-                <span className="gradient-text-trust">
-                  You Get
-                </span>
+                <br className="" />{" "}
+                <span className="gradient-text-trust">You Get</span>
               </h2>
             </div>
           </div>
@@ -92,10 +89,10 @@ export function FeaturesGrid() {
                   }
                 >
                   <div className="flex justify-between items-center">
-                    <h3 className="text-sm font-medium tracking-wide text-[var(--color-foreground)]">
+                    <h3 className="text-base font-medium tracking-wide text-black">
                       {feature.title}
                     </h3>
-                    <span className="text-xl font-light text-slate-400">
+                    <span className="text-xl font-light text-black">
                       {mobileExpanded === index ? "−" : "+"}
                     </span>
                   </div>
@@ -106,7 +103,7 @@ export function FeaturesGrid() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-sm text-slate-500 leading-relaxed">
+                    <p className="text-base text-black leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -127,7 +124,7 @@ export function FeaturesGrid() {
                   >
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-4 md:gap-6">
-                        <span className="text-slate-400 text-xs md:text-sm font-medium">
+                        <span className="text-black text-xs md:text-sm font-medium">
                           0{index + 1}
                         </span>
                         <h3
@@ -147,10 +144,10 @@ export function FeaturesGrid() {
                       className={`overflow-hidden transition-all duration-500 ${activeFeature === index ? "max-h-64 md:max-h-48 opacity-100" : "max-h-0 opacity-0"}`}
                     >
                       <div className="pl-0 md:pl-12 max-w-xl mt-2 md:mt-0">
-                        <h4 className="text-[var(--color-violet)] text-sm mb-2 font-semibold">
+                        <h4 className="text-[var(--color-violet)] text-base mb-2 font-semibold">
                           {feature.headline}
                         </h4>
-                        <p className="text-slate-500 leading-relaxed text-sm md:text-base">
+                        <p className="text-black leading-relaxed text-base md:text-lg">
                           {feature.description}
                         </p>
                       </div>

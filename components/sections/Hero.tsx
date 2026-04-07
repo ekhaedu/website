@@ -7,18 +7,24 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pb-16 overflow-hidden bg-white">
       {/* Soft radial gradient */}
-      <div className="absolute inset-0 pointer-events-none"
+      <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 50% 30%, rgba(112,111,211,0.08) 0%, rgba(255,126,95,0.04) 40%, transparent 70%)"
+          background:
+            "radial-gradient(ellipse at 50% 30%, rgba(112,111,211,0.08) 0%, rgba(255,126,95,0.04) 40%, transparent 70%)",
         }}
       />
       {/* Grid pattern */}
-      <div className="absolute inset-0 pointer-events-none"
+      <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "linear-gradient(rgba(112,111,211,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(112,111,211,0.04) 1px, transparent 1px)",
+          backgroundImage:
+            "linear-gradient(rgba(112,111,211,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(112,111,211,0.04) 1px, transparent 1px)",
           backgroundSize: "50px 50px",
-          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 40%, transparent 100%)",
         }}
       />
 
@@ -30,15 +36,13 @@ export function Hero() {
             Education Reimagined
           </span>
 
-          <h1 className="text-5xl font-bold text-[var(--color-foreground)] leading-tight mb-6 tracking-tight">
+          <h1 className="text-6xl font-bold text-[var(--color-foreground)] leading-tight mb-6 tracking-tight">
             Master <br />
             Every Subject <br />
-            <span className="gradient-text-trust">
-              One-on-One
-            </span>
+            <span className="gradient-text-trust">One-on-One</span>
           </h1>
 
-          <p className="text-base font-light leading-relaxed max-w-[320px] text-slate-500 mb-10">
+          <p className="text-base font-light leading-relaxed max-w-[320px] text-black mb-10">
             The only platform with complete transparency. No algorithms. No
             forced matches. Just your child and the perfect teacher.
           </p>
@@ -62,9 +66,7 @@ export function Hero() {
             <br />
             Subject
             <br />
-            <span className="gradient-text-trust">
-              One-on-One
-            </span>
+            <span className="gradient-text-trust">One-on-One</span>
           </h1>
 
           <p className="text-base md:text-lg text-slate-500 my-5 md:my-12 leading-relaxed max-w-2xl">

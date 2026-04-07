@@ -15,7 +15,7 @@ export function CareerGuidance() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[var(--color-foreground)] mb-4">
+          <h2 className="text-5xl md:text-6xl font-semibold text-[var(--color-foreground)] mb-4">
             Technology Assists.{" "}
             <span className="gradient-text-trust">
               Humans Guide.
@@ -25,7 +25,7 @@ export function CareerGuidance() {
             <Sparkles className="w-4 h-4" />
             Included Free for Every Student
           </div>
-          <p className="text-slate-500 max-w-2xl mx-auto mt-4 leading-relaxed">
+          <p className="text-black text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
             We combine AI analysis with human expertise to provide the most
             accurate career guidance for your child.
           </p>
@@ -39,10 +39,10 @@ export function CareerGuidance() {
               <div className="w-14 h-14 rounded-2xl gradient-engage flex items-center justify-center mb-6 text-white">
                 <Bot className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-[var(--color-foreground)] mb-4">
+              <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-4">
                 AI Analysis
               </h3>
-              <p className="text-slate-500 mb-6 leading-relaxed">
+              <p className="text-black text-base md:text-lg mb-6 leading-relaxed">
                 Students chat with our advanced AI inside the app to explore
                 interests. The AI prepares a structured summary of their
                 inclinations and strengths.
@@ -92,10 +92,10 @@ export function CareerGuidance() {
               <div className="w-14 h-14 rounded-2xl bg-[var(--color-trust-blue)] flex items-center justify-center mb-6 text-white">
                 <UserCheck className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold text-[var(--color-foreground)] mb-4">
+              <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-4">
                 Human Expert Review
               </h3>
-              <p className="text-slate-500 mb-6 leading-relaxed">
+              <p className="text-black text-base md:text-lg mb-6 leading-relaxed">
                 A career guidance specialist reviews the AI report. Parents
                 receive a direct phone call where guidance is explained clearly
                 and responsibly.
