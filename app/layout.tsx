@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Ekha Learning Platform: AI & Expert Guided Education",
   description: "Ekha offers a revolutionary learning experience combining advanced AI analysis with human expert career guidance. Get full syllabus access, secure coin-based pricing, and personalized study plans for your child.",
   keywords: ["Ekha", "Learning Platform", "Online Education", "AI Tutor", "Career Guidance", "SCERT", "ICSE", "Digital Learning"],
+  verification: {
+    google: "SSCMwDH9E7odcOvZR4JLbE2Xx7LBL_b3mxgpGT8Ds2Q",
+  },
   openGraph: {
     title: "Ekha Learning Platform",
     description: "Technology Assists. Humans Guide. Secure, transparent learning with 24/7 AI homework companion and complete syllabus coverage.",

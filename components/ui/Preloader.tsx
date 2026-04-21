@@ -7,26 +7,21 @@ export function Preloader() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => {
-        setFadeOut(true);
-        setTimeout(() => setIsLoading(false), 600);
-      }, 1000);
-    };
+    // Start fade-out almost immediately — don't wait for all resources
+    // The page content is already server-rendered by Next.js
+    const timer = setTimeout(() => {
+      setFadeOut(true);
+      setTimeout(() => setIsLoading(false), 400);
+    }, 300);
 
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   if (!isLoading) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-600 ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-400 ${
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       style={{ backgroundColor: "var(--color-cream)" }}
@@ -53,15 +48,16 @@ export function Preloader() {
 
       {/* Animated Image Container */}
       <div className="relative z-10 overflow-hidden p-4">
-        <div className="animate-[slideUpReveal_1.2s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+        <div className="animate-[slideUpReveal_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
           <img
             src="/ekha_black.png"
             alt="Ekha"
             className="w-48 md:w-80 object-contain drop-shadow-2xl"
+            fetchPriority="high"
           />
         </div>
 
-        <div className="absolute inset-0 -translate-x-full animate-[shine_2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 blur-xl" />
+        <div className="absolute inset-0 -translate-x-full animate-[shine_1.5s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 blur-xl" />
       </div>
     </div>
   );

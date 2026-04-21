@@ -282,6 +282,12 @@
   font-size: 0.85em;
 }
 
+/* Marquee scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* Accordion for mobile */
 .mobile-accordion-content {
   max-height: 0;

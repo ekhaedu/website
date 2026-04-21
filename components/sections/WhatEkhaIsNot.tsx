@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { X } from "lucide-react";
 
 export function WhatEkhaIsNot() {
@@ -14,10 +15,13 @@ export function WhatEkhaIsNot() {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-10 flex items-center justify-center gap-2">
           What
-          <img
+          <Image
             src="/ekha_black.png"
             alt="Ekha"
+            width={292}
+            height={142}
             className="h-48 -mb-15 -mt-12 -ml-15 -mr-19 object-contain hidden md:inline"
+            loading="lazy"
           />
           <span className="md:hidden">Ekha</span>
           {" "}Is{" "}
