@@ -1,11 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { User, Users, Calendar, X, ChevronRight } from "lucide-react";
 import { LazyVideo } from "../ui/LazyVideo";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function HowItWorks() {
   const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.from(".advantage-step-card", {
+        y: 35,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#the-ekha-advantage",
+          start: "top 85%",
+          once: true,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const steps = [
     {
@@ -126,7 +150,7 @@ export function HowItWorks() {
         {/* Mobile Layout */}
         <div className="md:hidden space-y-4 relative z-10">
           {steps.map((step, index) => (
-            <div key={index} className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 shadow-xs">
+            <div key={index} className="advantage-step-card bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 shadow-xs">
               <div className="flex items-start gap-4">
                 <span className="text-xs font-bold text-[var(--color-violet)] px-2 py-0.5 rounded-md bg-[var(--color-violet-light)] mt-0.5">
                   {step.stat}
@@ -180,7 +204,7 @@ export function HowItWorks() {
                     setExpandedIndex(isExpanded ? null : index);
                   }
                 }}
-                className={`group relative bg-white border border-slate-200 rounded-2xl
+                className={`advantage-step-card group relative bg-white border border-slate-200 rounded-2xl
                   md:cursor-pointer cursor-default hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 overflow-hidden
                   ${isHidden ? "pointer-events-none border-0" : ""}
                   w-full h-auto
@@ -193,7 +217,7 @@ export function HowItWorks() {
                     padding: isHidden ? 0 : undefined,
                     margin: isHidden ? 0 : undefined,
                     transition:
-                      "flex 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease",
+                      "flex 0.5s cubic-bezier(0.32, 0.72, 0, 1)",
                   } as React.CSSProperties
                 }
               >

@@ -15,10 +15,10 @@ export function PhoneFrame({
   glowColor = "rgba(112, 111, 211, 0.2)",
 }: PhoneFrameProps) {
   return (
-    <div className={`relative mx-auto select-none ${className}`}>
+    <div className={`relative mx-auto select-none transform-gpu ${className}`}>
       {/* Dynamic Ambient Glow */}
       <div
-        className="absolute -inset-4 rounded-[52px] blur-2xl opacity-60 transition-all duration-700 pointer-events-none"
+        className="absolute -inset-4 rounded-[52px] blur-xl opacity-50 transition-colors duration-500 pointer-events-none will-change-[background-color]"
         style={{ backgroundColor: glowColor }}
       />
 
@@ -64,10 +64,7 @@ export function PhoneFrame({
           </div>
 
           {/* Screen Glaze Reflection */}
-          <div
-            className="absolute inset-0 pointer-events-none z-20 opacity-30 bg-gradient-to-tr from-transparent via-white/5 to-white/15"
-            style={{ mixBlendMode: "overlay" }}
-          />
+          <div className="absolute inset-0 pointer-events-none z-20 opacity-25 bg-gradient-to-tr from-transparent via-white/5 to-white/10" />
         </div>
       </div>
     </div>

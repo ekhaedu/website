@@ -58,10 +58,10 @@ export function PhoneShowcase({
           return (
             <div
               key={item.name}
-              className={`absolute inset-0 transition-all duration-500 ease-out ${
+              className={`absolute inset-0 transition-[opacity,transform] duration-300 ease-out will-change-[opacity,transform] ${
                 isActive
                   ? "opacity-100 scale-100 pointer-events-auto z-10"
-                  : "opacity-0 scale-95 pointer-events-none z-0"
+                  : "opacity-0 scale-98 pointer-events-none z-0"
               }`}
               aria-hidden={!isActive}
             >
