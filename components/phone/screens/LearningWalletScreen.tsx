@@ -1,71 +1,141 @@
 "use client";
 
-import React from "react";
-import { Coins, Flame, ArrowUpRight, ShieldCheck, Trophy, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import { PlusCircle, ArrowUpRight, X, Wifi, Coins } from "lucide-react";
 
 export function LearningWalletScreen() {
+  const [showTopup, setShowTopup] = useState(false);
+
   return (
-    <div className="h-full w-full bg-slate-900 text-white p-3.5 pt-2 flex flex-col justify-between text-xs overflow-hidden select-none">
-      {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-        <div className="flex items-center gap-1.5 font-semibold text-slate-100 text-[11px]">
-          <Coins className="w-3.5 h-3.5 text-amber-400" />
-          Ekha Learning Wallet
+    <div className="h-full w-full bg-[#111113] text-white p-3 pt-12 pb-3 flex flex-col justify-between text-xs overflow-hidden select-none font-barlow">
+      {/* 1. Header (wallet.tsx) */}
+      <div className="flex items-center justify-between shrink-0 mb-1">
+        <div>
+          <span className="text-white uppercase font-black text-xl tracking-tight leading-none block">
+            {showTopup ? "TOP UP WALLET" : "WALLET"}
+          </span>
+          <span className="text-white/40 text-[8px] font-medium">
+            {showTopup ? "Choose a coin package to continue" : "1 Coin = ₹1 Escrow"}
+          </span>
         </div>
-        <span className="text-[10px] text-emerald-400 font-medium flex items-center gap-0.5">
-          <ShieldCheck className="w-3 h-3" />
-          Escrow Protected
-        </span>
+        <button
+          onClick={() => setShowTopup(!showTopup)}
+          className="bg-white/10 w-6 h-6 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        >
+          {showTopup ? <X className="w-3.5 h-3.5" /> : <Coins className="w-3 h-3 text-[#F8CC61]" />}
+        </button>
       </div>
 
-      {/* Main Balance Card */}
-      <div className="relative overflow-hidden rounded-2xl p-3.5 bg-gradient-to-br from-indigo-900/60 via-slate-800 to-slate-850 border border-violet-500/30 shadow-lg">
-        <div className="flex justify-between items-start mb-2">
-          <span className="text-[10px] text-slate-400">Available Balance</span>
-          <div className="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold text-[9px] flex items-center gap-1">
-            <Sparkles className="w-2.5 h-2.5" />
-            1 Coin = ₹1
+      {/* 2. Signature Debit/Credit EMV Card (wallet.tsx) */}
+      <div className="bg-gradient-to-br from-[#FF6B6B] via-[#FF7E5F] to-[#FF9F43] rounded-2xl p-3 text-white shadow-xl relative overflow-hidden shrink-0">
+        {/* Chip & Contactless */}
+        <div className="flex items-center justify-between mb-2">
+          {/* Metallic EMV Chip */}
+          <div className="w-8 h-5 rounded bg-gradient-to-r from-[#E2E2E2] via-[#B8B8B8] to-[#E2E2E2] border border-white/60 p-0.5 flex items-center justify-center shadow-xs">
+            <div className="w-full h-full border border-black/30 rounded-[2px] grid grid-cols-2 gap-0.5 bg-amber-100/40" />
+          </div>
+          {/* NFC Contactless Symbol */}
+          <div className="rotate-90 text-white/80">
+            <Wifi className="w-3.5 h-3.5" />
           </div>
         </div>
 
-        <div className="flex items-baseline gap-1.5 mb-1">
-          <span className="text-2xl font-extrabold text-white tracking-tight">₹1,450</span>
-          <span className="text-xs text-amber-300 font-medium">1,450 Coins</span>
+        {/* Learning Balance */}
+        <div className="mb-2">
+          <div className="uppercase font-bold text-[7.5px] tracking-[2px] text-white/80 mb-0.5">
+            LEARNING BALANCE
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="font-black text-2xl tracking-[1.5px] text-white leading-none">
+              1,450
+            </span>
+            <span className="bg-white/20 px-1.5 py-0.5 rounded text-[7.5px] font-black tracking-wider uppercase">
+              COINS
+            </span>
+          </div>
         </div>
 
-        <p className="text-[10px] text-slate-300 leading-snug">
-          Pay strictly for completed classes. Unused coins can be withdrawn anytime.
-        </p>
-      </div>
-
-      {/* 7-Day Streak & Bonus Card */}
-      <div className="bg-gradient-to-r from-orange-950/40 via-slate-800 to-violet-950/40 border border-orange-500/30 rounded-xl p-2.5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-[var(--color-peach)] flex items-center justify-center text-white shadow-sm">
-            <Flame className="w-4 h-4 fill-white" />
-          </div>
+        {/* Cardholder */}
+        <div className="pt-1.5 border-t border-white/20 flex items-center justify-between text-[8px]">
           <div>
-            <div className="font-semibold text-white text-[10px]">7-Day Streak Active!</div>
-            <div className="text-[9px] text-slate-400">+50 Bonus Coins unlocked</div>
+            <div className="text-[7px] uppercase text-white/60 font-semibold">
+              CARDHOLDER
+            </div>
+            <div className="font-bold uppercase tracking-wider text-white">
+              ROHAN SHARMA
+            </div>
+          </div>
+          <span className="font-bold text-white/90">1 COIN = ₹1</span>
+        </div>
+      </div>
+
+      {/* 3. Package Cards from BuyCoinsModal.tsx */}
+      <div className="space-y-1.5 shrink-0 my-0.5">
+        {/* Most Popular Package (BuyCoinsModal.tsx) */}
+        <div className="relative rounded-2xl bg-gradient-to-br from-[#331515] to-[#1F0808] border-2 border-[#FF6B6B]/50 p-2.5 shadow-md">
+          {/* Most Popular Badge */}
+          <div className="absolute -top-2 right-3 bg-[#FF6B6B] px-2 py-0.5 rounded-full shadow-xs border border-[#FF6B6B]">
+            <span className="text-white font-black text-[7px] tracking-widest uppercase">
+              Most Popular
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FF6B6B] to-[#E53935] flex items-center justify-center text-white shadow-xs shrink-0">
+                <Coins className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <div className="font-black text-white text-sm leading-tight">
+                  500
+                </div>
+                <div className="text-[#FF6B6B] font-bold text-[7.5px] uppercase tracking-wider">
+                  Ekha Coins
+                </div>
+              </div>
+            </div>
+
+            <button className="bg-[#FF6B6B] text-white font-black text-[10px] py-1 px-3.5 rounded-xl shadow-xs hover:scale-105 transition-transform">
+              ₹500
+            </button>
           </div>
         </div>
-        <div className="w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center">
-          <Trophy className="w-3.5 h-3.5 text-amber-300" />
+
+        {/* Standard Package (BuyCoinsModal.tsx) */}
+        <div className="rounded-xl bg-gradient-to-br from-[#1c1c1e] to-[#121212] border border-white/10 p-2 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 shrink-0">
+              <Coins className="w-3.5 h-3.5 text-white/70" />
+            </div>
+            <div>
+              <div className="font-bold text-white text-xs leading-tight">
+                100
+              </div>
+              <div className="text-white/40 font-semibold text-[7.5px] uppercase tracking-wider">
+                Ekha Coins
+              </div>
+            </div>
+          </div>
+
+          <button className="bg-white/10 text-white font-bold text-[9px] py-1 px-3 rounded-lg hover:bg-white/20 transition-colors">
+            ₹100
+          </button>
         </div>
       </div>
 
-      {/* Quick Action Buttons */}
-      <div className="grid grid-cols-2 gap-2 pt-1">
-        <button className="gradient-trust text-white py-2 px-3 rounded-xl font-semibold text-[10px] flex items-center justify-center gap-1 shadow-sm">
-          Add Coins
+      {/* 4. Action Buttons (Recharge & Withdraw) */}
+      <div className="grid grid-cols-2 gap-2 shrink-0">
+        <button
+          onClick={() => setShowTopup(true)}
+          className="bg-[#F65F50] text-white py-1.5 px-3 rounded-full font-bold text-[9px] flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+        >
+          <PlusCircle className="w-3 h-3" />
+          <span>Top up Wallet</span>
         </button>
-        <button className="bg-slate-800 border border-slate-700 text-slate-200 py-2 px-3 rounded-xl font-semibold text-[10px] flex items-center justify-center gap-1">
-          Cash Out <ArrowUpRight className="w-3 h-3 text-emerald-400" />
+        <button className="bg-white text-black py-1.5 px-3 rounded-full font-bold text-[9px] flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+          <ArrowUpRight className="w-3 h-3" />
+          <span>Withdraw</span>
         </button>
-      </div>
-
-      <div className="text-[9px] text-center text-slate-400">
-        100% Transparent · Zero Hidden Multipliers
       </div>
     </div>
   );
