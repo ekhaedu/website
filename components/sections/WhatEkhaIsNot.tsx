@@ -13,17 +13,17 @@ export function WhatEkhaIsNot() {
   return (
     <section className="py-20 bg-slate-50 border-y border-slate-100">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-semibold text-[var(--color-foreground)] mb-10 flex items-center justify-center gap-2">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-foreground)] mb-10 flex items-center justify-center gap-2">
           What
           <Image
             src="/ekha_black.png"
             alt="Ekha"
-            width={292}
-            height={142}
-            className="h-48 -mb-15 -mt-12 -ml-15 -mr-19 object-contain hidden md:inline"
+            width={160}
+            height={50}
+            className="h-10 sm:h-12 w-auto object-contain hidden sm:inline"
             loading="lazy"
           />
-          <span className="md:hidden">Ekha</span>
+          <span className="sm:hidden font-extrabold text-[var(--color-violet)]">Ekha</span>
           {" "}Is{" "}
           <span className="gradient-text-trust">
             Not

@@ -5,6 +5,14 @@ import { GetAppButton } from "../components/ui/GetAppButton";
 import Image from "next/image";
 
 // Lazy load below-fold sections — they won't block initial render
+const PhoneShowcaseSection = dynamic(
+  () =>
+    import("../components/sections/PhoneShowcaseSection").then((mod) => ({
+      default: mod.PhoneShowcaseSection,
+    })),
+  { ssr: true }
+);
+
 const HowItWorks = dynamic(
   () =>
     import("../components/sections/HowItWorks").then((mod) => ({
@@ -81,24 +89,25 @@ export default function Home() {
       style={{ fontFamily: "var(--font-body)" }}
     >
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-slate-100 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60 shadow-xs transition-all">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="cursor-pointer">
+          <a href="#" className="cursor-pointer flex items-center" aria-label="Ekha Home">
             <Image
               src="/ekha_black.png"
               alt="Ekha"
-              width={240}
-              height={80}
-              className="h-full -ml-5 lg:-ml-15 w-35 lg:w-60 object-contain hover:opacity-80 transition-opacity"
+              width={180}
+              height={56}
+              className="h-10 sm:h-12 w-auto object-contain hover:opacity-85 transition-opacity"
               priority
             />
-          </div>
+          </a>
           <GetAppButton />
         </div>
       </nav>
 
       <main className="pt-20">
         <Hero />
+        <PhoneShowcaseSection />
         <HowItWorks />
         <FeaturesGrid />
         <WalletSystem />

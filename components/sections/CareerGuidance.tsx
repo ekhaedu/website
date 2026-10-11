@@ -14,35 +14,35 @@ export function CareerGuidance() {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-semibold text-[var(--color-foreground)] mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[var(--color-foreground)] mb-4">
             Technology Assists.{" "}
             <span className="gradient-text-trust">
               Humans Guide.
             </span>
           </h2>
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-semibold border border-green-200">
-            <Sparkles className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-emerald-200 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
             Included Free for Every Student
           </div>
-          <p className="text-black text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+          <p className="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
             We combine AI analysis with human expertise to provide the most
             accurate career guidance for your child.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto items-start">
           {/* AI Analysis Card */}
           <div className="relative group">
-            <div className="relative p-8 h-full border border-slate-200 rounded-2xl bg-white hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 transition-all duration-300">
-              <div className="w-14 h-14 rounded-2xl gradient-engage flex items-center justify-center mb-6 text-white">
-                <Bot className="w-8 h-8" />
+            <div className="relative p-6 sm:p-8 h-full border border-slate-200 rounded-2xl bg-white hover:border-[var(--color-violet)] hover:shadow-lg hover:shadow-violet/10 transition-all duration-300 shadow-xs">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl gradient-engage flex items-center justify-center mb-5 sm:mb-6 text-white shadow-sm">
+                <Bot className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
-              <h3 className="text-2xl font-bold text-[var(--color-foreground)] mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-foreground)] mb-3 sm:mb-4">
                 AI Analysis
               </h3>
-              <p className="text-black text-base md:text-lg mb-6 leading-relaxed">
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6">
                 Students chat with our advanced AI inside the app to explore
                 interests. The AI prepares a structured summary of their
                 inclinations and strengths.

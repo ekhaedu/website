@@ -9,8 +9,8 @@ export function ParentLoop() {
 
   return (
     <section id="parent-loop" className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 relative w-screen">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+      <div className="container mx-auto px-4 relative w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* WhatsApp Mockup */}
           <div className="flex-1 w-full max-w-sm mx-auto lg:mx-0 order-2 lg:order-1">
             <div className="bg-[#0b141a] rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
@@ -118,21 +118,21 @@ export function ParentLoop() {
 
           {/* Text Content */}
           <div className="flex-1 order-1 z-10 lg:order-2">
-            <div className="inline-flex items-center gap-2 bg-[var(--color-trust-blue-light)] text-[var(--color-trust-blue)] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center gap-2 bg-[var(--color-trust-blue-light)] text-[var(--color-trust-blue)] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 shadow-xs">
               <MessageCircle className="w-4 h-4" />
               AI-Powered Updates
             </div>
-            <div className="relative">
-              <h2 className="text-5xl relative z-10 md:text-6xl font-semibold text-[var(--color-foreground)] mb-4 md:mb-6 pr-24 lg:pr-0">
+            <div className="flex items-center justify-between gap-4 mb-4">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[var(--color-foreground)] leading-tight">
                 Witness Their{" "}
                 <span className="gradient-text-trust">Potential Unfold</span>
               </h2>
-              <div className="absolute -right-2 -bottom-4 w-42 h-42 lg:hidden">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 lg:hidden">
                 <LazyVideo
                   src="/mascot/mobile.mp4"
                   poster="/mascot/mobile.png"
-                  height={250}
-                  width={150}
+                  height={200}
+                  width={200}
                   className="w-full h-full object-contain pointer-events-none select-none"
                   autoPlay
                   loop
@@ -141,7 +141,7 @@ export function ParentLoop() {
                 />
               </div>
             </div>
-            <p className="text-black xl:w-1/2 text-lg md:text-xl mb-6 leading-relaxed">
+            <p className="text-slate-700 text-base sm:text-lg md:text-xl mb-6 leading-relaxed">
               No more raw metrics to decipher. Our AI translates every session
               into a clear, friendly summary — so you always know how your child
               is doing.

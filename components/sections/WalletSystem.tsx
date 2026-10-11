@@ -67,18 +67,18 @@ export function WalletSystem() {
                 <Sparkles className="w-4 h-4" />
                 Your Learning Wallet
               </div>
-              <div className="relative">
-                <h2 className="text-5xl relative z-10 md:text-7xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none mb-4 md:mb-8 pr-28 md:pr-0">
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-[var(--color-foreground)] leading-tight md:leading-none">
                   Transparent <br />
                   <span className="gradient-text-trust">Credits</span>
                 </h2>
-                <div className="absolute -right-4 -bottom-4 w-42 h-42 md:hidden">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 shrink-0 md:hidden">
                   <LazyVideo
                     src="/mascot/coins.mp4"
                     poster="/mascot/coins.png"
-                    height={300}
+                    height={200}
                     width={200}
-                    className="w-full z-0 h-full object-contain pointer-events-none select-none"
+                    className="w-full h-full object-contain pointer-events-none select-none"
                     autoPlay
                     loop
                     muted
@@ -86,18 +86,18 @@ export function WalletSystem() {
                   />
                 </div>
               </div>
-              <p className="text-black text-base md:text-lg mb-6 md:mb-10 max-w-md leading-relaxed">
+              <p className="text-slate-700 text-base md:text-lg mb-6 md:mb-10 max-w-md leading-relaxed">
                 1 coin = 1 rupee. Pay only for completed classes. No hidden
                 fees, no lock-ins.
               </p>
 
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="hidden md:inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 focus:outline-none rounded-xl cursor-pointer gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 px-8 py-3 text-sm"
+                className="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 focus:outline-none rounded-xl cursor-pointer gradient-trust text-white hover:shadow-lg hover:shadow-violet/20 hover:-translate-y-0.5 px-6 sm:px-8 py-3 text-sm shadow-md"
               >
                 <span>{isExpanded ? "Show Less" : "Learn More"}</span>
                 <ChevronDown
-                  className={`w-5 h-5 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 ml-2 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
                 />
               </button>
             </div>

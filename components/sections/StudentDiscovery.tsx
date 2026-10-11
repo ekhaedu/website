@@ -58,15 +58,15 @@ export function StudentDiscovery() {
 
           {/* Text Area */}
           <div className="flex-1 order-1 lg:order-2">
-            <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[var(--color-foreground)] mb-4 leading-tight tracking-tight">
               Every Journey Begins with{" "}
               <span className="gradient-text-trust">Understanding</span>
             </h2>
-            <div className="inline-flex items-center gap-2 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-4 py-1.5 rounded-full text-xs font-semibold mb-4 border border-[var(--color-violet)]/20">
+            <div className="inline-flex items-center gap-2 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-4 py-1.5 rounded-full text-xs font-semibold mb-4 border border-[var(--color-violet)]/20 shadow-xs">
               <Sparkles className="w-3.5 h-3.5" />
               Free & Compulsory for Every Student
             </div>
-            <p className="text-black text-lg md:text-xl mb-6 leading-relaxed">
+            <p className="text-slate-700 text-base sm:text-lg md:text-xl mb-6 leading-relaxed">
               Before the first subject class, every student undergoes a fun and
               interactive discovery session with our{" "}
               <span className="text-[var(--color-foreground)] font-semibold">
@@ -76,15 +76,15 @@ export function StudentDiscovery() {
               capability, and interests through a natural conversation.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               {[
                 "Fun and stress-free interaction for the child",
                 "AI builds a capability profile for the teacher",
                 "Teacher customizes lessons based on this data",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-[var(--color-violet)]" />
-                  <span className="text-black text-base">{item}</span>
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-500 mt-0.5" />
+                  <span className="text-slate-800 text-sm sm:text-base font-medium">{item}</span>
                 </li>
               ))}
             </ul>

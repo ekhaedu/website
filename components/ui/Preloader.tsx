@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,11 +50,13 @@ export function Preloader() {
       {/* Animated Image Container */}
       <div className="relative z-10 overflow-hidden p-4">
         <div className="animate-[slideUpReveal_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-          <img
+          <Image
             src="/ekha_black.png"
             alt="Ekha"
-            className="w-48 md:w-80 object-contain drop-shadow-2xl"
-            fetchPriority="high"
+            width={320}
+            height={100}
+            className="w-48 md:w-80 h-auto object-contain drop-shadow-2xl"
+            priority
           />
         </div>
 

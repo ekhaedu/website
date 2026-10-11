@@ -59,22 +59,23 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-32 bg-white relative border-t border-slate-100">
+    <section id="the-ekha-advantage" className="py-24 sm:py-32 bg-white relative border-t border-slate-100 overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Mobile Header */}
-        <div className="md:hidden mb-8 relative z-10 overflow-visible">
-          <span className="text-sm tracking-wide text-[var(--color-violet)] mb-4 block font-medium">
+        <div className="md:hidden mb-10 relative z-10">
+          <span className="text-xs sm:text-sm tracking-wide text-[var(--color-violet)] mb-2 block font-semibold uppercase">
             Benefits for the Child
           </span>
-          <div className="relative">
-            <h2 className="text-5xl font-bold text-[var(--color-foreground)] leading-tight pr-28">
-              The Ekha <span className="gradient-text-trust">Advantage</span>
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-foreground)] leading-tight tracking-tight">
+              The Ekha <br />
+              <span className="gradient-text-trust">Advantage</span>
             </h2>
-            <div className="absolute -right-4 -bottom-6 w-42 h-42">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0">
               <LazyVideo
                 src="/mascot/advantages.mp4"
                 poster="/mascot/advantages.png"
-                height={300}
+                height={200}
                 width={200}
                 className="w-full h-full object-contain pointer-events-none select-none"
                 autoPlay
@@ -123,27 +124,29 @@ export function HowItWorks() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="md:hidden space-y-0 relative z-10">
+        <div className="md:hidden space-y-4 relative z-10">
           {steps.map((step, index) => (
-            <div key={index} className="border-t border-slate-200 py-6">
-              <div className="flex items-start gap-5">
-                <span className="text-sm text-black mt-1">{step.stat}</span>
+            <div key={index} className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-5 shadow-xs">
+              <div className="flex items-start gap-4">
+                <span className="text-xs font-bold text-[var(--color-violet)] px-2 py-0.5 rounded-md bg-[var(--color-violet-light)] mt-0.5">
+                  {step.stat}
+                </span>
                 <div className="flex-1">
                   <div className="text-[var(--color-violet)] mb-2">
                     {step.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-[var(--color-foreground)] leading-tight mb-3">
+                  <h3 className="text-lg font-bold text-[var(--color-foreground)] leading-tight mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-black leading-relaxed mb-4">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
                     {step.description}
                   </p>
 
-                  <ul className="space-y-2 mt-3">
+                  <ul className="space-y-2 mt-2 pt-2 border-t border-slate-200/60">
                     {step.details.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                      <li key={i} className="flex items-start gap-2.5">
                         <div className="w-1.5 h-1.5 bg-[var(--color-violet)] rounded-full mt-1.5 shrink-0" />
-                        <span className="text-black text-sm">{point}</span>
+                        <span className="text-slate-700 text-xs sm:text-sm font-medium">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -151,7 +154,6 @@ export function HowItWorks() {
               </div>
             </div>
           ))}
-          <div className="border-t border-slate-200" />
         </div>
 
         {/* Desktop Layout */}

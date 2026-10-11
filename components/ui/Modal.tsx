@@ -12,36 +12,38 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
-  const [mounted, setMounted] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
+  const mounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
     if (isOpen) {
-      setShouldRender(true);
       document.body.style.overflow = "hidden";
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsAnimating(true);
-        });
+      const raf = requestAnimationFrame(() => {
+        setIsAnimating(true);
       });
+      return () => cancelAnimationFrame(raf);
     } else {
-      setIsAnimating(false);
+      const raf = requestAnimationFrame(() => {
+        setIsAnimating(false);
+      });
       const timer = setTimeout(() => {
-        setShouldRender(false);
         document.body.style.overflow = "unset";
       }, 500);
-      return () => clearTimeout(timer);
+      return () => {
+        cancelAnimationFrame(raf);
+        clearTimeout(timer);
+        document.body.style.overflow = "unset";
+      };
     }
   }, [isOpen]);
 
-  if (!mounted) return null;
+  const shouldRender = isOpen || isAnimating;
 
-  if (!shouldRender) return null;
+  if (!mounted || !shouldRender) return null;
 
   return createPortal(
     <div

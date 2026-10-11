@@ -79,36 +79,62 @@ export function FeaturesGrid() {
 
           <div className="lg:w-2/3">
             {/* Mobile Accordion */}
-            <div className="md:hidden space-y-0 border-t border-slate-200 relative z-10">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="border-b border-slate-200 py-6 cursor-pointer"
-                  onClick={() =>
-                    setMobileExpanded(mobileExpanded === index ? null : index)
-                  }
-                >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-base font-medium tracking-wide text-black">
-                      {feature.title}
-                    </h3>
-                    <span className="text-xl font-light text-black">
-                      {mobileExpanded === index ? "−" : "+"}
-                    </span>
-                  </div>
+            <div className="md:hidden space-y-3 relative z-10">
+              {features.map((feature, index) => {
+                const isOpen = mobileExpanded === index;
+                return (
                   <div
-                    className={`overflow-hidden transition-all duration-400 ${
-                      mobileExpanded === index
-                        ? "max-h-40 opacity-100 mt-3"
-                        : "max-h-0 opacity-0"
+                    key={index}
+                    className={`rounded-2xl border transition-all duration-300 p-5 cursor-pointer ${
+                      isOpen
+                        ? "bg-slate-50 border-[var(--color-violet)] shadow-sm"
+                        : "bg-white border-slate-200/90"
                     }`}
+                    onClick={() =>
+                      setMobileExpanded(isOpen ? null : index)
+                    }
                   >
-                    <p className="text-base text-black leading-relaxed">
-                      {feature.description}
-                    </p>
+                    <div className="flex justify-between items-center gap-3">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                            isOpen
+                              ? "bg-[var(--color-violet)] text-white"
+                              : "bg-slate-100 text-slate-600"
+                          }`}
+                        >
+                          {feature.icon}
+                        </div>
+                        <h3 className="text-base font-bold text-[var(--color-foreground)] leading-tight">
+                          {feature.title}
+                        </h3>
+                      </div>
+                      <span
+                        className={`text-xl font-bold transition-transform duration-300 ${
+                          isOpen ? "rotate-45 text-[var(--color-violet)]" : "text-slate-400"
+                        }`}
+                      >
+                        +
+                      </span>
+                    </div>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-400 ${
+                        isOpen
+                          ? "max-h-48 opacity-100 mt-3 pt-3 border-t border-slate-200/70"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <h4 className="text-xs font-semibold text-[var(--color-violet)] mb-1">
+                        {feature.headline}
+                      </h4>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Desktop Accordion */}

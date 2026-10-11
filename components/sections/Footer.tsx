@@ -8,16 +8,16 @@ export function Footer() {
     <footer id="footer" className="bg-slate-50 pt-20 border-t border-slate-100">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 border border-slate-200 rounded-2xl overflow-hidden">
-          <div className="p-8 md:p-16 border-b lg:border-b-0 lg:border-r border-slate-200">
-            <h2 className="text-5xl md:text-6xl font-bold text-[var(--color-foreground)] mb-2">
+          <div className="p-6 sm:p-8 md:p-16 border-b lg:border-b-0 lg:border-r border-slate-200">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[var(--color-foreground)] mb-2">
               Have Questions?
             </h2>
-            <p className="text-slate-500 text-lg mb-8">
+            <p className="text-slate-500 text-base sm:text-lg mb-8">
               We&apos;d love to hear from you
             </p>
 
-            <form className="space-y-6">
-              <div className="grid grid-cols-2 gap-6">
+            <form className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <input
                   type="text"
                   placeholder="Name"
