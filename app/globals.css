@@ -51,7 +51,8 @@
   --color-trust-blue-dark: #1D4ED8;
   --color-peach: #FF8C42;
   --color-peach-light: #FFF3EC;
-  --color-peach-dark: #E56A20;
+  --color-indigo-soft: #818CF8;
+  --color-indigo-soft-light: #EEF2FF;
   --color-mint-light: #E6FBF5;
   --color-yellow-light: #FEF9EC;
   --color-purple-light: #F5F2FE;
@@ -72,6 +73,8 @@
 @theme inline {
   --color-violet: #7477FF;
   --color-violet-light: #EEF0FF;
+  --color-indigo-soft: #818CF8;
+  --color-indigo-soft-light: #EEF2FF;
   --color-trust-blue: #3B82FF;
   --color-trust-blue-light: #EFF6FF;
   --color-peach: #FF8C42;
