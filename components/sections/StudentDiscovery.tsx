@@ -29,25 +29,31 @@ export function StudentDiscovery() {
                   {
                     label: "Learning Style",
                     value: "Visual & Interactive",
-                    color: "var(--color-violet)",
+                    color: "#7477FF",
+                    bg: "#EEF0FF",
                   },
                   {
                     label: "Attention Span",
                     value: "High in short bursts",
-                    color: "var(--color-trust-blue)",
+                    color: "#3B82FF",
+                    bg: "#EFF6FF",
                   },
                   {
                     label: "Comfort Level",
                     value: "Very confident",
-                    color: "var(--color-peach)",
+                    color: "#FF8C42",
+                    bg: "#FFF3EC",
                   },
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="flex justify-between items-center p-3 rounded-xl bg-slate-50"
+                    className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100"
                   >
-                    <span className="text-black text-base">{item.label}</span>
-                    <span className="font-medium text-base text-[var(--color-foreground)]">
+                    <span className="text-slate-800 text-sm sm:text-base font-medium">{item.label}</span>
+                    <span
+                      className="font-bold text-xs sm:text-sm px-2.5 py-1 rounded-lg"
+                      style={{ color: item.color, backgroundColor: item.bg }}
+                    >
                       {item.value}
                     </span>
                   </div>

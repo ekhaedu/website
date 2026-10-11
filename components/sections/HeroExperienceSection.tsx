@@ -3,12 +3,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "../ui/Button";
 import { GetAppButton } from "../ui/GetAppButton";
 import { PhoneShowcase } from "../phone/PhoneShowcase";
 import {
   ArrowRight,
-  PlayCircle,
+  Play,
   Sparkles,
   ShieldCheck,
   Star,
@@ -18,6 +17,7 @@ import {
   MessageCircle,
   BookOpen,
   CheckCircle2,
+  ChevronDown,
 } from "lucide-react";
 
 if (typeof window !== "undefined") {
@@ -38,8 +38,9 @@ export const FEATURE_STEPS = [
       "No long-term contracts — switch mentors whenever needed",
     ],
     icon: Users,
-    color: "var(--color-trust-blue)",
-    bgLight: "var(--color-trust-blue-light)",
+    color: "#7477FF",
+    bgLight: "#EEF0FF",
+    textColor: "#312E81",
     watermark: "CLASSROOM",
   },
   {
@@ -55,8 +56,9 @@ export const FEATURE_STEPS = [
       "Generates a clear capability profile shared with their teacher",
     ],
     icon: Bot,
-    color: "var(--color-violet)",
-    bgLight: "var(--color-violet-light)",
+    color: "#A78BFA",
+    bgLight: "#F5F2FE",
+    textColor: "#312E81",
     watermark: "DISCOVERY",
   },
   {
@@ -72,8 +74,9 @@ export const FEATURE_STEPS = [
       "Streak bonuses & achievement rewards incentivize daily habits",
     ],
     icon: Coins,
-    color: "var(--color-peach)",
-    bgLight: "var(--color-peach-light)",
+    color: "#FF8C42",
+    bgLight: "#FFF3EC",
+    textColor: "#B43403",
     watermark: "WALLET",
   },
   {
@@ -89,8 +92,9 @@ export const FEATURE_STEPS = [
       "One-tap 'Show me why' for deep-dive session analytics",
     ],
     icon: MessageCircle,
-    color: "#10b981",
-    bgLight: "#ecfdf5",
+    color: "#3EE8B6",
+    bgLight: "#E6FBF5",
+    textColor: "#064E3B",
     watermark: "UPDATES",
   },
   {
@@ -106,8 +110,9 @@ export const FEATURE_STEPS = [
       "Structured formula sheets and concise teacher notes",
     ],
     icon: BookOpen,
-    color: "var(--color-violet)",
-    bgLight: "var(--color-violet-light)",
+    color: "#4FD1FF",
+    bgLight: "#EBF9FF",
+    textColor: "#0F172A",
     watermark: "SYLLABUS",
   },
 ];
@@ -116,12 +121,12 @@ export function HeroExperienceSection() {
   const stageContainerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
-  // Layers
+  // Showcase Animated Elements
   const showcaseHeaderRef = useRef<HTMLDivElement>(null);
   const showcaseCardsRef = useRef<HTMLDivElement>(null);
   const floatingBadgesRef = useRef<HTMLDivElement>(null);
 
-  // Anchors & Shared Phone
+  // Phone Anchors & Elements
   const initialPhoneSlotRef = useRef<HTMLDivElement>(null);
   const showcasePhoneSlotRef = useRef<HTMLDivElement>(null);
   const movingPhoneRef = useRef<HTMLDivElement>(null);
@@ -141,7 +146,6 @@ export function HeroExperienceSection() {
         const iRect = initialPhoneSlotRef.current.getBoundingClientRect();
         const sRect = showcasePhoneSlotRef.current.getBoundingClientRect();
 
-        // Calculate center-to-center offset
         const iCenterX = iRect.left + iRect.width / 2;
         const iCenterY = iRect.top + iRect.height / 2;
         const sCenterX = sRect.left + sRect.width / 2;
@@ -150,8 +154,6 @@ export function HeroExperienceSection() {
         const deltaX = sCenterX - iCenterX;
         const deltaY = sCenterY - iCenterY;
 
-        // On mobile, scale down to 0.82 to fit between title & card (matching Screenshot 2)
-        // On desktop, scale to fit the right column
         const isMobile = window.innerWidth < 768;
         const targetScale = isMobile ? 0.82 : sRect.width / (iRect.width || 1);
 
@@ -160,9 +162,9 @@ export function HeroExperienceSection() {
 
       const { deltaX, deltaY, scale } = calculateDeltas();
 
-      const tl = gsap.timeline({
+      const scrollTl = gsap.timeline({
         scrollTrigger: {
-          id: "hero-showcase-trigger",
+          id: "hero-showcase-master",
           trigger: stageContainerRef.current,
           start: "top top",
           end: "bottom bottom",
@@ -175,8 +177,8 @@ export function HeroExperienceSection() {
               progressBarRef.current.style.transform = `scaleX(${p})`;
             }
 
-            // Phase 1 (0 to 0.28): Descent & Scale Down to Showcase
-            // Phase 2 (0.28 to 1.0): Step Scrubbing in Showcase
+            // Phase 1 (0 to 0.28): Scale down phone and dock into showcase
+            // Phase 2 (0.28 to 1.0): Step scrubbing in showcase
             if (p < 0.28) {
               if (lastStepRef.current !== 0) {
                 lastStepRef.current = 0;
@@ -198,68 +200,68 @@ export function HeroExperienceSection() {
         },
       });
 
-      // ========================================================
-      // SCROLLTRIGGER 1: Smoothly Scale Down & Animate from "Here"
-      // ========================================================
-      // 1. Floating badges fade out quickly
-      tl.to(
+      // 1. Floating trust badges fade out
+      scrollTl.to(
         floatingBadgesRef.current,
         {
           opacity: 0,
-          scale: 0.85,
+          scale: 0.8,
           ease: "power2.inOut",
           duration: 0.12,
           pointerEvents: "none",
         },
         0
-      )
-        // 2. The Phone smoothly scales down and glides into the showcase slot
-        .to(
-          movingPhoneRef.current,
-          {
-            x: deltaX,
-            y: deltaY,
-            scale: scale,
-            ease: "power2.inOut",
-            duration: 0.28,
-          },
-          0
-        )
-        // 3. Showcase header slides in from top
-        .fromTo(
-          showcaseHeaderRef.current,
-          {
-            opacity: 0,
-            y: -25,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "power2.inOut",
-            duration: 0.28,
-            pointerEvents: "auto",
-          },
-          0
-        )
-        // 4. Step 01 details card slides in from bottom
-        .fromTo(
-          showcaseCardsRef.current,
-          {
-            opacity: 0,
-            y: 35,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "power2.inOut",
-            duration: 0.28,
-            pointerEvents: "auto",
-          },
-          0
-        );
+      );
 
-      // Remaining timeline duration for scrubbing through the 5 steps
-      tl.to({}, { duration: 0.72 });
+      // 2. The Phone smoothly scales down and glides into the showcase slot
+      scrollTl.to(
+        movingPhoneRef.current,
+        {
+          x: deltaX,
+          y: deltaY,
+          scale: scale,
+          ease: "power2.inOut",
+          duration: 0.28,
+        },
+        0
+      );
+
+      // 3. Showcase Header smoothly slides in from top
+      scrollTl.fromTo(
+        showcaseHeaderRef.current,
+        {
+          opacity: 0,
+          y: -25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power2.inOut",
+          duration: 0.28,
+          pointerEvents: "auto",
+        },
+        0
+      );
+
+      // 4. Showcase Step Details Card smoothly slides in from below
+      scrollTl.fromTo(
+        showcaseCardsRef.current,
+        {
+          opacity: 0,
+          y: 35,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power2.inOut",
+          duration: 0.28,
+          pointerEvents: "auto",
+        },
+        0
+      );
+
+      // 5. Timeline duration for scrubbing through the 5 steps
+      scrollTl.to({}, { duration: 0.72 });
 
       // Handle window resize
       const handleResize = () => {
@@ -282,19 +284,17 @@ export function HeroExperienceSection() {
     };
   }, []);
 
-  const handleScrollToHowItWorks = () => {
-    const st = ScrollTrigger.getById("hero-showcase-trigger");
-    if (st && stageContainerRef.current) {
-      // Scroll to docked showcase point (0.30 progress)
-      const targetScroll = st.start + 0.30 * (st.end - st.start);
-      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+  const handleScrollToShowcase = () => {
+    const el = document.getElementById("product-showcase");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handleJumpToStep = (index: number) => {
     lastStepRef.current = index;
     setActiveStep(index);
-    const st = ScrollTrigger.getById("hero-showcase-trigger");
+    const st = ScrollTrigger.getById("hero-showcase-master");
     if (st && stageContainerRef.current) {
       const stepFraction = (index + 0.1) / FEATURE_STEPS.length;
       const targetProgress = 0.28 + stepFraction * 0.72;
@@ -306,88 +306,172 @@ export function HeroExperienceSection() {
   const currentFeature = FEATURE_STEPS[activeStep];
 
   return (
-    <div id="hero" className="relative w-full bg-white">
+    <div id="hero" className="relative w-full bg-white select-none">
       {/* ========================================================= */}
-      {/* 1. HERO TOP CONTENT (In natural document flow) */}
-      {/* Scrolls naturally until the phone arrives at "here" */}
+      {/* SCREEN 1: FULL-SCREEN HERO SECTION (100dvh) */}
+      {/* Balanced, beautiful, rich typography, zero awkward voids */}
       {/* ========================================================= */}
-      <section className="relative w-full pt-8 pb-8 sm:pt-14 sm:pb-12 overflow-hidden bg-white">
+      <section className="relative w-full min-h-[100dvh] flex flex-col justify-center items-center px-4 sm:px-6 py-10 sm:py-16 overflow-hidden bg-white">
         {/* Soft radial aura */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 25%, rgba(112,111,211,0.12) 0%, rgba(255,126,95,0.06) 45%, transparent 70%)",
+              "radial-gradient(ellipse at 50% 18%, rgba(116,119,255,0.14) 0%, rgba(255,140,66,0.06) 42%, transparent 70%)",
           }}
         />
 
-        {/* Subtle grid pattern */}
+        {/* Refined modern micro-grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(112,111,211,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(112,111,211,0.04) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            maskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
+              "radial-gradient(rgba(116, 119, 255, 0.12) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
           }}
         />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            {/* Admissions Badge */}
-            <div className="mb-4 sm:mb-6 animate-[fadeIn_0.8s_ease-out_both]">
-              <span className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-wide text-[var(--color-violet)] bg-[var(--color-violet-light)] px-4 sm:px-5 py-2 rounded-full font-semibold border border-[var(--color-violet)]/20 shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--color-peach)]" />
-                Admissions Open · LKG – Class 12
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto z-10 w-full space-y-4 sm:space-y-6">
+          {/* Top Brand & Announcement Capsule */}
+          <div className="animate-[fadeIn_0.8s_ease-out_both]">
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-white/95 backdrop-blur-xl px-3.5 sm:px-4 py-1.5 rounded-full border border-slate-200/90 shadow-xs hover:border-[#7477FF]/40 transition-all duration-300">
+              <div className="flex items-center gap-1.5 text-xs font-black tracking-tight text-slate-900 border-r border-slate-200 pr-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7477FF]/60 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7477FF]" />
+                </span>
+                <span>EKHA<span className="text-[#7477FF]">.</span></span>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-slate-700">
+                <Sparkles className="w-3.5 h-3.5 text-[#FF9F43]" />
+                <span>Admissions Open · LKG to Class 12</span>
+              </span>
+              <span className="hidden sm:inline-flex items-center text-[10px] font-bold text-[#7477FF] bg-[#EEF0FF] px-2 py-0.5 rounded-full border border-[#7477FF]/25">
+                2026–27
               </span>
             </div>
+          </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-7xl lg:text-8xl font-extrabold text-[var(--color-foreground)] leading-[1.08] sm:leading-[1] mb-4 sm:mb-6 tracking-tight max-w-4xl">
-              Master Every Subject <br className="hidden sm:inline" />
+          {/* High-Impact Main Headline */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold sm:font-black text-slate-950 leading-[1.1] sm:leading-[1.04] tracking-[-0.03em] max-w-3xl mx-auto">
+            Master Every Subject <br />
+            <span className="relative inline-block mt-0.5 sm:mt-1">
               <span className="gradient-text-trust">One-on-One</span>
-            </h1>
-
-            {/* Subheading */}
-            <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto font-normal">
-              The only platform with complete transparency. No algorithms. No forced matches. Just you, your child, and the perfect teacher.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md">
-              <GetAppButton
-                useCustomButton
-                className="w-full sm:w-auto shadow-lg shadow-violet/20"
-                rightIcon={<ArrowRight className="w-4 h-4" />}
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3 text-[#7477FF]/40"
+                viewBox="0 0 300 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Get the App
-              </GetAppButton>
-              <Button
-                variant="secondary"
-                size="lg"
-                className="w-full sm:w-auto"
-                leftIcon={<PlayCircle className="w-4 h-4" />}
-                onClick={handleScrollToHowItWorks}
+                <path
+                  d="M2 9C75 3 225 3 298 9"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mx-auto font-normal px-2">
+            India&apos;s only 100% transparent live learning platform. Direct teacher matching, interactive whiteboard, and coin escrow with zero forced subscriptions.
+          </p>
+
+          {/* Subject Pills Preview Strip */}
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-1 pb-1">
+            {[
+              "📐 Mathematics",
+              "⚡ Physics",
+              "🧪 Chemistry",
+              "💻 Coding",
+              "📖 English",
+              "CBSE & ICSE",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-50 text-slate-600 border border-slate-200/80 shadow-2xs hover:bg-white hover:border-[#7477FF]/40 hover:text-[#7477FF] transition-colors"
               >
-                How Ekha Works
-              </Button>
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Ergonomic Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-sm sm:max-w-md mx-auto pt-1">
+            <GetAppButton
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 gradient-trust text-white px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-lg shadow-[#7477FF]/25 hover:shadow-[#7477FF]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer group"
+            >
+              <span>Get the App</span>
+              <ArrowRight className="w-4 h-4 text-white/80 group-hover:translate-x-0.5 transition-transform" />
+            </GetAppButton>
+
+            <button
+              onClick={handleScrollToShowcase}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/95 hover:bg-white text-slate-800 px-5 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-semibold border border-slate-200/90 hover:border-[#7477FF]/30 shadow-xs hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer group"
+            >
+              <div className="w-5 h-5 rounded-full bg-[#EEF0FF] flex items-center justify-center text-[#7477FF] group-hover:scale-110 transition-transform">
+                <Play className="w-2.5 h-2.5 fill-[#7477FF] ml-0.5" />
+              </div>
+              <span>How Ekha Works</span>
+            </button>
+          </div>
+
+          {/* Social Proof & Reassurance Card */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-1.5 text-[11px] sm:text-xs text-slate-600 bg-slate-50/70 border border-slate-200/60 px-4 py-2 rounded-2xl shadow-2xs mx-auto">
+            <div className="flex items-center gap-1 font-medium text-slate-700">
+              <div className="flex items-center text-[#F8CC61]">
+                <Star className="w-3 h-3 fill-[#F8CC61]" />
+                <Star className="w-3 h-3 fill-[#F8CC61]" />
+                <Star className="w-3 h-3 fill-[#F8CC61]" />
+                <Star className="w-3 h-3 fill-[#F8CC61]" />
+                <Star className="w-3 h-3 fill-[#F8CC61]" />
+              </div>
+              <span className="font-bold text-slate-900">4.9/5</span>
+              <span className="text-slate-400">· 2,500+ Parents</span>
             </div>
+
+            <span className="hidden sm:inline text-slate-300">•</span>
+
+            <div className="flex items-center gap-1 text-slate-600 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+              <span>Free Trial With Every Mentor</span>
+            </div>
+
+            <span className="hidden sm:inline text-slate-300">•</span>
+
+            <div className="flex items-center gap-1 text-slate-600 font-medium">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#7477FF] shrink-0" />
+              <span>No Contracts</span>
+            </div>
+          </div>
+
+          {/* Bottom Scroll Prompt */}
+          <div className="pt-2">
+            <button
+              onClick={handleScrollToShowcase}
+              className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-slate-600 hover:text-[#7477FF] bg-white/80 hover:bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 hover:border-[#7477FF]/30 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
+            >
+              <span>Explore Interactive Whiteboard</span>
+              <ChevronDown className="w-3.5 h-3.5 text-[#7477FF] animate-bounce group-hover:translate-y-0.5 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* 2. SCROLLTRIGGER STAGE: STARTS HERE */}
-      {/* The phone starts in full view ("here") and smoothly scales down */}
+      {/* SCREEN 2+: MOBILE GSAP SCROLLTRIGGER STAGE */}
+      {/* Starts on the next screen with the phone centered, then scales down */}
       {/* ========================================================= */}
       <div
         ref={stageContainerRef}
         id="product-showcase"
-        className="relative w-full h-[280vh] bg-white border-t border-slate-100/80"
+        className="relative w-full h-[280vh] bg-white border-t border-slate-100/90"
       >
         {/* Sticky Fullscreen Stage (Pinned by GPU Compositor) */}
-        <div className="sticky top-20 w-full h-[calc(100dvh-5rem)] max-h-[calc(100vh-5rem)] overflow-hidden flex flex-col justify-between relative z-10 select-none py-2 sm:py-4">
+        <div className="sticky top-0 w-full h-[100dvh] max-h-screen overflow-hidden flex flex-col justify-between relative z-10 py-2 sm:py-4 select-none">
           {/* Top Scroll Scrub Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-1 bg-slate-200/80 z-40">
             <div
@@ -397,24 +481,24 @@ export function HeroExperienceSection() {
             />
           </div>
 
-          {/* Soft Radial Aura Background */}
+          {/* Ambient Lighting */}
           <div
             className="absolute inset-0 pointer-events-none transition-colors duration-700 -z-10"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 25%, rgba(112,111,211,0.12) 0%, rgba(255,126,95,0.06) 45%, transparent 70%)",
+                "radial-gradient(ellipse at 50% 20%, rgba(116,119,255,0.12) 0%, rgba(255,140,66,0.06) 45%, transparent 70%)",
             }}
           />
 
-          {/* Subtle Grid Pattern */}
+          {/* Subtle Grid */}
           <div
             className="absolute inset-0 pointer-events-none -z-10"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(112,111,211,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(112,111,211,0.04) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-              maskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
+                "radial-gradient(rgba(116, 119, 255, 0.12) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+              maskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 60%, transparent 100%)",
             }}
           />
 
@@ -432,14 +516,14 @@ export function HeroExperienceSection() {
           />
 
           {/* ======================================================= */}
-          {/* SHOWCASE HEADER (Scrolls/fades in as phone scales down) */}
+          {/* SHOWCASE HEADER: Fades and Slides In with GSAP */}
           {/* ======================================================= */}
           <div
             ref={showcaseHeaderRef}
             className="container mx-auto px-4 shrink-0 text-center relative z-20 pt-1 opacity-0 -translate-y-6"
           >
-            <div className="inline-flex items-center gap-1.5 bg-[var(--color-violet-light)] text-[var(--color-violet)] px-3 py-0.5 rounded-full text-xs font-semibold mb-1 border border-[var(--color-violet)]/20 shadow-xs">
-              <Sparkles className="w-3 h-3 text-[var(--color-peach)]" />
+            <div className="inline-flex items-center gap-1.5 bg-[#EEF0FF] text-[#7477FF] px-3 py-0.5 rounded-full text-xs font-semibold mb-1 border border-[#7477FF]/20 shadow-xs">
+              <Sparkles className="w-3 h-3 text-[#FF8C42]" />
               Scroll-Driven Showcase
             </div>
 
@@ -457,8 +541,8 @@ export function HeroExperienceSection() {
                     onClick={() => handleJumpToStep(idx)}
                     className={`px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                       isActive
-                        ? "gradient-trust text-white shadow-md shadow-violet/20 scale-105"
-                        : "bg-white/80 backdrop-blur-sm text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-white"
+                        ? "gradient-trust text-white shadow-md shadow-[#7477FF]/25 scale-105"
+                        : "bg-white/80 backdrop-blur-sm text-slate-600 border border-slate-200 hover:border-[#7477FF]/40 hover:bg-white"
                     }`}
                   >
                     <step.icon className={`w-3 h-3 ${isActive ? "text-white" : "text-slate-400"}`} />
@@ -504,7 +588,10 @@ export function HeroExperienceSection() {
                             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">
                               {step.badge}
                             </span>
-                            <div className="text-xs sm:text-sm font-bold text-[var(--color-violet)]">
+                            <div
+                              className="text-xs sm:text-sm font-bold"
+                              style={{ color: step.color }}
+                            >
                               {step.tagline}
                             </div>
                           </div>
@@ -543,21 +630,21 @@ export function HeroExperienceSection() {
           </div>
 
           {/* ======================================================= */}
-          {/* THE INITIAL PHONE SLOT & THE ANIMATING PHONE */}
-          {/* Starts at "Here" (Screenshot 1: full scale, centered) */}
+          {/* THE MASTER ANIMATING PHONE */}
+          {/* Starts centered at full scale, then smoothly scales down with GSAP */}
           {/* ======================================================= */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
             <div
               ref={initialPhoneSlotRef}
               className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px] aspect-[9/19.5] pointer-events-auto"
             >
-              {/* Floating Trust Badges (Visible only at the start) */}
+              {/* Floating Trust Badges (Fades out with GSAP) */}
               <div
                 ref={floatingBadgesRef}
                 className="absolute inset-0 pointer-events-none z-40 transition-opacity duration-300"
               >
                 <div className="absolute -left-3 sm:-left-20 top-14 hidden sm:flex items-center gap-2 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-900/10 pointer-events-auto">
-                  <div className="w-6 h-6 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-600">
+                  <div className="w-6 h-6 rounded-lg bg-[#3EE8B6]/20 flex items-center justify-center text-[#059669]">
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
                   <div className="text-left">
@@ -567,8 +654,8 @@ export function HeroExperienceSection() {
                 </div>
 
                 <div className="absolute -right-3 sm:-right-20 bottom-20 hidden sm:flex items-center gap-2 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-900/10 pointer-events-auto">
-                  <div className="w-6 h-6 rounded-lg bg-amber-400/20 flex items-center justify-center text-amber-500">
-                    <Star className="w-3.5 h-3.5 fill-amber-400" />
+                  <div className="w-6 h-6 rounded-lg bg-[#F8CC61]/25 flex items-center justify-center text-[#FF9F43]">
+                    <Star className="w-3.5 h-3.5 fill-[#F8CC61]" />
                   </div>
                   <div className="text-left">
                     <div className="text-[10px] font-bold text-slate-800">4.9 / 5 Rating</div>
@@ -577,7 +664,7 @@ export function HeroExperienceSection() {
                 </div>
               </div>
 
-              {/* THE ANIMATING PHONE THAT SMOOTHLY SCALES DOWN */}
+              {/* The animating phone that smoothly scales down */}
               <div
                 ref={movingPhoneRef}
                 className="w-full h-full transform-gpu will-change-transform origin-center"

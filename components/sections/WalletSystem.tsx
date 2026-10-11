@@ -130,11 +130,11 @@ export function WalletSystem() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-[var(--color-violet)] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#7477FF] flex items-center justify-center shadow-xs">
                   <Trophy className="w-4 h-4 text-white" />
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[var(--color-trust-blue)] flex items-center justify-center">
-                  <Star className="w-4 h-4 text-white" />
+                <div className="w-8 h-8 rounded-full bg-[#F8CC61] flex items-center justify-center shadow-xs">
+                  <Star className="w-4 h-4 text-slate-900 fill-slate-900" />
                 </div>
                 <span className="text-xs text-slate-500 font-medium ml-1 hidden sm:inline">
                   +3 badges
@@ -159,12 +159,12 @@ export function WalletSystem() {
                           className="absolute w-2 h-2 rounded-full"
                           style={{
                             backgroundColor: [
-                              "var(--color-violet)",
-                              "var(--color-peach)",
-                              "var(--color-trust-blue)",
-                              "#FFD700",
-                              "#FF69B4",
-                              "#00CED1",
+                              "#7477FF",
+                              "#FF8C42",
+                              "#3EE8B6",
+                              "#F8CC61",
+                              "#F472B6",
+                              "#4FD1FF",
                             ][j],
                             left: `${20 + j * 12}%`,
                             top: "30%",

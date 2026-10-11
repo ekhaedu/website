@@ -21,8 +21,8 @@ export function CareerGuidance() {
               Humans Guide.
             </span>
           </h2>
-          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-emerald-200 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
+          <div className="inline-flex items-center gap-2 bg-[#E6FBF5] text-[#064E3B] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-[#3EE8B6]/40 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#059669]" />
             Included Free for Every Student
           </div>
           <p className="text-slate-700 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">

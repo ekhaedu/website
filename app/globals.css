@@ -1,31 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  /* === Dual-Audience Color System === */
+  /* ======================================================== */
+  /* Ekha Authentic App Design System (Option 2: Light Canvas) */
+  /* Exact tokens synchronized from Ekha mobile application    */
+  /* ======================================================== */
 
-  /* Trust & Authority (Parent-facing) */
-  --color-trust-blue: #3B5BA5;
-  --color-trust-blue-light: #E8EEF7;
-  --color-trust-blue-dark: #2A4178;
+  /* Primary App Brand & Energy Accents */
+  --color-blue: #7477FF;
+  --color-soft-blue: #4FD1FF;
+  --color-dark-blue: #3B82FF;
+  --color-mint: #3EE8B6;
+  --color-green: #5AD65A;
+  --color-yellow: #F8CC61;
+  --color-dark-yellow: #FF9F43;
+  --color-soft-yellow: #FFE066;
+  --color-purple: #A78BFA;
+  --color-cream: #FFB4A2;
+  --color-rose-pink: #F472B6;
+  --color-coral-red: #FF4D6D;
+  --color-orange: #FF8C42;
+  --color-red: #F65F50;
+  --color-cyan: #BCF3FE;
 
-  /* Energy & Engagement (Student-facing) */
-  --color-violet: #706FD3;
-  --color-violet-light: #ECEAFF;
-  --color-violet-dark: #5856A9;
-  --color-peach: #FF7E5F;
-  --color-peach-light: #FFF0EC;
-  --color-peach-dark: #E5614A;
+  /* App Surfaces & Neutrals */
+  --color-app-bg: #232323;
+  --color-boxes-bg: #1A1A1A;
+  --color-card-gray: #2A2A2A;
 
-  /* Neutral Warm Palette */
-  --color-cream: #FAFAF7;
-  --color-cream-dark: #F0F0EA;
-  --color-navy: #1A1A2E;
-  --color-navy-light: #2A2A42;
-  --color-slate-warm: #64748B;
+  /* App Text Contrast Tokens */
+  --color-text-white: #D3D3D3;
+  --color-soft-blue-text: #0F172A;
+  --color-dark-blue-text: #FFF1C1;
+  --color-purple-text: #312E81;
+  --color-red-text: #FFD6D6;
+  --color-mint-text: #064E3B;
+  --color-cream-text: #6B2F1A;
+  --color-rose-pink-text: #7A1F4A;
+  --color-coral-red-text: #5B0F1A;
+  --color-orange-text: #000000;
+  --color-soft-yellow-text: #374151;
+  --color-green-text: #064E3B;
 
-  /* Semantic */
+  /* Web Semantic Mapping (Light Canvas with Authentic Accents) */
+  --color-violet: #7477FF;
+  --color-violet-light: #EEF0FF;
+  --color-violet-dark: #585CE8;
+  --color-trust-blue: #3B82FF;
+  --color-trust-blue-light: #EFF6FF;
+  --color-trust-blue-dark: #1D4ED8;
+  --color-peach: #FF8C42;
+  --color-peach-light: #FFF3EC;
+  --color-peach-dark: #E56A20;
+  --color-mint-light: #E6FBF5;
+  --color-yellow-light: #FEF9EC;
+  --color-purple-light: #F5F2FE;
+
+  /* Canvas Surfaces */
   --background: #ffffff;
-  --foreground: #1E293B;
+  --foreground: #1A1A1A;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -37,16 +70,39 @@
 }
 
 @theme inline {
-  --color-trust-blue: #3B5BA5;
-  --color-trust-blue-light: #E8EEF7;
-  --color-violet: #706FD3;
-  --color-violet-light: #ECEAFF;
-  --color-peach: #FF7E5F;
-  --color-peach-light: #FFF0EC;
-  --color-cream: #FAFAF7;
-  --color-cream-dark: #F0F0EA;
-  --color-navy: #1A1A2E;
-  --color-navy-light: #2A2A42;
+  --color-violet: #7477FF;
+  --color-violet-light: #EEF0FF;
+  --color-trust-blue: #3B82FF;
+  --color-trust-blue-light: #EFF6FF;
+  --color-peach: #FF8C42;
+  --color-peach-light: #FFF3EC;
+  --color-blue: #7477FF;
+  --color-soft-blue: #4FD1FF;
+  --color-dark-blue: #3B82FF;
+  --color-mint: #3EE8B6;
+  --color-mint-light: #E6FBF5;
+  --color-green: #5AD65A;
+  --color-yellow: #F8CC61;
+  --color-dark-yellow: #FF9F43;
+  --color-soft-yellow: #FFE066;
+  --color-purple: #A78BFA;
+  --color-purple-light: #F5F2FE;
+  --color-cream: #FFB4A2;
+  --color-rose-pink: #F472B6;
+  --color-coral-red: #FF4D6D;
+  --color-orange: #FF8C42;
+  --color-red: #F65F50;
+  --color-cyan: #BCF3FE;
+  --color-boxes-bg: #1A1A1A;
+  --color-app-bg: #232323;
+  --color-card-gray: #2A2A2A;
+
+  --color-text-white: #D3D3D3;
+  --color-soft-blue-text: #0F172A;
+  --color-dark-blue-text: #FFF1C1;
+  --color-purple-text: #312E81;
+  --color-mint-text: #064E3B;
+
   --font-barlow: var(--font-barlow);
   --font-space: var(--font-space);
 }
@@ -90,54 +146,84 @@
   }
 }
 
-/* ============ Warm Gradient Utilities ============ */
+/* ============ Authentic Ekha App Gradient Utilities ============ */
 
 .gradient-trust {
-  background: linear-gradient(135deg, var(--color-trust-blue) 0%, var(--color-violet) 100%);
+  background: linear-gradient(135deg, #3B82FF 0%, #7477FF 100%);
 }
 
 .gradient-engage {
-  background: linear-gradient(135deg, var(--color-violet) 0%, var(--color-peach) 100%);
+  background: linear-gradient(135deg, #7477FF 0%, #FF8C42 100%);
 }
 
 .gradient-warm {
-  background: linear-gradient(135deg, var(--color-peach) 0%, #FFB347 100%);
+  background: linear-gradient(135deg, #FF8C42 0%, #F8CC61 100%);
+}
+
+.gradient-mint {
+  background: linear-gradient(135deg, #3EE8B6 0%, #4FD1FF 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #A78BFA 0%, #7477FF 100%);
 }
 
 .gradient-text-violet {
-  background: linear-gradient(135deg, var(--color-violet), var(--color-peach));
+  background: linear-gradient(135deg, #7477FF, #FF8C42);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-trust {
-  background: linear-gradient(135deg, var(--color-trust-blue), var(--color-violet));
+  background: linear-gradient(135deg, #3B82FF 0%, #7477FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ============ Soft Glow Effects ============ */
+.gradient-text-mint {
+  background: linear-gradient(135deg, #3EE8B6 0%, #3B82FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #FF8C42 0%, #F8CC61 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============ Soft Candy Glow Effects ============ */
 
 .glow-violet {
-  box-shadow: 0 4px 20px rgba(112, 111, 211, 0.15);
+  box-shadow: 0 4px 20px rgba(116, 119, 255, 0.22);
 }
 
 .glow-violet-hover:hover {
-  box-shadow: 0 8px 30px rgba(112, 111, 211, 0.25);
+  box-shadow: 0 8px 30px rgba(116, 119, 255, 0.35);
 }
 
 .glow-trust {
-  box-shadow: 0 4px 20px rgba(59, 91, 165, 0.15);
+  box-shadow: 0 4px 20px rgba(59, 130, 255, 0.22);
 }
 
 .glow-peach {
-  box-shadow: 0 4px 20px rgba(255, 126, 95, 0.15);
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.22);
+}
+
+.glow-mint {
+  box-shadow: 0 4px 20px rgba(62, 232, 182, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0 4px 20px rgba(167, 139, 250, 0.25);
 }
 
 .text-warm-glow {
-  text-shadow: 0 0 20px rgba(112, 111, 211, 0.3);
+  text-shadow: 0 0 20px rgba(116, 119, 255, 0.35);
 }
 
 /* ============ Mobile Dark Warm Theme ============ */

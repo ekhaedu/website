@@ -16,27 +16,27 @@ export interface PhoneShowcaseProps {
 const SCREENS = [
   {
     component: MentorMatchScreen,
-    glow: "rgba(59, 91, 165, 0.35)", // Trust Blue
+    glow: "rgba(116, 119, 255, 0.4)", // Ekha Blue (#7477FF)
     name: "Mentor Match",
   },
   {
     component: AIDiscoveryScreen,
-    glow: "rgba(112, 111, 211, 0.35)", // Violet
+    glow: "rgba(167, 139, 250, 0.4)", // Ekha Purple (#A78BFA)
     name: "AI Discovery",
   },
   {
     component: LearningWalletScreen,
-    glow: "rgba(255, 126, 95, 0.35)", // Peach
+    glow: "rgba(255, 140, 66, 0.4)", // Ekha Orange (#FF8C42)
     name: "Learning Wallet",
   },
   {
     component: ParentRecapScreen,
-    glow: "rgba(16, 185, 129, 0.35)", // Emerald
+    glow: "rgba(62, 232, 182, 0.4)", // Ekha Mint (#3EE8B6)
     name: "Parent Recap",
   },
   {
     component: SyllabusReplaysScreen,
-    glow: "rgba(112, 111, 211, 0.35)", // Violet
+    glow: "rgba(79, 209, 255, 0.4)", // Ekha Soft Blue (#4FD1FF)
     name: "Syllabus & Replays",
   },
 ];
