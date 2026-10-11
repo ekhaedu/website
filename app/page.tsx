@@ -1,17 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { Hero } from "../components/sections/Hero";
+import { HeroExperienceSection } from "../components/sections/HeroExperienceSection";
 import { GetAppButton } from "../components/ui/GetAppButton";
 import Image from "next/image";
-
-// Lazy load below-fold sections — they won't block initial render
-const PhoneShowcaseSection = dynamic(
-  () =>
-    import("../components/sections/PhoneShowcaseSection").then((mod) => ({
-      default: mod.PhoneShowcaseSection,
-    })),
-  { ssr: true }
-);
 
 const HowItWorks = dynamic(
   () =>
@@ -106,8 +97,7 @@ export default function Home() {
       </nav>
 
       <main className="pt-20">
-        <Hero />
-        <PhoneShowcaseSection />
+        <HeroExperienceSection />
         <HowItWorks />
         <FeaturesGrid />
         <WalletSystem />

@@ -15,14 +15,14 @@ export interface PhoneShowcaseProps {
 
 const SCREENS = [
   {
-    component: AIDiscoveryScreen,
-    glow: "rgba(112, 111, 211, 0.35)", // Violet
-    name: "AI Discovery",
-  },
-  {
     component: MentorMatchScreen,
     glow: "rgba(59, 91, 165, 0.35)", // Trust Blue
     name: "Mentor Match",
+  },
+  {
+    component: AIDiscoveryScreen,
+    glow: "rgba(112, 111, 211, 0.35)", // Violet
+    name: "AI Discovery",
   },
   {
     component: LearningWalletScreen,
