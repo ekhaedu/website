@@ -25,24 +25,57 @@ const Headline = ({ text = "Something new is on the way" }: { text?: string }) =
   return (
     <h1
       data-slot="coming-soon-title"
-      className="max-w-xl font-serif text-5xl font-medium leading-[1.04] tracking-tight sm:text-6xl md:text-7xl"
+      className="max-w-xl font-serif text-5xl font-medium leading-[1.04] tracking-tight sm:text-6xl md:text-7xl text-balance"
     >
-      {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          className={cn(
-            "inline-block",
-            i < half ? "text-muted-foreground" : "text-foreground",
-          )}
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 + i * 0.08 }}
-        >
-          {word}
-          {i < words.length - 1 ? " " : null}
-        </motion.span>
-      ))}
+      {words.map((word, wordIndex) => {
+        return (
+          <span
+            key={`word-${wordIndex}`}
+            className={cn(
+              "inline-block whitespace-nowrap",
+              wordIndex < half ? "text-muted-foreground" : "text-foreground"
+            )}
+          >
+            {word.split("").map((char, charIndex) => {
+              const letterIndex =
+                words
+                  .slice(0, wordIndex)
+                  .reduce((acc, w) => acc + w.length, 0) + charIndex;
+
+              return (
+                <motion.span
+                  key={`char-${wordIndex}-${charIndex}`}
+                  className="inline-block"
+                  initial={
+                    reduce
+                      ? false
+                      : {
+                          opacity: 0,
+                          filter: "blur(12px)",
+                          y: 14,
+                        }
+                  }
+                  animate={{
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.2 + letterIndex * 0.035,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+            {wordIndex < words.length - 1 ? (
+              <span className="inline-block">&nbsp;</span>
+            ) : null}
+          </span>
+        );
+      })}
     </h1>
   );
 };
@@ -60,19 +93,30 @@ const ComingSoon02 = ({
       data-slot="coming-soon"
       className="relative isolate flex min-h-svh flex-col items-center justify-center overflow-hidden bg-background pt-24"
     >
+      {/* Smooth Background Section Aura Animation */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,color-mix(in_oklch,var(--primary)_12%,transparent),transparent_65%)]"
+        initial={reduce ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+      />
+
       <motion.div
         data-slot="coming-soon-body"
         className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-5 px-6 text-center md:px-10"
-        initial={reduce ? false : { opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        initial={reduce ? false : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+          initial={
+            reduce
+              ? false
+              : { opacity: 0, filter: "blur(8px)", scale: 0.9, y: 10 }
+          }
+          animate={{ opacity: 1, filter: "blur(0px)", scale: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
         >
           <Badge
             variant="outline"
@@ -87,11 +131,12 @@ const ComingSoon02 = ({
 
         <motion.p
           data-slot="coming-soon-description"
-          className="mt-2 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg"
-          initial={reduce ? false : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-2 max-w-xl text-pretty text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed px-4 sm:px-0"
+          initial={
+            reduce ? false : { opacity: 0, filter: "blur(8px)", y: 14 }
+          }
+          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.7 }}
         >
           {description}
         </motion.p>
@@ -99,10 +144,11 @@ const ComingSoon02 = ({
         <motion.div
           data-slot="coming-soon-actions"
           className="mt-4 flex flex-col items-center gap-4 sm:flex-row"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1 }}
+          initial={
+            reduce ? false : { opacity: 0, filter: "blur(8px)", y: 16 }
+          }
+          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.9 }}
         >
           <Badge
             variant="outline"
@@ -114,14 +160,21 @@ const ComingSoon02 = ({
         </motion.div>
       </motion.div>
 
-      <div
+      {/* Horizon with Smooth Entrance */}
+      <motion.div
         data-slot="coming-soon-horizon"
         aria-hidden
-        className="relative -mt-32 h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,black,transparent)] after:absolute after:-start-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-border after:bg-card after:content-['']"
+        className="pointer-events-none relative -mt-32 h-96 w-full shrink-0 overflow-hidden [mask-image:radial-gradient(50%_50%,black,transparent)] after:absolute after:-start-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-border after:bg-card after:content-['']"
+        initial={reduce ? false : { opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
       >
-        <div
+        <motion.div
           data-slot="coming-soon-horizon-glow"
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,color-mix(in_oklch,var(--primary)_40%,transparent),transparent_70%)] opacity-40"
+          initial={reduce ? false : { opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.35 }}
         />
         <Sparkles
           density={4}
@@ -129,7 +182,7 @@ const ComingSoon02 = ({
           color="var(--primary)"
           className="[mask-image:radial-gradient(50%_50%,black,transparent_85%)]"
         />
-      </div>
+      </motion.div>
     </section>
   );
 };
