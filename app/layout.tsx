@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Lexend, Inter } from "next/font/google";
 import "./globals.css";
-import { Preloader } from "../components/ui/Preloader";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -47,7 +46,6 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} ${inter.variable} antialiased`}
       >
-        <Preloader />
         {children}
       </body>
     </html>
