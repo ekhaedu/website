@@ -1,5 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 import { Navbar } from "../components/ui/Navbar";
 import { StickyActionBar } from "../components/ui/StickyActionBar";
 import { Chapter01Hero } from "../components/sections/Chapter01Hero";
@@ -62,6 +63,9 @@ const Footer = dynamic(
 );
 
 export default function Home() {
+  // Lock mode: redirect all visitors entering ekhalearning.com (/) directly to /coming-soon
+  redirect("/coming-soon");
+
   return (
     <div
       className="min-h-screen bg-white text-[var(--color-foreground)] overflow-x-hidden selection:bg-[#7477FF]/20 selection:text-[#7477FF]"
