@@ -10,11 +10,16 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles } from "@/components/ui/coming-soon-02-utils/sparkles";
 
-const HEADLINE = "Something new is on the way";
+export interface ComingSoon02Props {
+  badge?: string;
+  headline?: string;
+  description?: string;
+  ctaText?: string;
+}
 
-const Headline = () => {
+const Headline = ({ text = "Something new is on the way" }: { text?: string }) => {
   const reduce = useReducedMotion();
-  const words = HEADLINE.split(" ");
+  const words = text.split(" ");
   const half = Math.floor(words.length / 2);
 
   return (
@@ -42,7 +47,12 @@ const Headline = () => {
   );
 };
 
-const ComingSoon02 = () => {
+const ComingSoon02 = ({
+  badge = "Launching soon · Ekha Learning",
+  headline = "Something new is on the way",
+  description = "Ekha is expanding with an all-new interactive learning experience: vetted 1-on-1 mentors, real-time collaborative classrooms, and personalized growth journeys for students. We are putting the finishing touches together now.",
+  ctaText = "Coming soon",
+}: ComingSoon02Props) => {
   const reduce = useReducedMotion();
 
   return (
@@ -69,11 +79,11 @@ const ComingSoon02 = () => {
             data-slot="coming-soon-badge"
             className="rounded-full bg-card/70 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground backdrop-blur-sm"
           >
-            Launching soon
+            {badge}
           </Badge>
         </motion.div>
 
-        <Headline />
+        <Headline text={headline} />
 
         <motion.p
           data-slot="coming-soon-description"
@@ -83,9 +93,7 @@ const ComingSoon02 = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          Hirael Cloud brings managed Postgres and object storage to the same
-          terminal-first console you use for the registry. We are finishing the
-          last pieces now.
+          {description}
         </motion.p>
 
         <motion.div
@@ -101,7 +109,7 @@ const ComingSoon02 = () => {
             data-slot="coming-soon-cta"
             className="rounded-full px-5 py-2 text-sm font-medium"
           >
-            Coming soon
+            {ctaText}
           </Badge>
         </motion.div>
       </motion.div>
