@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { GetAppButton } from "./GetAppButton";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "./expo-icons";
 
 const NAV_LINKS = [
   { label: "Interactive Demo", href: "#chapter-curiosity" },

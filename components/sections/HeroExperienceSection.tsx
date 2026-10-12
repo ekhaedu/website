@@ -18,7 +18,7 @@ import {
   BookOpen,
   CheckCircle2,
   ChevronDown,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

@@ -8,7 +8,7 @@ import {
   BookOpen,
   Edit3,
   User,
-} from "lucide-react";
+} from "../../ui/expo-icons";
 
 export function SyllabusReplaysScreen() {
   const [activeTab, setActiveTab] = useState<"current" | "book">("current");

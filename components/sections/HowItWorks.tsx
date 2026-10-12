@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { User, Users, Calendar, X, ChevronRight } from "lucide-react";
+import { User, Users, Calendar, X, ChevronRight } from "../ui/expo-icons";
 import { LazyVideo } from "../ui/LazyVideo";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Mic, Send } from "lucide-react";
+import { Mic, Send } from "../../ui/expo-icons";
 
 export function AIDiscoveryScreen() {
   return (

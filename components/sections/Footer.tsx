@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Button } from "../ui/Button";
-import { ArrowRight, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { ArrowRight, Twitter, Linkedin, Instagram, Mail } from "../ui/expo-icons";
 
 export function Footer() {
   return (

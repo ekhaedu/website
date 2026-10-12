@@ -10,7 +10,7 @@ import {
   Trophy,
   Star,
   Sparkles,
-} from "lucide-react";
+} from "../ui/expo-icons";
 import { LazyVideo } from "../ui/LazyVideo";
 
 export function WalletSystem() {

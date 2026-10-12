@@ -7,7 +7,7 @@ import {
   Layout,
   Monitor,
   Tablet,
-} from "lucide-react";
+} from "@/components/ui/expo-icons";
 
 // Apple Logo
 const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => (

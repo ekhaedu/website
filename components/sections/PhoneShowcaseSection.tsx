@@ -12,7 +12,7 @@ import {
   MessageCircle,
   BookOpen,
   CheckCircle2,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

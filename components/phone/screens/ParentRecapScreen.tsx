@@ -9,7 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
-} from "lucide-react";
+} from "../../ui/expo-icons";
 
 export function ParentRecapScreen() {
   const [selectedOption, setSelectedOption] = useState<number>(0);

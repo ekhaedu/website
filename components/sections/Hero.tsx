@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "../ui/Button";
-import { ArrowRight, PlayCircle, Sparkles, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, PlayCircle, Sparkles, ShieldCheck, Star } from "../ui/expo-icons";
 import { GetAppButton } from "../ui/GetAppButton";
 import { PhoneFrame } from "../phone/PhoneFrame";
 import { MentorMatchScreen } from "../phone/screens/MentorMatchScreen";

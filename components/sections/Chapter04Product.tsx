@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   Clock,
   ArrowRight,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 const PRODUCT_TABS = [
   {

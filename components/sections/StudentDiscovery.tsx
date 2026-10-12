@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "../ui/Card";
-import { BrainCircuit, CheckCircle2, Sparkles } from "lucide-react";
+import { BrainCircuit, CheckCircle2, Sparkles } from "../ui/expo-icons";
 
 export function StudentDiscovery() {
   return (

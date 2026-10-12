@@ -2,7 +2,7 @@
 
 import React from "react";
 import { LazyVideo } from "../ui/LazyVideo";
-import { ChevronDown, MessageCircle, Sparkles } from "lucide-react";
+import { ChevronDown, MessageCircle, Sparkles } from "../ui/expo-icons";
 
 export function ParentLoop() {
   const [showDetails, setShowDetails] = React.useState(false);

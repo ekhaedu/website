@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "./expo-icons";
 import { GetAppButton } from "./GetAppButton";
 
 export function StickyActionBar() {

@@ -13,7 +13,7 @@ import {
   Users,
   Coins,
   ArrowRight,
-} from "lucide-react";
+} from "../ui/expo-icons";
 import { GetAppButton } from "../ui/GetAppButton";
 
 if (typeof window !== "undefined") {

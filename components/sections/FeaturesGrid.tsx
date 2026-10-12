@@ -9,7 +9,7 @@ import {
   MonitorPlay,
   Plus,
   Minus,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 export function FeaturesGrid() {
   const [activeFeature, setActiveFeature] = useState<number | null>(0);

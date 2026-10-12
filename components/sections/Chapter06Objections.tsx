@@ -5,7 +5,7 @@ import {
   Coins,
   ChevronDown,
   ArrowRight,
-} from "lucide-react";
+} from "../ui/expo-icons";
 import { GetAppButton } from "../ui/GetAppButton";
 
 const FAQS = [

@@ -10,7 +10,7 @@ import {
   Lock,
   UserCheck,
   RefreshCw,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 export function Chapter05Trust() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);

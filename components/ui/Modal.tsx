@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { X } from "./expo-icons";
 import { createPortal } from "react-dom";
 
 interface ModalProps {

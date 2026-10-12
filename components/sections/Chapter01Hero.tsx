@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   ChevronDown,
-} from "lucide-react";
+} from "../ui/expo-icons";
 
 export function Chapter01Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -239,8 +239,8 @@ export function Chapter01Hero() {
         ref={visualRef}
         className="opacity-0 z-10 w-full max-w-4xl mx-auto my-6 flex items-center justify-center relative"
       >
-        {/* Mascot Animation Sidekick (Floating on desktop) */}
-        <div className="hidden lg:block absolute -left-12 bottom-0 w-36 h-36 z-20 pointer-events-none animate-float">
+        {/* Mascot Animation Sidekick (Visible on both mobile & desktop) */}
+        <div className="absolute -left-4 -top-8 sm:-left-12 sm:bottom-0 w-24 h-24 sm:w-36 sm:h-36 z-20 pointer-events-none animate-float">
           <LazyVideo
             src="/mascot/mobile.mp4"
             poster="/mascot/mobile.png"
@@ -255,7 +255,7 @@ export function Chapter01Hero() {
         </div>
 
         {/* Center Live Phone Whiteboard Preview */}
-        <div className="w-full max-w-[280px] sm:max-w-[320px] aspect-[9/19.5] relative transform hover:scale-[1.01] transition-transform duration-500 shadow-2xl rounded-[48px]">
+        <div className="w-full max-w-[260px] sm:max-w-[300px] aspect-[9/19.5] relative transform hover:scale-[1.01] transition-transform duration-500 shadow-2xl rounded-[44px] sm:rounded-[48px]">
           <PhoneFrame glowColor="rgba(116, 119, 255, 0.35)">
             <MentorMatchScreen />
           </PhoneFrame>

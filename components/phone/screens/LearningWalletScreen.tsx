@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PlusCircle, ArrowUpRight, X, Wifi, Coins } from "lucide-react";
+import { PlusCircle, ArrowUpRight, X, Wifi, Coins } from "../../ui/expo-icons";
 
 export function LearningWalletScreen() {
   const [showTopup, setShowTopup] = useState(false);

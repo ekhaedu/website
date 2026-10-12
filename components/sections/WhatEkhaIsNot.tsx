@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X } from "../ui/expo-icons";
 
 export function WhatEkhaIsNot() {
   const notList = [

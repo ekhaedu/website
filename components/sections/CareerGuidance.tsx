@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Bot, UserCheck, ChevronDown, Sparkles } from "lucide-react";
+import { Bot, UserCheck, ChevronDown, Sparkles } from "../ui/expo-icons";
 
 export function CareerGuidance() {
   const [expandedCard, setExpandedCard] = React.useState<"ai" | "human" | null>(null);

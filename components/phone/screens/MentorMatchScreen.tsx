@@ -10,7 +10,7 @@ import {
   Target,
   PhoneOff,
   RotateCcw,
-} from "lucide-react";
+} from "../../ui/expo-icons";
 
 interface Stroke {
   id: string;

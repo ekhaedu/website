@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Modal } from "./Modal";
-import { CheckCircle2, ArrowRight, ShieldCheck, Phone, Check } from "lucide-react";
+import { CheckCircle2, ArrowRight, ShieldCheck, Phone, Check } from "./expo-icons";
 import { Button } from "./Button";
 
 interface GetAppButtonProps {

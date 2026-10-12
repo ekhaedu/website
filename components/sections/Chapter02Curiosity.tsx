@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, CheckCircle2, Zap, BookOpen, Lightbulb, RotateCcw } from "lucide-react";
+import { Sparkles, CheckCircle2, Zap, BookOpen, Lightbulb, RotateCcw } from "../ui/expo-icons";
 
 type SubjectType = "math" | "science" | "story";
 
@@ -23,33 +23,33 @@ export function Chapter02Curiosity() {
   return (
     <section
       id="chapter-curiosity"
-      className="py-24 sm:py-32 bg-slate-50/70 border-t border-slate-100 select-none relative overflow-hidden"
+      className="py-16 sm:py-28 bg-slate-50/70 border-t border-slate-100 select-none relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-3 sm:px-4 max-w-5xl">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
           <div className="inline-flex items-center gap-1.5 bg-[#EEF0FF] text-[#7477FF] px-3.5 py-1 rounded-full text-xs font-bold mb-3 border border-[#7477FF]/20 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#FF8C42]" />
             <span>02 · Interactive Preview</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
             Every Child Learns Differently.
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-slate-600 text-xs sm:text-base mt-2.5 leading-relaxed px-2">
             Choose a subject below to test-drive how an Ekha mentor turns complex formulas and concepts into hands-on, playful discovery.
           </p>
         </div>
 
-        {/* 3 Interactive Pathway Selector Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 mb-8">
+        {/* 3 Interactive Pathway Selector Cards (Mobile-first swipeable carousel / Desktop 3-col grid) */}
+        <div className="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto pb-3 md:pb-0 scrollbar-none snap-x mb-6">
           {/* Option A: Mathematics */}
           <button
             type="button"
             onClick={() => setActiveSubject("math")}
-            className={`p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden ${
+            className={`min-w-[240px] sm:min-w-[270px] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden shrink-0 md:shrink ${
               activeSubject === "math"
-                ? "bg-white border-[#7477FF] shadow-lg shadow-[#7477FF]/10 ring-2 ring-[#7477FF]/20 -translate-y-1"
+                ? "bg-white border-[#7477FF] shadow-lg shadow-[#7477FF]/10 ring-2 ring-[#7477FF]/20 -translate-y-0.5 sm:-translate-y-1"
                 : "bg-white/80 border-slate-200/90 hover:bg-white hover:border-slate-300"
             }`}
           >
@@ -77,9 +77,9 @@ export function Chapter02Curiosity() {
           <button
             type="button"
             onClick={() => setActiveSubject("science")}
-            className={`p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden ${
+            className={`min-w-[240px] sm:min-w-[270px] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden shrink-0 md:shrink ${
               activeSubject === "science"
-                ? "bg-white border-[#3EE8B6] shadow-lg shadow-[#3EE8B6]/10 ring-2 ring-[#3EE8B6]/30 -translate-y-1"
+                ? "bg-white border-[#3EE8B6] shadow-lg shadow-[#3EE8B6]/10 ring-2 ring-[#3EE8B6]/30 -translate-y-0.5 sm:-translate-y-1"
                 : "bg-white/80 border-slate-200/90 hover:bg-white hover:border-slate-300"
             }`}
           >
@@ -107,9 +107,9 @@ export function Chapter02Curiosity() {
           <button
             type="button"
             onClick={() => setActiveSubject("story")}
-            className={`p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden ${
+            className={`min-w-[240px] sm:min-w-[270px] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden shrink-0 md:shrink ${
               activeSubject === "story"
-                ? "bg-white border-[#FF8C42] shadow-lg shadow-[#FF8C42]/10 ring-2 ring-[#FF8C42]/20 -translate-y-1"
+                ? "bg-white border-[#FF8C42] shadow-lg shadow-[#FF8C42]/10 ring-2 ring-[#FF8C42]/20 -translate-y-0.5 sm:-translate-y-1"
                 : "bg-white/80 border-slate-200/90 hover:bg-white hover:border-slate-300"
             }`}
           >
